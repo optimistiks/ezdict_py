@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^', include('tickets.urls')),
     # Examples:
     # url(r'^$', 'ezdict_backend.views.home', name='home'),
     # url(r'^ezdict_backend/', include('ezdict_backend.foo.urls')),

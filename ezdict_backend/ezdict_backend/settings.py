@@ -126,6 +126,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'south',
     'rest_framework',
+    'accounts',
+    'tickets'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -158,3 +160,5 @@ LOGGING = {
         },
     }
 }
+
+AUTH_USER_MODEL = 'accounts.MyUser'
