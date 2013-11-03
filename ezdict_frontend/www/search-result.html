@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/interface.css">
+    <link rel="stylesheet" href="css/search-result.css">
+    <title>Easy dictionary</title>
+</head>
+<body class="gradient">
+<!--[if gte IE 9]>
+<style type="text/css">
+    .gradient {
+        filter: none;
+    }
+</style>
+<![endif]-->
+<div class="main-wrapper">
+    <header class="header gradient">
+        <div class="logo">
+            <img src="img/logo5.png">
+        </div>
+        <div class="right-header">
+            <ul class="header-buttons">
+                <li>Username</li>
+                <li>Материалы</li>
+                <li>Статистика</li>
+                <li>Добавить контент</li>
+                <li>О Нас</li>
+                <li>F.A.Q</li>
+            </ul>
+            <div class="exit-button">
+                <button type="button">Выход</button>
+            </div>
+            <div class="search-wrapper gradient">
+                <form>
+                    <div class="search-div">
+                        <input class="content-search" type="text" placeholder="Искать материалы">
+                        <button class="search-button" type="button">Поиск</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    <div class="content-wrapper">
+        <div class="first-col">
+            <div class="widgets">
+                <div class="widgets-btn">
+                    <button type="button" id="widgets-btn"></button>
+                </div>
+                <div class="random-words gradient" id="random-words-widget">
+                    <div class="rw-close-btn">
+                        <button class="button" id="rw-close-btn"></button>
+                    </div>
+                    <div class="fisherman"></div>
+                    <div class="random-words-content">
+                        <div class="random-words-spacer"></div>
+                        <div class="widget-name">
+                            <span>Случайные слова</span>
+                        </div>
+                        <div class="word-in-random-widg">
+                            <span>Participate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="two-col-wrapper">
+            <div class="second-col-wrapper" id="second-col-wrapper">
+                <div class="second-col">
+                    <div class="mid-col gen-col-style gradient">
+                        <div class="content-field">
+                            <!--Результаты поиска, материалы-->
+                            <div class="lside-menu">
+                                <div class="lside-buttons">
+                                    <button type="button">Результаты поиска</button>
+                                    <button type="button">Категории</button>
+                                    <button type="button">Популярное</button>
+                                    <button type="button">Новинки</button>
+                                </div>
+                            </div>
+                            <div class="rside">
+                                <div class="gradient-stripe gradient"></div>
+                                <div class="top-content-buttons">
+                                    <div class="navy-content-buttons">
+                                        <div class="cont-buttons">
+                                            <div class="vid-btn vid btn">
+                                                <button type="button">Видео</button>
+                                            </div>
+                                            <div class="txt-btn txt btn">
+                                                <button type="button">Тексты</button>
+                                            </div>
+                                            <div class="mus-btn mus btn">
+                                                <button type="button">Mузыка</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="blue-stripe gradient"></div>
+                                    <div class="sorting-buttons gradient">
+                                        <div class="diff-wrapper">
+                                            <button type="button">Сложность</button>
+                                        </div>
+                                        <div class="dur-wrapper">
+                                            <button type="button">Длительность</button>
+                                        </div>
+                                        <div class="name-wrapper">
+                                                <button type="button">Имя</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content"></div>
+                            </div>
+                            <!--результаты поиска, материалы-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="third-col" id="third-col">
+                <div class="history gen-col-style gradient">
+                    <div class="his-tag">
+                        <p class="his-label" id="his-label">История</p>
+                    </div>
+                    <div class="words-wrapper">
+                        <div class="words-in-history-closed">
+                            <span>Train</span>
+                            <br><br>
+                            <hr>
+                            <span>Сущ. → </span><span>поезд, состав, шлейф, обоз, цепь, череда.</span>
+                            <hr>
+                            <span>Гл. → </span><span>обучаться, обучать, тренироваться, готовить.</span>
+                        </div>
+                        <div class="words-in-history-opened">
+                            <span>Forest</span>
+                            <br><br>
+                            <hr>
+                            <span>Сущ. → </span><span> Лес, заповедник, заказник.</span>
+                            <hr>
+                            <span>Гл. → </span><span>Засаживать лесом.</span>
+                            <hr>
+                            <span>Прилаг. → </span><span>Лесной.</span>
+                        </div>
+                        <div class="words-in-history-closed">
+                            <span>Heal</span> <span></span>
+                        </div>
+                        <div class="words-in-history-closed">
+                            <span>Wood</span> <span></span>
+                        </div>
+                        <div class="words-in-history-closed">
+                            <span>Angry</span> <span></span>
+                        </div>
+                        <div class="words-in-history-closed">
+                            <span>Retard</span> <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="interactive-panel">
+                <div class="panel-wrapper gradient">
+                    <form>
+                        <div class="words-search-div">
+                            <input class="content-search words-search" type="text" placeholder="Искать слово">
+                            <button class="search-button" type="button">Перевести</button>
+                        </div>
+                    </form>
+                    <div class="bottom-interactive-buttons">
+                        <ul class="footer-buttons">
+                            <li>
+                                <button class="new-sticker" title="Новый стикер"></button>
+                            </li>
+                            <li>
+                                <button class="edit-sticker" id="edit-sticker" title="Редактировать стикер"></button>
+                            </li>
+                            <li>
+                                <button class="customization-sticker" id="customization" title="Кастомизация"></button>
+                            </li>
+                            <li>
+                                <button class="add-to-learn" title="Добавить в изучаемые"></button>
+                            </li>
+                            <li>
+                                <button class="delete-sticker" title="Удалить стикер"></button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="stickers-wrapper">
+                        <div class="basket-wrapper"></div>
+                        <div class="active-sticker ">
+                            <h2>Train</h2>
+                            <span>Вы искали слово</span><b> 100500 </b><span>раз</span>
+                            <div class="active-sticker-cont">
+                               <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                   Scroll test</p>
+                                <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                    Scroll test</p>
+                                <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                    Scroll test</p>
+                                <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                    Scroll test</p>
+                                <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                    Scroll test</p>
+                                <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                    Scroll test</p>
+                                <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                    Scroll test</p>
+                                <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                    Scroll test</p>
+                                <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll test
+                                    Scroll test</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="bottom-edit-panel">
+            <div class="dict-switcher">
+                <ul>
+                    <li>Словарь EzDict</li>
+                    <li>Лучшие стикеры пользователей</li>
+                </ul>
+            </div>
+            <div class="edit-field-wrapper">
+                <div class="edit-field-container">
+                    <div class="desk-wrapper">
+                        <div class="desk-translate-wrap">
+                            <div class="desk-translate">
+
+                                <div class="transcription">
+                                    <b>train</b>
+                                    <span> - </span>
+                                    <i>[trein]</i>
+                                </div>
+                                <table class="tranlation-table">
+                                    <tr class="table-title">
+                                        <td>
+                                            <i>Noun:</i>
+                                        </td>
+                                        <td>
+                                            <i>Verb:</i>
+                                        </td>
+                                        <td>
+                                            <i>Adjective:</i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <ul>
+                                                <li>поезд</li>
+                                                <li>состав</li>
+                                                <li>процессия</li>
+                                                <li>кортеж</li>
+                                                <li>караван</li>
+                                                <li>обоз</li>
+                                                <li>свита</li>
+                                                <li>толпа</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                <li>ехать поездом</li>
+                                                <li>ехать по железной дороге</li>
+                                                <li>воспитывать</li>
+                                                <li>учить</li>
+                                                <li>приучать к дисциплине</li>
+                                                <li>приучать к хорошим навыкам</li>
+                                                <li>приваживать</li>
+                                                <li>обучать</li>
+                                                <li>выучивать</li>
+                                                <li>готоваить</li>
+                                                <li>обучаться</li>
+                                                <li>готовиться</li>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                                <li>поездатый</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="desk-buttons">
+                            <button class="copy-button" title="Копировать перевод в стикер"></button>
+                        </div>
+                        <div class="desk-sticker">
+                            <span class="red-pin"></span>
+                            <b>Train</b>
+                            <br>
+                            <div class="desk-sticker-content">
+                                <li>ехать поездом</li>
+                                <li>ехать по железной дороге</li>
+                                <li>воспитывать</li>
+                                <li>учить</li>
+                                <li>приучать к дисциплине</li>
+                                <li>приучать к хорошим навыкам</li>
+                                <li>приваживать</li>
+                                <li>обучать</li>
+                                <li>выучивать</li>
+                                <li>готоваить</li>
+                                <li>обучаться</li>
+                                <li>готовиться</li>
+                                <li>ехать поездом</li>
+                                <li>ехать по железной дороге</li>
+                                <li>воспитывать</li>
+                                <li>учить</li>
+                                <li>приучать к дисциплине</li>
+                                <li>приучать к хорошим навыкам</li>
+                                <li>приваживать</li>
+                                <li>обучать</li>
+                                <li>выучивать</li>
+                                <li>готоваить</li>
+                                <li>обучаться</li>
+                                <li>готовиться</li>
+                                <li>ехать поездом</li>
+                                <li>ехать по железной дороге</li>
+                                <li>воспитывать</li>
+                                <li>учить</li>
+                                <li>приучать к дисциплине</li>
+                                <li>приучать к хорошим навыкам</li>
+                                <li>приваживать</li>
+                                <li>обучать</li>
+                                <li>выучивать</li>
+                                <li>готоваить</li>
+                                <li>обучаться</li>
+                                <li>готовиться</li>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </footer>
+    </div>
+</div>
+<script type="text/javascript" src="js/vendor/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/vendor/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="js/interface.js"></script>
+</body>
+</html>
