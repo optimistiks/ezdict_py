@@ -6,6 +6,9 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url(r'^', include('tickets.urls')),
+    url(r'^', include('accounts.urls')),
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework')),
     # Examples:
     # url(r'^$', 'ezdict_backend.views.home', name='home'),
     # url(r'^ezdict_backend/', include('ezdict_backend.foo.urls')),

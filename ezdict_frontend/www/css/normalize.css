@@ -399,6 +399,7 @@ button,
 input,
 select,
 textarea {
+    outline: none;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     font-size: 100%; /*1*/
