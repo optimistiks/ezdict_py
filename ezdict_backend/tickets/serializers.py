@@ -3,10 +3,18 @@ from rest_framework import serializers
 from tickets.models import Ticket
 
 
-class TicketSerializer(serializers.ModelSerializer):
-    user = serializers.Field(source='user.nickname')
+class TicketSerializer(serializers.HyperlinkedModelSerializer):
+    user = serializers.HyperlinkedRelatedField(view_name='myuser-detail', read_only=True)
     liked = serializers.Field(source='liked')
+    tr = serializers.CharField(source='transcription')
+    text = serializers.CharField(widget=widgets.Textarea, source='translation')
 
     class Meta:
         model = Ticket
-        fields = ('id', 'word', 'transcription', 'translation', 'liked', 'created', 'updated', 'user')
+        fields = ('id', 'user', 'word', 'tr', 'text', 'liked', 'created', 'updated',)
+
+
+class TicketCollectionSerializer(serializers.Serializer):
+    tickets = TicketSerializer()
+    count = serializers.Field(source='tickets.count')
+

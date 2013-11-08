@@ -13,4 +13,10 @@ class Ticket(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='tickets')
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('-id',)
+
+
+class TicketCollection():
+    def __init__(self, ticketsQueryset):
+        self.tickets = ticketsQueryset
+        self.count = ticketsQueryset.count
