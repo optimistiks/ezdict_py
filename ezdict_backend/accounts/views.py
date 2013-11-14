@@ -30,7 +30,7 @@ class UserLogin(APIView):
                 raise AuthenticationFailed('Incorrect login or password')
 
 
-class UserList(generics.ListAPIView):
+class UserList(generics.ListCreateAPIView):
     queryset = MyUser.objects.all()
     serializer_class = UserSerializer
 
