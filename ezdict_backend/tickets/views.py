@@ -1,18 +1,11 @@
-from tickets.models import Ticket, TicketCollection
-from tickets.serializers import TicketSerializer, TicketCollectionSerializer
 from rest_framework import generics
-from rest_framework import permissions
-from tickets.permissions import IsOwnerOrReadOnly
+
+from tickets.models import Ticket
+from tickets.serializers import TicketSerializer
 
 
 class TicketList(generics.ListCreateAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-
-    def get_serializer_class(self):
-        serializer_class = TicketSerializer
-        if self.request.method == 'GET':
-            serializer_class = TicketCollectionSerializer
-        return serializer_class
+    serializer_class = TicketSerializer
 
     def get_queryset(self):
         queryset = Ticket.objects.all()
@@ -36,9 +29,6 @@ class TicketList(generics.ListCreateAPIView):
         if limit is not None and int(limit) > 0:
             queryset = queryset[:int(limit)]
 
-        if self.request.method == 'GET':
-            queryset = [TicketCollection(queryset)]
-
         return queryset
 
     def pre_save(self, obj):
@@ -48,8 +38,6 @@ class TicketList(generics.ListCreateAPIView):
 class TicketDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-                          IsOwnerOrReadOnly,)
 
     def pre_save(self, obj):
         obj.user = self.request.user
