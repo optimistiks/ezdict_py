@@ -4,26 +4,26 @@ from rest_framework.exceptions import ParseError
 from ez_tickets.components import YandexDict, YandexTranslate
 
 
-class EzDictTicket(APIView):
+class EzTicket(APIView):
 
-    def get(self, request):
+    def getWord(self, request):
         word = request.QUERY_PARAMS.get('word')
         if word is None:
             raise ParseError('Parameter "word" is required')
+        return word
 
-        ydict = YandexDict(word)
+
+class EzDictTicket(EzTicket):
+
+    def get(self, request):
+        ydict = YandexDict(self.getWord(request))
         ticket = ydict.lookup()
-
         return Response(ticket)
 
 
-class EzTranslateTicket(APIView):
+class EzTranslateTicket(EzTicket):
+
     def get(self, request):
-        word = request.QUERY_PARAMS.get('word')
-        if word is None:
-            raise ParseError('Parameter "word" is required')
-
-        ytrans = YandexTranslate(word)
+        ytrans = YandexTranslate(self.getWord(request))
         ticket = ytrans.translate()
-
         return Response(ticket)
