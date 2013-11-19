@@ -14,7 +14,3 @@ class TicketSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'user', 'word', 'tr', 'text', 'liked', 'created', 'updated',)
 
 
-class TicketCollectionSerializer(serializers.Serializer):
-    tickets = TicketSerializer()
-    count = serializers.Field(source='tickets.count')
-

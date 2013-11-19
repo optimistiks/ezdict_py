@@ -1,7 +1,7 @@
 from rest_framework import generics
-
 from tickets.models import Ticket
 from tickets.serializers import TicketSerializer
+from tickets.permissions import UpdDelByOwnerOrAdminOtherMethodsForAuthenticated
 
 
 class TicketList(generics.ListCreateAPIView):
@@ -36,6 +36,7 @@ class TicketList(generics.ListCreateAPIView):
 
 
 class TicketDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (UpdDelByOwnerOrAdminOtherMethodsForAuthenticated,)
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
 

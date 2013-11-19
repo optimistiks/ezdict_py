@@ -14,9 +14,3 @@ class Ticket(models.Model):
 
     class Meta:
         ordering = ('-id',)
-
-
-class TicketCollection():
-    def __init__(self, ticketsQueryset):
-        self.tickets = ticketsQueryset
-        self.count = ticketsQueryset.count

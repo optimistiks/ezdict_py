@@ -7,7 +7,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import ParseError, AuthenticationFailed
 from rest_framework.permissions import AllowAny
-from accounts.permissions import AllowCreateForAnyoneButAuthenticateList
+from accounts.permissions import CrForAnyoneOtherMethodsForAuthenticated,\
+    DelByAdminUpdByOwnerOrAdminOtherMethodsForAuthenticated
 from django.contrib import auth
 
 
@@ -34,12 +35,13 @@ class UserLogin(APIView):
 
 
 class UserList(generics.ListCreateAPIView):
-    permission_classes = (AllowCreateForAnyoneButAuthenticateList,)
+    permission_classes = (CrForAnyoneOtherMethodsForAuthenticated,)
     queryset = MyUser.objects.all()
     serializer_class = UserSerializer
 
 
-class UserDetail(generics.RetrieveAPIView):
+class UserDetail(generics.RetrieveUpdateAPIView):
+    permission_classes = (DelByAdminUpdByOwnerOrAdminOtherMethodsForAuthenticated,)
     queryset = MyUser.objects.all()
     serializer_class = UserSerializer
 
