@@ -40,7 +40,7 @@ class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
 
-class UserDetail(generics.RetrieveUpdateAPIView):
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (DelByAdminUpdByOwnerOrAdminOtherMethodsForAuthenticated,)
     queryset = MyUser.objects.all()
     serializer_class = UserSerializer

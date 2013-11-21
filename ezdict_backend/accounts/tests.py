@@ -9,8 +9,22 @@ class UsersTests(APITestCase):
         self.USER_PASSWORD = 'qwerty'
         self.user = MyUser.objects.create_user(
             nickname='testusr', email='testusr@gmail.com', password=self.USER_PASSWORD)
+        self.admin = MyUser.objects.create_superuser(
+            nickname='testadmin', email='testadmin@gmail.com', password=self.USER_PASSWORD)
         self.loginUrl = reverse('myuser-login')
         self.userListUrl = reverse('myuser-list')
+        self.usersData = [
+            {
+                'nickname': 'testusrname',
+                'email': 'testusrname@gmail.com',
+                'password': 'testpassword',
+            },
+            {
+                'nickname': 'testusrname2',
+                'email': 'testusrname2@gmail.com',
+                'password': 'testpassword',
+            }
+        ]
 
     def test_user_creation_with_correct_data(self):
         response = self.client.post(self.userListUrl, {
@@ -60,6 +74,48 @@ class UsersTests(APITestCase):
         self.assertIn('tickets', response.data)
         self.assertNotIn('password', response.data)
         self.client.logout()
+
+    def test_user_edit_own_user(self):
+        self.client.login(username=self.user.email, password=self.USER_PASSWORD)
+        ownUserUrl = reverse('myuser-detail', args=(self.user.id,))
+        response = self.client.put(ownUserUrl, self.usersData[0])
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['id'], self.user.id)
+        self.assertEqual(response.data['nickname'], self.usersData[0]['nickname'])
+        self.assertEqual(response.data['email'], self.usersData[0]['email'])
+        self.assertIn('tickets', response.data)
+        self.assertNotIn('password', response.data)
+
+    def test_user_edit_other_user(self):
+        otherUser = self.client.post(self.userListUrl, self.usersData[0])
+        otherUserUrl = reverse('myuser-detail', args=(otherUser.data['id'],))
+        self.client.login(username=self.user.email, password=self.USER_PASSWORD)
+        response = self.client.put(otherUserUrl, self.usersData[1])
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertIn('detail', response.data)
+
+    def test_admin_edit_other_user(self):
+        self.client.login(username=self.admin.email, password=self.USER_PASSWORD)
+        otherUserUrl = reverse('myuser-detail', args=(self.user.id,))
+        response = self.client.put(otherUserUrl, self.usersData[0])
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['id'], self.user.id)
+        self.assertEqual(response.data['nickname'], self.usersData[0]['nickname'])
+        self.assertEqual(response.data['email'], self.usersData[0]['email'])
+        self.assertIn('tickets', response.data)
+        self.assertNotIn('password', response.data)
+
+    def test_user_delete_user(self):
+        self.client.login(username=self.user.email, password=self.USER_PASSWORD)
+        userUrl = reverse('myuser-detail', args=(self.user.id,))
+        response = self.client.delete(userUrl)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_admin_delete_user(self):
+        self.client.login(username=self.admin.email, password=self.USER_PASSWORD)
+        userUrl = reverse('myuser-detail', args=(self.user.id,))
+        response = self.client.delete(userUrl)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_get_user_list(self):
         self.client.login(username=self.user.email, password=self.USER_PASSWORD)
