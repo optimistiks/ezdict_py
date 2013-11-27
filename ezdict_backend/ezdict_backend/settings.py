@@ -128,7 +128,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'accounts',
     'tickets',
-    'ez_tickets'
+    'ez_tickets',
+    'texts',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
