@@ -15,7 +15,7 @@ from django.contrib import auth
 class UserLogin(APIView):
     permission_classes = (AllowAny,)
 
-    def post(self, request):
+    def post(self, request, format = None):
         username = request.DATA.get('username')
         password = request.DATA.get('password')
 
@@ -32,6 +32,28 @@ class UserLogin(APIView):
                     raise AuthenticationFailed('User is not active')
             else:
                 raise AuthenticationFailed('Incorrect login or password')
+
+
+class UserLogout(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self, request, format = None):
+        if request.user.is_authenticated():
+            auth.logout(request)
+            return Response({})
+        else:
+            raise AuthenticationFailed('User is not logged in')
+
+
+class UserIsAuthenticated(APIView):
+    permission_classes = (AllowAny,)
+
+    def post(self, request, format = None):
+        if request.user.is_authenticated():
+            serializer = UserSerializer(request.user, context={'request': request})
+            return Response(serializer.data)
+        else:
+            raise AuthenticationFailed('User is not authenticated')
 
 
 class UserList(generics.ListCreateAPIView):

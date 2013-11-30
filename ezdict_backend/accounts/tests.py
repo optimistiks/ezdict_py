@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from rest_framework.reverse import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from accounts.models import MyUser
@@ -11,7 +11,7 @@ class UsersTests(APITestCase):
             nickname='testusr', email='testusr@gmail.com', password=self.USER_PASSWORD)
         self.admin = MyUser.objects.create_superuser(
             nickname='testadmin', email='testadmin@gmail.com', password=self.USER_PASSWORD)
-        self.loginUrl = reverse('myuser-login')
+        self.loginUrl = reverse('myuser-login', format='json')
         self.userListUrl = reverse('myuser-list')
         self.usersData = [
             {
@@ -63,6 +63,36 @@ class UsersTests(APITestCase):
         response = self.client.post(self.loginUrl, {'username': 'wrong', 'password': 'credentials'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertIn('detail', response.data)
+
+    def test_user_is_authenticated(self):
+        isAuthenticatedUrl = reverse('myuser-isAuthenticated')
+        response = self.client.post(isAuthenticatedUrl)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertIn('detail', response.data)
+        self.client.login(username=self.user.email, password=self.USER_PASSWORD)
+        response = self.client.post(isAuthenticatedUrl)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['id'], self.user.id)
+        self.assertEqual(response.data['nickname'], self.user.nickname)
+        self.assertEqual(response.data['email'], self.user.email)
+        self.assertIn('tickets', response.data)
+
+    def test_user_logout(self):
+        logoutUrl = reverse('myuser-logout')
+        isAuthenticatedUrl = reverse('myuser-isAuthenticated')
+        self.client.login(username=self.user.email, password=self.USER_PASSWORD)
+        isAuthenticatedResponse = self.client.post(isAuthenticatedUrl)
+        self.assertEqual(isAuthenticatedResponse.status_code, status.HTTP_200_OK)
+        self.assertEqual(isAuthenticatedResponse.data['id'], self.user.id)
+        self.assertEqual(isAuthenticatedResponse.data['nickname'], self.user.nickname)
+        self.assertEqual(isAuthenticatedResponse.data['email'], self.user.email)
+        self.assertIn('tickets', isAuthenticatedResponse.data)
+        logoutResponse = self.client.post(logoutUrl)
+        self.assertEqual(logoutResponse.status_code, status.HTTP_200_OK)
+        isAuthenticatedResponse = self.client.post(isAuthenticatedUrl)
+        self.assertEqual(isAuthenticatedResponse.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertIn('detail', isAuthenticatedResponse.data)
+
 
     def test_get_single_user(self):
         self.client.login(username=self.user.email, password=self.USER_PASSWORD)
