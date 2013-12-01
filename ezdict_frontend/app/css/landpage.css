@@ -64,7 +64,7 @@ header {
 }
 @font-face{
   font-family: cooper ;
-  src: url(../../font/cooperblackstd.ttf);
+  src: url(../font/cooperblackstd.ttf);
 }
 .slogan {
     font-size: 9pt;
@@ -168,7 +168,7 @@ header {
         }
 
 .dec-panel-shadow {
-    background: url(../../img/dec_panel_shadow.png) no-repeat;
+    background: url(../img/dec_panel_shadow.png) no-repeat;
     width: 982px;
     height: 49px;
     margin-left: -60px ;
@@ -195,7 +195,7 @@ header {
     box-shadow: 0 2px 3px #8a878c;
 	width: 90px;
 	height: 30px;
-	background: url(../../img/buttons/sprite-new2.png) 50% 100%;
+	background: url(../img/buttons/sprite-new2.png) 50% 100%;
     cursor: pointer;
 }
 .nav-button:hover {
@@ -252,7 +252,7 @@ header {
     margin: 0 auto;
 }
 .footer {
-    background: url(../../img/footer.png) repeat-x;
+    background: url(../img/footer.png) repeat-x;
     height: 260px;
 }
 .principles {
@@ -273,18 +273,18 @@ header {
     float: left;
     width: 237px;
     height: 206px;
-    background: url(../../img/comics/man3.png) no-repeat;
+    background: url(../img/comics/man3.png) no-repeat;
 }
 .man-cloud {
     margin-left: -70px;
     width: 218px;
     height: 83px;
     float: left;
-    background: url(../../img/comics/bop.png)no-repeat;
+    background: url(../img/comics/bop.png)no-repeat;
 }
 @font-face {
     font-family: segoe;
-    src: url(../../font/segoe.ttf);
+    src: url(../font/segoe.ttf);
 }
 .man-speech {
     line-height: 15px;
@@ -316,7 +316,7 @@ div.center-text>p {
     width: 218px;
     height: 83px;
     float: left;
-    background: url(../../img/comics/woman-cloud.png)no-repeat;
+    background: url(../img/comics/woman-cloud.png)no-repeat;
 }
 div.woman-cloud>p {
     line-height: 17px;
@@ -332,7 +332,7 @@ div.woman-cloud>p {
     float: right;
     width: 218px;
     height: 202px;
-    background: url(../../img/comics/woman5.png);
+    background: url(../img/comics/woman5.png);
 }
 .reg-container {
     z-index: -1;
@@ -363,7 +363,7 @@ div.woman-cloud>p {
     color: white;
     line-height: 1.3em;
     padding-right:20px;
-    background: url(../../img/buttons/reg.png)no-repeat center -2px;
+    background: url(../img/buttons/reg.png)no-repeat center -2px;
     border-radius: 30px;
     text-shadow:  0 0 5px rgba(0,0,0,0.9);
 

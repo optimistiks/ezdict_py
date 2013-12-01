@@ -99,38 +99,38 @@
     transition: text-shadow 0.5s;
     -webkit-transition: text-shadow 0.3s;
     margin-left: -5px;
-    background: url("../../img/muz-img.png") no-repeat 10px 8px;
+    background: url("../img/muz-img.png") no-repeat 10px 8px;
 }
 
 .txt>button {
     transition: text-shadow 0.5s;
     -webkit-transition: text-shadow 0.3s;
-    background: url("../../img/txt-img.png") no-repeat 8px 9px;
+    background: url("../img/txt-img.png") no-repeat 8px 9px;
 }
 
 .vid>button {
     transition: text-shadow 0.5s;
     -webkit-transition: text-shadow 0.3s;
-    background: url("../../img/vid-img.png") no-repeat 4px 9px;
+    background: url("../img/vid-img.png") no-repeat 4px 9px;
 }
 
 .mus>button:hover {
     transition: text-shadow 0.5s;
     -webkit-transition: text-shadow 0.3s;
     text-shadow: 0 0 30px #000000;
-    background: url("../../img/hov-stripe.png") no-repeat 0 30px, url("../../img/muz-img.png") no-repeat 10px 8px;
+    background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/muz-img.png") no-repeat 10px 8px;
 }
 
 .txt>button:hover {
 
     text-shadow: 0 0 30px #000000;
-    background: url("../../img/hov-stripe.png") no-repeat 0 30px, url("../../img/txt-img.png") no-repeat 8px 9px;
+    background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/txt-img.png") no-repeat 8px 9px;
 }
 
 .vid>button:hover {
 
     text-shadow: 0 0 30px #000000;
-    background: url("../../img/hov-stripe.png") no-repeat 0 30px, url("../../img/vid-img.png") no-repeat 4px 9px;
+    background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/vid-img.png") no-repeat 4px 9px;
 }
 
 /*конец стилей для контента*/
@@ -178,11 +178,11 @@
     color: #000000;
     font-weight: bold;
     border: none;
-    background: url("../../img/sort-triangle-down.png") no-repeat 0 7px;
+    background: url("../img/sort-triangle-down.png") no-repeat 0 7px;
 }
 
 .sorting-buttons button:active {
-    background: url("../../img/sort-triangle-up.png") no-repeat 0 7px;
+    background: url("../img/sort-triangle-up.png") no-repeat 0 7px;
 }
 
 .name-wrapper>button {
