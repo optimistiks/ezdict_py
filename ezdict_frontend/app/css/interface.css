@@ -210,7 +210,7 @@ header {
     position: absolute;
     content: "";
     left: -108px;
-    background: url("../img/search-before3.png") no-repeat;
+    background: url("../../img/search-before3.png") no-repeat;
     z-index: -1;
 }
 
@@ -235,7 +235,7 @@ header {
     border-radius: 55px/40px 0 0 0;
     border: 1px solid #89abaf;
     box-shadow: -1px 2px 10px rgba(10, 0, 93, 0.21) inset;
-    background: #ffffff url("../img/search-img2.png") no-repeat 22px 8px;
+    background: #ffffff url("../../img/search-img2.png") no-repeat 22px 8px;
     outline: none;
 }
 
@@ -254,17 +254,17 @@ header {
     text-shadow: 0 1px 4px black;
     min-width: 110px;
     width: 10%;
-    background: url("../img/search-button1.png") top center;
+    background: url("../../img/search-button1.png") top center;
     border: 1px solid #658285;
     border-radius: 0 3px 40px 0;
 }
 
 .search-button:hover {
-    background: url("../img/search-button1.png") center center
+    background: url("../../img/search-button1.png") center center
 }
 
 .search-button:active {
-    background: url("../img/search-button1.png") bottom center
+    background: url("../../img/search-button1.png") bottom center
 }
 
 /* ----------------------------Конец Шапки--------------------------*/
@@ -309,26 +309,26 @@ header {
         width: 50px;
         height: 15px;
         border: 1px solid #7e8484;
-        background: url("../img/eye.png") no-repeat 69% 6px, rgb(185, 189, 188);
-        background: url("../img/eye.png") no-repeat 69% 6px, url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I5YmRiYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4OThkOGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-        background: url("../img/eye.png") no-repeat 69% 6px, -moz-linear-gradient(top, rgba(185, 189, 188, 1) 0%, rgba(137, 141, 142, 1) 100%);
-        background: url("../img/eye.png") no-repeat 69% 6px, -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(185, 189, 188, 1)), color-stop(100%, rgba(137, 141, 142, 1)));
-        background: url("../img/eye.png") no-repeat 69% 6px, -webkit-linear-gradient(top, rgba(185, 189, 188, 1) 0%, rgba(137, 141, 142, 1) 100%);
-        background: url("../img/eye.png") no-repeat 69% 6px, -o-linear-gradient(top, rgba(185, 189, 188, 1) 0%, rgba(137, 141, 142, 1) 100%);
-        background: url("../img/eye.png") no-repeat 69% 6px, linear-gradient(to bottom, rgba(185, 189, 188, 1) 0%, rgba(137, 141, 142, 1) 100%);
-        filter: progid:DXImageTransform.Microsoft.url("../img/eye.png") no-repeat 69% 6px, gradient(startColorstr='#b9bdbc', endColorstr='#898d8e', GradientType=0);
+        background: url("../../img/eye.png") no-repeat 69% 6px, rgb(185, 189, 188);
+        background: url("../../img/eye.png") no-repeat 69% 6px, url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I5YmRiYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4OThkOGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: url("../../img/eye.png") no-repeat 69% 6px, -moz-linear-gradient(top, rgba(185, 189, 188, 1) 0%, rgba(137, 141, 142, 1) 100%);
+        background: url("../../img/eye.png") no-repeat 69% 6px, -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(185, 189, 188, 1)), color-stop(100%, rgba(137, 141, 142, 1)));
+        background: url("../../img/eye.png") no-repeat 69% 6px, -webkit-linear-gradient(top, rgba(185, 189, 188, 1) 0%, rgba(137, 141, 142, 1) 100%);
+        background: url("../../img/eye.png") no-repeat 69% 6px, -o-linear-gradient(top, rgba(185, 189, 188, 1) 0%, rgba(137, 141, 142, 1) 100%);
+        background: url("../../img/eye.png") no-repeat 69% 6px, linear-gradient(to bottom, rgba(185, 189, 188, 1) 0%, rgba(137, 141, 142, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.url("../../img/eye.png") no-repeat 69% 6px, gradient(startColorstr='#b9bdbc', endColorstr='#898d8e', GradientType=0);
 
     }
 
     .widgets-btn>button:hover {
-        background: url("../img/eye.png") no-repeat 69% 6px, rgb(185, 189, 188);
-        background: url("../img/eye.png") no-repeat 69% 6px, url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I5YmRiYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4OThkOGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-        background: url("../img/eye.png") no-repeat 69% 6px, -moz-linear-gradient(top, rgb(209, 213, 212) 0%, rgb(164, 168, 169) 100%);
-        background: url("../img/eye.png") no-repeat 69% 6px, -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(209, 213, 212)), color-stop(100%, rgb(164, 168, 169)));
-        background: url("../img/eye.png") no-repeat 69% 6px, -webkit-linear-gradient(top, rgb(209, 213, 212) 0%, rgb(164, 168, 169) 100%);
-        background: url("../img/eye.png") no-repeat 69% 6px, -o-linear-gradient(top, rgb(209, 213, 212) 0%, rgb(164, 168, 169) 100%);
-        background: url("../img/eye.png") no-repeat 69% 6px, linear-gradient(to bottom, rgb(209, 213, 212) 0%, rgb(164, 168, 169) 100%);
-        filter: progid:DXImageTransform.Microsoft.url("../img/eye.png") no-repeat 69% 6px, gradient(startColorstr='#b9bdbc', endColorstr='#898d8e', GradientType=0);
+        background: url("../../img/eye.png") no-repeat 69% 6px, rgb(185, 189, 188);
+        background: url("../../img/eye.png") no-repeat 69% 6px, url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I5YmRiYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4OThkOGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+        background: url("../../img/eye.png") no-repeat 69% 6px, -moz-linear-gradient(top, rgb(209, 213, 212) 0%, rgb(164, 168, 169) 100%);
+        background: url("../../img/eye.png") no-repeat 69% 6px, -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgb(209, 213, 212)), color-stop(100%, rgb(164, 168, 169)));
+        background: url("../../img/eye.png") no-repeat 69% 6px, -webkit-linear-gradient(top, rgb(209, 213, 212) 0%, rgb(164, 168, 169) 100%);
+        background: url("../../img/eye.png") no-repeat 69% 6px, -o-linear-gradient(top, rgb(209, 213, 212) 0%, rgb(164, 168, 169) 100%);
+        background: url("../../img/eye.png") no-repeat 69% 6px, linear-gradient(to bottom, rgb(209, 213, 212) 0%, rgb(164, 168, 169) 100%);
+        filter: progid:DXImageTransform.Microsoft.url("../../img/eye.png") no-repeat 69% 6px, gradient(startColorstr='#b9bdbc', endColorstr='#898d8e', GradientType=0);
 
     }
 
@@ -368,15 +368,15 @@ header {
         border: 0;
         width: 13px;
         height: 12px;
-        background: url("../img/close-button2.png") no-repeat center top;
+        background: url("../../img/close-button2.png") no-repeat center top;
     }
 
     .rw-close-btn>button:hover {
-        background: url("../img/close-button2.png") no-repeat center bottom;
+        background: url("../../img/close-button2.png") no-repeat center bottom;
     }
 
     .rw-close-btn>button:active {
-        background: url("../img/close-button2.png") no-repeat center center;
+        background: url("../../img/close-button2.png") no-repeat center center;
     }
 
     .random-words:before {
@@ -387,7 +387,7 @@ header {
         width: 116px;
         height: 21px;
         border-top-right-radius: 6px;
-        background: url("../img/widget-before-element.png") no-repeat;
+        background: url("../../img/widget-before-element.png") no-repeat;
 
     }
 
@@ -398,7 +398,7 @@ header {
         height: 100%;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
-        background: url("../img/random-words-content2.png") no-repeat;
+        background: url("../../img/random-words-content2.png") no-repeat;
 
     }
 
@@ -408,7 +408,7 @@ header {
         top: -9px;
         width: 145px;
         height: 97px;
-        background: url("../img/man-with-fishingpole.png");
+        background: url("../../img/man-with-fishingpole.png");
     }
 
     .random-words-spacer {
@@ -516,7 +516,7 @@ header {
     top: -10px;
     width: 25px;
     height: 84px;
-    background: url("../img/before-history1.png") no-repeat;
+    background: url("../../img/before-history1.png") no-repeat;
 }
 
 .his-tag {
@@ -641,7 +641,7 @@ footer{
             content: '';
             height: 58px;
             width: 114px;
-            background: url("../img/bot-panel-before2.png") no-repeat;
+            background: url("../../img/bot-panel-before2.png") no-repeat;
         }
             .words-search-div {
                 width: 15%;
@@ -654,7 +654,7 @@ footer{
             }
                 .words-search {
                     width: 80%;
-                    background: #ffffff url("../img/wrd-search-img2.png") no-repeat 20px 9px;
+                    background: #ffffff url("../../img/wrd-search-img2.png") no-repeat 20px 9px;
                 }
 
             .bottom-interactive-buttons {
@@ -695,7 +695,7 @@ footer{
                 }
 
 .new-sticker {
-    background: url("../img/bottom-buttons-sprite.png") 2px -57px no-repeat;
+    background: url("../../img/bottom-buttons-sprite.png") 2px -57px no-repeat;
 }
 
 .new-sticker:hover {
@@ -707,7 +707,7 @@ footer{
 }
 
 .edit-sticker {
-    background: url("../img/bottom-buttons-sprite.png") -56px -57px no-repeat;
+    background: url("../../img/bottom-buttons-sprite.png") -56px -57px no-repeat;
 }
 
 .edit-sticker:hover {
@@ -722,7 +722,7 @@ footer{
 }
 
 .customization-sticker {
-    background: url("../img/bottom-buttons-sprite.png") -113px -57px no-repeat;
+    background: url("../../img/bottom-buttons-sprite.png") -113px -57px no-repeat;
 }
 
 .customization-sticker:hover {
@@ -734,7 +734,7 @@ footer{
 }
 
 .add-to-learn {
-    background: url("../img/bottom-buttons-sprite.png") -175px -57px no-repeat;
+    background: url("../../img/bottom-buttons-sprite.png") -175px -57px no-repeat;
 }
 
 .add-to-learn:hover {
@@ -746,7 +746,7 @@ footer{
 }
 
 .delete-sticker {
-    background: url("../img/bottom-buttons-sprite.png") -230px -56px no-repeat;
+    background: url("../../img/bottom-buttons-sprite.png") -230px -56px no-repeat;
 }
 
 .delete-sticker:hover {
@@ -771,7 +771,7 @@ footer{
     bottom: 0;
     width: 100%;
     height: 75px;
-    background: url("../img/stickers-basket4.png");
+    background: url("../../img/stickers-basket4.png");
 }
 
 .active-sticker {
@@ -784,7 +784,7 @@ footer{
     width: 250px;
     height: 350px;
     bottom: 20px;
-    background: url("../img/active-Sticker.png") no-repeat;
+    background: url("../../img/active-Sticker.png") no-repeat;
 
 }
 .active-sticker-cont{
@@ -930,7 +930,7 @@ footer{
     .copy-button{
         width: 80px;
         height: 78px;
-        background: url("../img/copy-button-sprite2.png") no-repeat top center ;
+        background: url("../../img/copy-button-sprite2.png") no-repeat top center ;
         padding: 0;
         border: 0;
     }
@@ -946,7 +946,7 @@ footer{
     float: left;
     width: 300px;
     height: 325px;
-    background: url("../img/desk-sticker2.png");
+    background: url("../../img/desk-sticker2.png");
 }
     .red-pin {
         position: absolute;
@@ -954,7 +954,7 @@ footer{
         left: 120px;
         width: 43px;
         height: 41px;
-        background: url("../img/red-pin.png")no-repeat top center ;
+        background: url("../../img/red-pin.png")no-repeat top center ;
     }
 /* ==========================================================================
    Helper classes
