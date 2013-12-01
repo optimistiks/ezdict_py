@@ -266,7 +266,6 @@ header {
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
-
     height: 206px;
 }
 .man {
@@ -298,7 +297,7 @@ header {
 .center-text{
     margin: 95px 0 0 -115px;
     float: left;
-    font-size: 11pt;
+    font-size: 14px;
     width: 330px;
     height: 70px;
 }
