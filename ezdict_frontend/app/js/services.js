@@ -1,9 +1,22 @@
 'use strict';
-
 /* Services */
 
+angular.module('ezdictIndex.services', ['ngResource', 'toaster']).
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', []).
-  value('version', '0.1');
+factory('User', ['$resource', 'API_URL', 'API_FORMAT', function ($resource, API_URL, API_FORMAT) {
+    return $resource([API_URL, '/users/:userId/:action', API_FORMAT].join(''), {}, {});
+}]).
+
+factory('ResponseInterceptor', ['$q', 'toaster', function ($q, toaster) {
+    return {
+        'responseError': function (rejection) {
+            // do something on error
+            console.log('Error intercepted', rejection);
+            if (rejection.data.detail) {
+                toaster.pop('error', 'Error ' + rejection.status, rejection.data.detail);
+            }
+            return $q.reject(rejection);
+        }
+    };
+}]);
+
