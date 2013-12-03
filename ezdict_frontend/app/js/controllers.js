@@ -1,19 +1,19 @@
 'use strict';
 /* Controllers */
-angular.module('ezdictIndex.controllers', []).
+angular.module('ezdictIndex.controllers', ['toaster']).
 
-    controller('RegistrationCtrl', ['$scope', 'User', function ($scope, user) {
-        $scope.user = {
-            'nickname': '',
-            'email': '',
-            'password': ''
-        };
+    controller('RegistrationCtrl', ['$scope', 'User', 'toaster', 'TextMessages', function ($scope, User, toaster, messages) {
+        $scope.user = new User();
         $scope.register = function () {
-            console.log('this is a register method in scope')
-            user.query(function (data) {
-                    console.log('this is a user query callback', data)
-                }, function (arg1, arg2, arg3) {
-                    console.log('this is a user query error callback', arg1, arg2, arg3)
-                });
+            $scope.registerButtonDisabled = true;
+            $scope.user.$save(
+                function (user, responseHeaders) {
+                    toaster.pop('success', messages.REGISTRATION_SUCCESS);
+                },
+                function (httpResponse) {
+                    $scope.user.errors = httpResponse.data;
+                    $scope.registerButtonDisabled = false;
+                }
+            );
         }
     }]);

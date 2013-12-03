@@ -119,23 +119,26 @@
             <h2>Создание аккаунта</h2>
             <p>Электронный адрес</p>
             <div class="input-wrapper">
-                <input class="gradient" type="text" value="{{ user.email }}" ng-model="user.email">
-                <div class="input-error right-side">
-                    <span>Неверный формат адреса</span>
+                <input class="gradient" type="text" value="" ng-model="user.email">
+                <div class="input-error right-side" ng-show="user.hasErrors('email')">
+                    <span>{{ user.getErrorString('email') }}</span>
                 </div>
             </div>
             <p>Имя пользователя</p>
             <div class="input-wrapper">
-                <input class="gradient" type="text" value="{{ user.nickname }}" ng-model="user.nickname">
-                <div class="input-error left-side">
-                    <span>Введите имя пользователя</span>
+                <input class="gradient" type="text" value="" ng-model="user.nickname">
+                <div class="input-error left-side" ng-show="user.hasErrors('nickname')">
+                    <span>{{ user.getErrorString('nickname') }}</span>
                 </div>
             </div>
             <p>Пароль</p>
             <div class="input-wrapper">
-                <input class="gradient" type="password" value="{{ user.password }}" ng-model="user.password">
+                <input class="gradient" type="password" value="" ng-model="user.password">
+                <div class="input-error right-side" ng-show="user.hasErrors('password')">
+                    <span>{{ user.getErrorString('password')  }}</span>
+                </div>
             </div>
-            <button type="button" class="nav-button reg-button" ng-click="register()">Создать</button>
+            <button type="button" class="nav-button reg-button" ng-click="register()" ng-disabled="registerButtonDisabled">Создать</button>
         </div>
     </div>
     <footer class="footer">

@@ -11,4 +11,5 @@ angular.module('ezdictIndex', [
         $httpProvider.interceptors.push('ResponseInterceptor');
     }]).
 
-    constant('API_URL', '/api').constant('API_FORMAT', '.json');
+    constant('API_URL', '/api').
+    constant('API_FORMAT', '.json');
