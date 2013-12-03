@@ -1,7 +1,7 @@
 'use strict';
 /* Services */
 
-angular.module('ezdictIndex.services', ['ngResource', 'toaster']).
+angular.module('ezdictIndex.services', ['ngResource', 'toaster', 'ngProgress']).
 
     factory('User', ['$resource', 'API_URL', 'API_FORMAT', function ($resource, API_URL, API_FORMAT) {
         var User = $resource([API_URL, '/users/:userId/:action', API_FORMAT].join(''), {}, {});
@@ -29,11 +29,35 @@ angular.module('ezdictIndex.services', ['ngResource', 'toaster']).
         return User;
     }]).
 
-    factory('ResponseInterceptor', ['$q', 'toaster', function ($q, toaster) {
+    factory('ResponseInterceptor', ['$injector', '$q', 'toaster', function ($injector, $q, toaster) {
+        var ngProgress = null;
+        var getNgProgress = function () {
+            var ngProgress = ngProgress || $injector.get('ngProgress');
+            return ngProgress
+        };
+
         return {
+            'request': function (config) {
+                console.log('interceptor.request()');
+                getNgProgress().start();
+                return config;
+            },
+
+            'requestError': function (rejection) {
+                console.log('interceptor.requestError()');
+                getNgProgress().reset();
+                return $q.reject(rejection);
+            },
+
+            'response': function (response) {
+                console.log('interceptor.response()');
+                getNgProgress().complete();
+                return response;
+            },
+
             'responseError': function (rejection) {
-                // do something on error
-                console.log('Error intercepted', rejection);
+                console.log('interceptor.responseError()');
+                getNgProgress().reset();
                 if (rejection.data.detail) {
                     toaster.pop('error', 'Ошибка ' + rejection.status, rejection.data.detail);
                 }
@@ -42,7 +66,7 @@ angular.module('ezdictIndex.services', ['ngResource', 'toaster']).
         };
     }]).
 
-    factory('TextMessages', [function(){
+    factory('TextMessages', [function () {
         return {
             'REGISTRATION_SUCCESS': 'Регистрация успешна, входим...'
         }
