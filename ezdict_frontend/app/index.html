@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html" lang="ru" ng-app="myApp">
+<html xmlns="http://www.w3.org/1999/html" lang="ru" ng-app="ezdictIndex">
 <head>
     <meta charset="utf-8">
     <title>Интерактивный словарь</title>
     <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/landpage.css" type="text/css">
+    <link rel="stylesheet" href="lib/toastr/toaster.css" type="text/css">
 </head>
 <body class="gradient">
+<toaster-container> </toaster-container>
 <!--[if gte IE 9]>
 <style type="text/css">
     .gradient {
@@ -113,27 +115,27 @@
                 <p>Наш сервис бесплатен и всегда будет оставаться таким... наверное...</p>
             </div>
         </div>
-        <div class="registration gradient" id="registration">
+        <div class="registration gradient" id="registration" ng-controller="RegistrationCtrl">
             <h2>Создание аккаунта</h2>
             <p>Электронный адрес</p>
             <div class="input-wrapper">
-                <input class="gradient" type="text"> </input>
+                <input class="gradient" type="text" value="{{ user.email }}" ng-model="user.email">
                 <div class="input-error right-side">
                     <span> Неверный формат адреса. Ты доволен, мах? Текст не слишком длинный?</span>
                 </div>
             </div>
             <p>Имя пользователя</p>
             <div class="input-wrapper">
-                <input class="gradient" type="text"> </input>
+                <input class="gradient" type="text" value="{{ user.nickname }}" ng-model="user.nickname">
                 <div class="input-error left-side">
                     <span>Введите имя пользователя. Корректное имя пользователя!</span>
                 </div>
             </div>
             <p>Пароль</p>
             <div class="input-wrapper">
-                <input class="gradient" type="password"> </input>
+                <input class="gradient" type="password" value="{{ user.password }}" ng-model="user.password">
             </div>
-            <button type="button" class="nav-button reg-button">Создать</button>
+            <button type="button" class="nav-button reg-button" ng-click="register()">Создать</button>
         </div>
     </div>
     <footer class="footer">
@@ -144,10 +146,13 @@
 <script src="js/vendor/bootstrap.min.js"></script>
 
 <!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
 -->
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular/angular-route.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular/angular-animate.js"></script>
+<script src="lib/toastr/toaster.js"></script>
 <script src="js/app.js"></script>
 <script src="js/services.js"></script>
 <script src="js/controllers.js"></script>
