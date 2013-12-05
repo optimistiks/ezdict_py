@@ -1,235 +1,255 @@
+@charset "IBM866";
+/* line 1, ../sass/search-result.scss */
 .lside-menu {
-    background: rgb(227, 235, 239);
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UzZWJlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZGYzZjciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-    background: -moz-linear-gradient(top, rgba(227, 235, 239, 1) 0%, rgba(237, 243, 247, 1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(227, 235, 239, 1)), color-stop(100%, rgba(237, 243, 247, 1)));
-    background: -webkit-linear-gradient(top, rgba(227, 235, 239, 1) 0%, rgba(237, 243, 247, 1) 100%);
-    background: -o-linear-gradient(top, rgba(227, 235, 239, 1) 0%, rgba(237, 243, 247, 1) 100%);
-    background: -ms-linear-gradient(top, rgba(227, 235, 239, 1) 0%, rgba(237, 243, 247, 1) 100%);
-    background: linear-gradient(to bottom, rgba(227, 235, 239, 1) 0%, rgba(237, 243, 247, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e3ebef', endColorstr='#edf3f7', GradientType=0);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 95px;
-    border-right: 1px solid #889799;
+  background: #e3ebef;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UzZWJlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZGYzZjciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #e3ebef 0%, #edf3f7 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e3ebef), color-stop(100%, #edf3f7));
+  background: -webkit-linear-gradient(top, #e3ebef 0%, #edf3f7 100%);
+  background: -o-linear-gradient(top, #e3ebef 0%, #edf3f7 100%);
+  background: -ms-linear-gradient(top, #e3ebef 0%, #edf3f7 100%);
+  background: linear-gradient(to bottom, #e3ebef 0%, #edf3f7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e3ebef', endColorstr='#edf3f7', GradientType=0);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 95px;
+  border-right: 1px solid #889799;
 }
 
+/* line 19, ../sass/search-result.scss */
 .rside {
-    position: absolute;
-    margin: 0 0 0 95px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    min-height: 100%;
+  position: absolute;
+  margin: 0 0 0 95px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100%;
 }
 
+/* line 29, ../sass/search-result.scss */
 .gradient-stripe {
-    position: absolute;
-    margin-top: 50px;
-    top: 0;
-    left: 1px;
-    bottom: 1px;
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q1ZGRkZSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEzJSIgc3RvcC1jb2xvcj0iI2Q1ZGRkZSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkNWRkZGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-    background: -moz-linear-gradient(top, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, rgba(213, 221, 222, 1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(213, 221, 222, 0)), color-stop(13%, rgba(213, 221, 222, 0)), color-stop(100%, rgba(213, 221, 222, 1)));
-    background: -webkit-linear-gradient(top, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, rgba(213, 221, 222, 1) 100%);
-    background: -o-linear-gradient(top, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, rgba(213, 221, 222, 1) 100%);
-    background: -ms-linear-gradient(top, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, rgba(213, 221, 222, 1) 100%);
-    background: linear-gradient(to bottom, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, rgba(213, 221, 222, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00d5ddde', endColorstr='#d5ddde', GradientType=0);
-    width: 90px;
+  position: absolute;
+  margin-top: 50px;
+  top: 0;
+  left: 1px;
+  bottom: 1px;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Q1ZGRkZSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEzJSIgc3RvcC1jb2xvcj0iI2Q1ZGRkZSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkNWRkZGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, #d5ddde 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(213, 221, 222, 0)), color-stop(13%, rgba(213, 221, 222, 0)), color-stop(100%, #d5ddde));
+  background: -webkit-linear-gradient(top, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, #d5ddde 100%);
+  background: -o-linear-gradient(top, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, #d5ddde 100%);
+  background: -ms-linear-gradient(top, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, #d5ddde 100%);
+  background: linear-gradient(to bottom, rgba(213, 221, 222, 0) 0%, rgba(213, 221, 222, 0) 13%, #d5ddde 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00d5ddde', endColorstr='#d5ddde', GradientType=0);
+  width: 90px;
 }
 
 /*--------------------------------Кнопки в поле контента----------------------*/
+/* line 47, ../sass/search-result.scss */
 .top-content-buttons {
-    margin-left: 1px;
+  margin-left: 1px;
 }
 
+/* line 51, ../sass/search-result.scss */
 .navy-content-buttons {
-    padding: 0 5px;
-    height: 34px;
-    background: #e7ebec;
+  padding: 0 5px;
+  height: 34px;
+  background: #e7ebec;
 }
 
+/* line 57, ../sass/search-result.scss */
 .cont-buttons {
-    position: relative;
-    z-index: 2;
-    height: 30px;
-    width: 65%;
-    margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  height: 30px;
+  width: 65%;
+  margin: 0 auto;
 }
 
+/* line 65, ../sass/search-result.scss */
 .cont-buttons div {
-    /*------------------Контейнеры для кнопок-----------------*/
-    width: 33%;
+  /*------------------Контейнеры для кнопок-----------------*/
+  width: 33%;
 }
 
+/* line 70, ../sass/search-result.scss */
 .vid-btn {
-    float: left;
-    text-align: left;
+  float: left;
+  text-align: left;
 }
 
+/* line 75, ../sass/search-result.scss */
 .txt-btn {
-    float: right;
-    text-align: right;
+  float: right;
+  text-align: right;
 }
 
+/* line 80, ../sass/search-result.scss */
 .mus-btn {
-    text-align: center;
-    margin: 0 auto;
+  text-align: center;
+  margin: 0 auto;
 }
 
-.btn>button {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    padding-bottom: 3px;
-    width: 110px;
-    height: 34px;
-    text-shadow: 0 0 20px #e8e8e8;
-    color: #676060;
-    border: 0;
-    font-size: 1.4em;
-    background: none;
+/* line 85, ../sass/search-result.scss */
+.btn > button {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-bottom: 3px;
+  width: 110px;
+  height: 34px;
+  text-shadow: 0 0 20px #e8e8e8;
+  color: #676060;
+  border: 0;
+  font-size: 1.4em;
+  background: none;
 }
 
-.mus>button {
-    transition: text-shadow 0.5s;
-    -webkit-transition: text-shadow 0.3s;
-    margin-left: -5px;
-    background: url("../img/muz-img.png") no-repeat 10px 8px;
+/* line 98, ../sass/search-result.scss */
+.mus > button {
+  transition: text-shadow 0.5s;
+  -webkit-transition: text-shadow 0.3s;
+  margin-left: -5px;
+  background: url("../img/muz-img.png") no-repeat 10px 8px;
 }
 
-.txt>button {
-    transition: text-shadow 0.5s;
-    -webkit-transition: text-shadow 0.3s;
-    background: url("../img/txt-img.png") no-repeat 8px 9px;
+/* line 105, ../sass/search-result.scss */
+.txt > button {
+  transition: text-shadow 0.5s;
+  -webkit-transition: text-shadow 0.3s;
+  background: url("../img/txt-img.png") no-repeat 8px 9px;
 }
 
-.vid>button {
-    transition: text-shadow 0.5s;
-    -webkit-transition: text-shadow 0.3s;
-    background: url("../img/vid-img.png") no-repeat 4px 9px;
+/* line 111, ../sass/search-result.scss */
+.vid > button {
+  transition: text-shadow 0.5s;
+  -webkit-transition: text-shadow 0.3s;
+  background: url("../img/vid-img.png") no-repeat 4px 9px;
 }
 
-.mus>button:hover {
-    transition: text-shadow 0.5s;
-    -webkit-transition: text-shadow 0.3s;
-    text-shadow: 0 0 30px #000000;
-    background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/muz-img.png") no-repeat 10px 8px;
+/* line 117, ../sass/search-result.scss */
+.mus > button:hover {
+  transition: text-shadow 0.5s;
+  -webkit-transition: text-shadow 0.3s;
+  text-shadow: 0 0 30px #000000;
+  background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/muz-img.png") no-repeat 10px 8px;
 }
 
-.txt>button:hover {
-
-    text-shadow: 0 0 30px #000000;
-    background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/txt-img.png") no-repeat 8px 9px;
+/* line 124, ../sass/search-result.scss */
+.txt > button:hover {
+  text-shadow: 0 0 30px #000000;
+  background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/txt-img.png") no-repeat 8px 9px;
 }
 
-.vid>button:hover {
-
-    text-shadow: 0 0 30px #000000;
-    background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/vid-img.png") no-repeat 4px 9px;
+/* line 130, ../sass/search-result.scss */
+.vid > button:hover {
+  text-shadow: 0 0 30px #000000;
+  background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/vid-img.png") no-repeat 4px 9px;
 }
 
 /*конец стилей для контента*/
 /*---------Кнопки сортировки----------*/
+/* line 138, ../sass/search-result.scss */
 .sorting-buttons {
-    white-space: nowrap;
-    background: rgb(187, 208, 215);
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JiZDBkNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM4JSIgc3RvcC1jb2xvcj0iI2U0ZWJlYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2U0ZWJlYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiYmQwZDciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-    background: -moz-linear-gradient(left, rgba(187, 208, 215, 1) 0%, rgba(228, 235, 236, 1) 38%, rgba(228, 235, 236, 1) 60%, rgba(187, 208, 215, 1) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(187, 208, 215, 1)), color-stop(38%, rgba(228, 235, 236, 1)), color-stop(60%, rgba(228, 235, 236, 1)), color-stop(100%, rgba(187, 208, 215, 1)));
-    background: -webkit-linear-gradient(left, rgba(187, 208, 215, 1) 0%, rgba(228, 235, 236, 1) 38%, rgba(228, 235, 236, 1) 60%, rgba(187, 208, 215, 1) 100%);
-    background: -o-linear-gradient(left, rgba(187, 208, 215, 1) 0%, rgba(228, 235, 236, 1) 38%, rgba(228, 235, 236, 1) 60%, rgba(187, 208, 215, 1) 100%);
-    background: -ms-linear-gradient(left, rgba(187, 208, 215, 1) 0%, rgba(228, 235, 236, 1) 38%, rgba(228, 235, 236, 1) 60%, rgba(187, 208, 215, 1) 100%);
-    background: linear-gradient(to right, rgba(187, 208, 215, 1) 0%, rgba(228, 235, 236, 1) 38%, rgba(228, 235, 236, 1) 60%, rgba(187, 208, 215, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bbd0d7', endColorstr='#bbd0d7', GradientType=1);
-    box-shadow: 0 2px 7px #bebebe;
+  white-space: nowrap;
+  background: #bbd0d7;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JiZDBkNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM4JSIgc3RvcC1jb2xvcj0iI2U0ZWJlYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2U0ZWJlYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiYmQwZDciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left, #bbd0d7 0%, #e4ebec 38%, #e4ebec 60%, #bbd0d7 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #bbd0d7), color-stop(38%, #e4ebec), color-stop(60%, #e4ebec), color-stop(100%, #bbd0d7));
+  background: -webkit-linear-gradient(left, #bbd0d7 0%, #e4ebec 38%, #e4ebec 60%, #bbd0d7 100%);
+  background: -o-linear-gradient(left, #bbd0d7 0%, #e4ebec 38%, #e4ebec 60%, #bbd0d7 100%);
+  background: -ms-linear-gradient(left, #bbd0d7 0%, #e4ebec 38%, #e4ebec 60%, #bbd0d7 100%);
+  background: linear-gradient(to right, #bbd0d7 0%, #e4ebec 38%, #e4ebec 60%, #bbd0d7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bbd0d7', endColorstr='#bbd0d7', GradientType=1);
+  box-shadow: 0 2px 7px #bebebe;
 }
 
+/* line 152, ../sass/search-result.scss */
 .diff-wrapper {
-    text-align: center;
-    border-right: 1px solid #949799;
-    width: 90px;
-    float: left;
-
+  text-align: center;
+  border-right: 1px solid #949799;
+  width: 90px;
+  float: left;
 }
 
+/* line 160, ../sass/search-result.scss */
 .dur-wrapper {
-    border-left: 1px solid #949799;
-    width: 110px;
-    float: right;
-    text-align: center;
-
+  border-left: 1px solid #949799;
+  width: 110px;
+  float: right;
+  text-align: center;
 }
 
+/* line 168, ../sass/search-result.scss */
 .name-wrapper {
-    width: 100%;
-
+  width: 100%;
 }
 
-
+/* line 174, ../sass/search-result.scss */
 .sorting-buttons button {
-
-    padding-left: 10px;
-    padding-top: 2px;
-    color: #000000;
-    font-weight: bold;
-    border: none;
-    background: url("../img/sort-triangle-down.png") no-repeat 0 7px;
+  padding-left: 10px;
+  padding-top: 2px;
+  color: #000000;
+  font-weight: bold;
+  border: none;
+  background: url("../img/sort-triangle-down.png") no-repeat 0 7px;
 }
 
+/* line 184, ../sass/search-result.scss */
 .sorting-buttons button:active {
-    background: url("../img/sort-triangle-up.png") no-repeat 0 7px;
+  background: url("../img/sort-triangle-up.png") no-repeat 0 7px;
 }
 
-.name-wrapper>button {
-
-    text-align: left;
-    width: 30%;
-    margin-left: 5px;
+/* line 188, ../sass/search-result.scss */
+.name-wrapper > button {
+  text-align: left;
+  width: 30%;
+  margin-left: 5px;
 }
 
+/* line 195, ../sass/search-result.scss */
 .blue-stripe {
-    box-shadow: 0 2px 7px #979797;
-    margin-top: -4px;
-    position: relative;
-    z-index: 0;
-    height: 4px;
-    width: 100%;
-    background: rgb(172, 219, 235);
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FjZGJlYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iIzc1YWFiYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhY2RiZWIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-    background: -moz-linear-gradient(left, rgb(172, 219, 235) 0%, rgb(135, 192, 210) 49%, rgb(172, 219, 235) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgb(172, 219, 235)), color-stop(49%, rgb(135, 192, 210)), color-stop(100%, rgb(172, 219, 235)));
-    background: -webkit-linear-gradient(left, rgb(172, 219, 235) 0%, rgb(135, 192, 210) 49%, rgb(172, 219, 235) 100%);
-    background: -o-linear-gradient(left, rgb(172, 219, 235) 0%, rgb(135, 192, 210) 49%, rgb(172, 219, 235) 100%);
-    background: -ms-linear-gradient(left, rgb(172, 219, 235) 0%, rgb(135, 192, 210) 49%, rgb(172, 219, 235) 100%);
-    background: linear-gradient(to right, rgb(172, 219, 235) 0%, rgb(135, 192, 210) 49%, rgb(172, 219, 235) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acdbeb', endColorstr='#acdbeb', GradientType=1);
-
+  box-shadow: 0 2px 7px #979797;
+  margin-top: -4px;
+  position: relative;
+  z-index: 0;
+  height: 4px;
+  width: 100%;
+  background: #acdbeb;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FjZGJlYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iIzc1YWFiYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhY2RiZWIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left, #acdbeb 0%, #87c0d2 49%, #acdbeb 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #acdbeb), color-stop(49%, #87c0d2), color-stop(100%, #acdbeb));
+  background: -webkit-linear-gradient(left, #acdbeb 0%, #87c0d2 49%, #acdbeb 100%);
+  background: -o-linear-gradient(left, #acdbeb 0%, #87c0d2 49%, #acdbeb 100%);
+  background: -ms-linear-gradient(left, #acdbeb 0%, #87c0d2 49%, #acdbeb 100%);
+  background: linear-gradient(to right, #acdbeb 0%, #87c0d2 49%, #acdbeb 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#acdbeb', endColorstr='#acdbeb', GradientType=1);
 }
 
-.lside-buttons>button {
-    color: #58666d;
-    border: 1px solid #e3eaef;
-    border-bottom: 0;
-    background: #c7d1d3;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    width: 100%;
-    height: 40px;
-    transition: background 0.4s;
-    -webkit-transition: background 0.4s;
+/* line 214, ../sass/search-result.scss */
+.lside-buttons > button {
+  color: #58666d;
+  border: 1px solid #e3eaef;
+  border-bottom: 0;
+  background: #c7d1d3;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  transition: background 0.4s;
+  -webkit-transition: background 0.4s;
 }
 
-.lside-buttons>button:hover {
-    background: #9aa5ac;
-    color: #000;
+/* line 227, ../sass/search-result.scss */
+.lside-buttons > button:hover {
+  background: #9aa5ac;
+  color: #000;
 }
 
+/* line 232, ../sass/search-result.scss */
 .content {
-    float: left;
-    margin-left: 91px;
+  float: left;
+  margin-left: 91px;
 }
