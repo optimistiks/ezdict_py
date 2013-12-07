@@ -4,13 +4,8 @@ module.exports = function(config){
 
     files : [
       'app/js/vendor/jquery-1.9.0.min.js',
-      'app/lib/angular/angular.js',
-      'app/lib/angular/angular-*.js',
-      'test/lib/angular/angular-mocks.js',
-      'app/lib/toastr/toaster.js',
-      'app/lib/angular/ngProgress.min.js',
-      'app/js/**/*.js',
-      'test/unit/**/*.js'
+      'app/lib/require/require.js',
+      'app/js/main.js',
     ],
 
     exclude : [

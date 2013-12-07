@@ -1,15 +1,20 @@
-'use strict';
-// Declare app level module which depends on filters, and services
-angular.module('ezdictIndex', [
-        'ngRoute', 'ezdictIndex.filters', 'ezdictIndex.services', 'ezdictIndex.directives', 'ezdictIndex.controllers'
-    ]).
+define([
+     'angular',
+     'angular-animate',
+     'angular-route',
+     'angular-resource',
+     './controllers/index',
+     './directives/index',
+     './filters/index',
+     './services/index'
+ ], function (ng) {
+     'use strict';
 
-    config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
-        $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-        $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-        $routeProvider.otherwise({redirectTo: '/view1'});
-        $httpProvider.interceptors.push('ResponseInterceptor');
-    }]).
-
-    constant('API_URL', '/api').
-    constant('API_FORMAT', '.json');
+     return ng.module('ezdict', [
+         'ezdict.services',
+         'ezdict.controllers',
+         'ezdict.filters',
+         'ezdict.directives',
+         'ngRoute'
+     ]);
+});
