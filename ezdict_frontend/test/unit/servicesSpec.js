@@ -1,6 +1,6 @@
-'use strict';
+/*'use strict';
 
-/* jasmine specs for services go here */
+*//* jasmine specs for services go here *//*
 
 describe('service', function() {
   beforeEach(module('myApp.services'));
@@ -11,4 +11,4 @@ describe('service', function() {
       expect(version).toEqual('0.1');
     }));
   });
-});
+});*/

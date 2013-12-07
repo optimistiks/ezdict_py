@@ -29,38 +29,66 @@ angular.module('ezdictIndex.services', ['ngResource', 'toaster', 'ngProgress']).
         return User;
     }]).
 
-    factory('ResponseInterceptor', ['$injector', '$q', 'toaster', function ($injector, $q, toaster) {
+    factory('ResponseInterceptor', ['$injector', '$q', '$rootScope', 'toaster', function ($injector, $q, $rootScope, toaster) {
         var ngProgress = null;
         var getNgProgress = function () {
             var ngProgress = ngProgress || $injector.get('ngProgress');
+            console.log(ngProgress);
             return ngProgress
         };
+
+        $rootScope.pendingRequests = 0;
 
         return {
             'request': function (config) {
                 console.log('interceptor.request()');
-                getNgProgress().start();
-                return config;
+
+                if ($rootScope.pendingRequests === 0) {
+                    getNgProgress().start();
+                }
+
+                $rootScope.pendingRequests++;
+
+                return config || $q.when(config);
             },
 
             'requestError': function (rejection) {
                 console.log('interceptor.requestError()');
-                getNgProgress().reset();
+
+                $rootScope.pendingRequests--;
+
+                if ($rootScope.pendingRequests === 0) {
+                    getNgProgress().reset();
+                }
+
                 return $q.reject(rejection);
             },
 
             'response': function (response) {
                 console.log('interceptor.response()');
-                getNgProgress().complete();
-                return response;
+
+                $rootScope.pendingRequests--;
+
+                if ($rootScope.pendingRequests === 0) {
+                    getNgProgress().complete();
+                }
+
+                return response || $q.when(response);
             },
 
             'responseError': function (rejection) {
                 console.log('interceptor.responseError()');
-                getNgProgress().reset();
+
+                $rootScope.pendingRequests--;
+
+                if ($rootScope.pendingRequests === 0) {
+                    getNgProgress().reset();
+                }
+
                 if (rejection.data.detail) {
                     toaster.pop('error', 'Ошибка ' + rejection.status, rejection.data.detail);
                 }
+
                 return $q.reject(rejection);
             }
         };

@@ -3,16 +3,19 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
+      'app/js/vendor/jquery-1.9.0.min.js',
       'app/lib/angular/angular.js',
       'app/lib/angular/angular-*.js',
       'test/lib/angular/angular-mocks.js',
+      'app/lib/toastr/toaster.js',
+      'app/lib/angular/ngProgress.min.js',
       'app/js/**/*.js',
       'test/unit/**/*.js'
     ],
 
     exclude : [
       'app/lib/angular/angular-loader.js',
-      'app/lib/angular/*.min.js',
+      'app/lib/angular/^angular*.min.js',
       'app/lib/angular/angular-scenario.js'
     ],
 
