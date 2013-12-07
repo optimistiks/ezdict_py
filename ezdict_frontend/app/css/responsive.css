@@ -1,11 +1,12 @@
 @media screen and (max-width: 1200px) {
-    .footer-buttons > li{
-        margin:  0 0 0 10px;
-    }
+  /* line 2, ../sass/responsive.scss */
+  .footer-buttons > li {
+    margin: 0 0 0 10px;
+  }
 
-    .bottom-interactive-buttons{
-        width: 340px;
-        right: 60px;
-
-    }
+  /* line 6, ../sass/responsive.scss */
+  .bottom-interactive-buttons {
+    width: 340px;
+    right: 60px;
+  }
 }
