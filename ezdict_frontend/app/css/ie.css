@@ -3,3 +3,12 @@
  * <!--[if IE]>
  *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
  * <![endif]--> */
+/* line 6, ../sass/ie.scss */
+.login-form > input {
+  padding-top: 1px;
+}
+
+/* line 9, ../sass/ie.scss */
+.gradient {
+  filter: none;
+}

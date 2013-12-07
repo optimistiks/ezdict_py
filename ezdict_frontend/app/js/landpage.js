@@ -1,10 +1,3 @@
-/**
- * Created with JetBrains PhpStorm.
- * User: Mr.D.Slack
- * Date: 13.08.13
- * Time: 0:47
- * To change this template use File | Settings | File Templates.
- */
 $(document).ready(function(){
     $("#reg-button").on('click', function(){
         $.when(
@@ -13,4 +6,22 @@ $(document).ready(function(){
                 $('#registration').fadeIn();
             });
     });
+    $('input, textarea').placeholder();
+
+    $(document).on('click','.header-login-btn', function (){
+        $('.login-form').fadeToggle();
+    });
+
+    $(document).on('click', function(event){
+        var el = event.target || event.srcElement;
+        if (!$(el).is('#login-button') && !$(el).is('.login-form') && $(el).parents().index($('.login-form')) === -1) {
+            $('.login-form').fadeOut()
+        }
+    });
+
+    $('#login-button').on('click',function(){
+        $('.login-form').find('input[type=text]').focus();
+    });
+
+
 });
