@@ -6,7 +6,7 @@ $(document).ready(function(){
                 $('#registration').fadeIn();
             });
     });
-    //$('input, textarea').placeholder();
+    $('input, textarea').placeholder();
 
     $(document).on('click','.header-login-btn', function (){
         var $form = $('.login-form');
