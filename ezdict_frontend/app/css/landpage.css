@@ -1,9 +1,19 @@
-/* line 3, ../sass/landpage.scss */
+@font-face {
+  font-family: "segoe";
+  src: url('../font/segoe/segoe-webfont.eot') format('embedded-opentype'), url('../font/segoe/segoe-webfont.eot?#iefix') format('embedded-opentype'), url('../font/segoe/segoe-webfont.ttf') format('truetype'), url('../font/segoe/segoe-webfont.woff') format('woff'), url('../font/segoe/segoe-webfont.svg') format('svg');
+}
+
+@font-face {
+  font-family: "cooper";
+  src: url('../font/cooperblackstd/cooperblackstd-webfont.eot') format('embedded-opentype'), url('../font/cooperblackstd/cooperblackstd-webfont.eot?#iefix') format('embedded-opentype'), url('../font/cooperblackstd/cooperblackstd-webfont.ttf') format('truetype'), url('../font/cooperblackstd/cooperblackstd-webfont.woff') format('woff'), url('../font/cooperblackstd/cooperblackstd-webfont.svg') format('svg');
+}
+
+/* line 16, ../sass/landpage.scss */
 button, input, textarea {
   outline: none;
 }
 
-/* line 6, ../sass/landpage.scss */
+/* line 19, ../sass/landpage.scss */
 body {
   font-family: sans-serif;
   background: white;
@@ -19,7 +29,7 @@ body {
   background-repeat: no-repeat;
 }
 
-/* line 20, ../sass/landpage.scss */
+/* line 33, ../sass/landpage.scss */
 .headline {
   background: #dadee1;
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RmZTJlNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIxJSIgc3RvcC1jb2xvcj0iIzUwYTdkYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc5JSIgc3RvcC1jb2xvcj0iIzUwYTdkYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkZmUyZTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -37,7 +47,7 @@ body {
   position: relative;
 }
 
-/* line 37, ../sass/landpage.scss */
+/* line 50, ../sass/landpage.scss */
 .headline:before,
 .headline:after {
   content: "";
@@ -45,7 +55,7 @@ body {
   z-index: -2;
 }
 
-/* line 42, ../sass/landpage.scss */
+/* line 55, ../sass/landpage.scss */
 .headline:before {
   top: 50%;
   bottom: 1px;
@@ -58,7 +68,7 @@ body {
   border-radius: 1500px / 30px;
 }
 
-/* line 53, ../sass/landpage.scss */
+/* line 66, ../sass/landpage.scss */
 .header-login-btn {
   display: inline;
   float: right;
@@ -69,7 +79,7 @@ body {
   text-shadow: 0 0 5px #565656;
 }
 
-/* line 61, ../sass/landpage.scss */
+/* line 74, ../sass/landpage.scss */
 header {
   position: relative;
   height: 85px;
@@ -81,7 +91,7 @@ header {
   -ms-user-select: none;
 }
 
-/* line 71, ../sass/landpage.scss */
+/* line 84, ../sass/landpage.scss */
 .login-form {
   display: none;
   position: absolute;
@@ -109,7 +119,7 @@ header {
   -o-border-radius: 8px;
   border-radius: 8px;
 }
-/* line 91, ../sass/landpage.scss */
+/* line 104, ../sass/landpage.scss */
 .login-form h4 {
   margin-top: 0;
   text-align: center;
@@ -117,7 +127,7 @@ header {
   color: #366D8D;
   text-shadow: 0 3px 2px rgba(0, 0, 0, 0.04);
 }
-/* line 98, ../sass/landpage.scss */
+/* line 111, ../sass/landpage.scss */
 .login-form input[type="text"], .login-form input[type="password"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -133,7 +143,7 @@ header {
   width: 100%;
   height: 25px;
 }
-/* line 108, ../sass/landpage.scss */
+/* line 121, ../sass/landpage.scss */
 .login-form button {
   width: 55px;
   text-shadow: 1px 1px 1px #626364;
@@ -160,7 +170,7 @@ header {
   background-image: -o-linear-gradient(top, #acbac1 0%, #5f7079 100%);
   background-image: linear-gradient(top, #acbac1 0%, #5f7079 100%);
 }
-/* line 119, ../sass/landpage.scss */
+/* line 132, ../sass/landpage.scss */
 .login-form button:hover {
   background-color: #6cd6f6;
   *zoom: 1;
@@ -174,13 +184,13 @@ header {
   background-image: linear-gradient(top, #6cd6f6 0%, #1395c6 100%);
   border-color: #51a5c4;
 }
-/* line 126, ../sass/landpage.scss */
+/* line 139, ../sass/landpage.scss */
 .login-form button:active {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.36) inset;
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.36) inset;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.36) inset;
 }
-/* line 131, ../sass/landpage.scss */
+/* line 144, ../sass/landpage.scss */
 .login-form a, .login-form label {
   display: inline;
   float: left;
@@ -188,23 +198,18 @@ header {
   line-height: 12px;
   color: #497895;
 }
-/* line 138, ../sass/landpage.scss */
+/* line 151, ../sass/landpage.scss */
 .login-form input[type="checkbox"], .login-form label {
   vertical-align: middle;
   margin: 0;
 }
 
-/* line 145, ../sass/landpage.scss */
+/* line 158, ../sass/landpage.scss */
 .easydict {
   float: left;
 }
 
-@font-face {
-  font-family: cooper;
-  src: url(../font/cooperblackstd.ttf);
-}
-
-/* line 152, ../sass/landpage.scss */
+/* line 161, ../sass/landpage.scss */
 .slogan {
   font-size: 9pt;
   font-family: cooper;
@@ -214,13 +219,13 @@ header {
   color: #4d585e;
 }
 
-/* line 160, ../sass/landpage.scss */
+/* line 169, ../sass/landpage.scss */
 .inline {
   width: 850px;
   margin: 0 auto;
 }
 
-/* line 166, ../sass/landpage.scss */
+/* line 175, ../sass/landpage.scss */
 .header-name {
   font-size: 11pt;
   text-shadow: 1px 1px 1px #747474;
@@ -228,25 +233,25 @@ header {
   float: left;
 }
 
-/* line 172, ../sass/landpage.scss */
+/* line 181, ../sass/landpage.scss */
 .main-container {
   width: 850px;
   margin: 0 auto;
 }
 
-/* line 176, ../sass/landpage.scss */
+/* line 185, ../sass/landpage.scss */
 .carousel {
   margin: 5px 0 0 4px;
   border-radius: 10px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
 }
 
-/* line 181, ../sass/landpage.scss */
+/* line 190, ../sass/landpage.scss */
 .carousel-inner {
   border-radius: 10px;
 }
 
-/* line 185, ../sass/landpage.scss */
+/* line 194, ../sass/landpage.scss */
 .carousel-text-wrap {
   position: absolute;
   top: 37%;
@@ -254,7 +259,7 @@ header {
   text-align: center;
 }
 
-/* line 191, ../sass/landpage.scss */
+/* line 200, ../sass/landpage.scss */
 .carousel-text-wrap > h3 {
   text-shadow: 0 0 3px black, 0 0 10px rgba(0, 0, 0, 0.51);
   color: #ffffff;
@@ -263,34 +268,34 @@ header {
   font-weight: 300;
 }
 
-/* line 198, ../sass/landpage.scss */
+/* line 207, ../sass/landpage.scss */
 .first-slide {
   left: 28%;
 }
 
-/* line 202, ../sass/landpage.scss */
+/* line 211, ../sass/landpage.scss */
 .second-slide {
   left: 5%;
 }
 
-/* line 206, ../sass/landpage.scss */
+/* line 215, ../sass/landpage.scss */
 .third-slide {
   right: 20px;
   text-align: right;
 }
 
-/* line 211, ../sass/landpage.scss */
+/* line 220, ../sass/landpage.scss */
 .img-logo {
   position: absolute;
 }
 
-/* line 215, ../sass/landpage.scss */
+/* line 224, ../sass/landpage.scss */
 .first-slide + .img-logo {
   top: 10%;
   right: 4%;
 }
 
-/* line 220, ../sass/landpage.scss */
+/* line 229, ../sass/landpage.scss */
 .second-slide + .img-logo {
   top: 20%;
   right: 4%;
@@ -300,25 +305,25 @@ header {
   -ms-transform: rotate(50deg);
 }
 
-/* line 229, ../sass/landpage.scss */
+/* line 238, ../sass/landpage.scss */
 .third-slide + .img-logo {
   top: 55%;
   right: 45%;
 }
 
-/* line 234, ../sass/landpage.scss */
+/* line 243, ../sass/landpage.scss */
 .carousel-control {
   background: none;
   border: none;
   top: 89%;
 }
 
-/* line 240, ../sass/landpage.scss */
+/* line 249, ../sass/landpage.scss */
 .left {
   left: 90%;
 }
 
-/* line 244, ../sass/landpage.scss */
+/* line 253, ../sass/landpage.scss */
 .dec-panel-shadow {
   background: url(../img/dec_panel_shadow.png) no-repeat;
   width: 982px;
@@ -327,13 +332,13 @@ header {
   margin-top: -26px;
 }
 
-/* line 252, ../sass/landpage.scss */
+/* line 261, ../sass/landpage.scss */
 .container-buttons {
   float: right;
   margin: 46px 3px 0 0;
 }
 
-/* line 257, ../sass/landpage.scss */
+/* line 266, ../sass/landpage.scss */
 .nav-button {
   line-height: 29px;
   text-align: center;
@@ -353,7 +358,7 @@ header {
   cursor: pointer;
 }
 
-/* line 275, ../sass/landpage.scss */
+/* line 284, ../sass/landpage.scss */
 .nav-button:hover {
   background-position: center center;
   border-color: #1b89b2;
@@ -361,7 +366,7 @@ header {
   color: #ffffff;
 }
 
-/* line 283, ../sass/landpage.scss */
+/* line 292, ../sass/landpage.scss */
 .nav-button:active {
   background-position: top center;
   border-color: #1b89b2;
@@ -369,7 +374,7 @@ header {
   color: #ffffff;
 }
 
-/* line 289, ../sass/landpage.scss */
+/* line 298, ../sass/landpage.scss */
 .bottom-wrapper {
   background: #f1f2f3;
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIzJSIgc3RvcC1jb2xvcj0iI2YxZjJmMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIwJSIgc3RvcC1jb2xvcj0iI2M1ZTFmMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM5JSIgc3RvcC1jb2xvcj0iI2U2ZjJmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2U2ZjJmOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgc3RvcC1jb2xvcj0iI2M1ZTFmMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk3JSIgc3RvcC1jb2xvcj0iI2YyZjNmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
@@ -384,7 +389,7 @@ header {
   height: 660px;
 }
 
-/* line 305, ../sass/landpage.scss */
+/* line 312, ../sass/landpage.scss */
 .bottom-wrapper:before,
 .bottom-wrapper:after {
   content: "";
@@ -392,7 +397,7 @@ header {
   z-index: -1;
 }
 
-/* line 310, ../sass/landpage.scss */
+/* line 317, ../sass/landpage.scss */
 .bottom-wrapper:before {
   bottom: 50%;
   top: 0;
@@ -405,7 +410,7 @@ header {
   -moz-border-radius: 500px /20px;
 }
 
-/* line 321, ../sass/landpage.scss */
+/* line 328, ../sass/landpage.scss */
 .bottom-container {
   padding-top: 30px;
   position: relative;
@@ -414,13 +419,13 @@ header {
   margin: 0 auto;
 }
 
-/* line 328, ../sass/landpage.scss */
+/* line 335, ../sass/landpage.scss */
 .footer {
   background: url(../img/footer.png) repeat-x;
   height: 260px;
 }
 
-/* line 332, ../sass/landpage.scss */
+/* line 339, ../sass/landpage.scss */
 .principles {
   position: relative;
   float: left;
@@ -428,7 +433,7 @@ header {
   width: 250px;
 }
 
-/* line 339, ../sass/landpage.scss */
+/* line 346, ../sass/landpage.scss */
 .comics {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -436,7 +441,7 @@ header {
   height: 206px;
 }
 
-/* line 345, ../sass/landpage.scss */
+/* line 352, ../sass/landpage.scss */
 .man {
   float: left;
   width: 237px;
@@ -444,7 +449,7 @@ header {
   background: url(../img/comics/man3.png) no-repeat;
 }
 
-/* line 351, ../sass/landpage.scss */
+/* line 358, ../sass/landpage.scss */
 .man-cloud {
   margin-left: -70px;
   width: 218px;
@@ -453,12 +458,7 @@ header {
   background: url(../img/comics/bop.png) no-repeat;
 }
 
-@font-face {
-  font-family: segoe;
-  src: url(../font/segoe.ttf);
-}
-
-/* line 362, ../sass/landpage.scss */
+/* line 367, ../sass/landpage.scss */
 .man-speech {
   line-height: 15px;
   font-size: 10pt;
@@ -469,7 +469,7 @@ header {
   width: 150px;
 }
 
-/* line 371, ../sass/landpage.scss */
+/* line 377, ../sass/landpage.scss */
 .center-text {
   margin: 95px 0 0 -115px;
   float: left;
@@ -478,7 +478,7 @@ header {
   height: 70px;
 }
 
-/* line 378, ../sass/landpage.scss */
+/* line 384, ../sass/landpage.scss */
 div.center-text > p {
   font-family: arial;
   line-height: 17px;
@@ -488,7 +488,7 @@ div.center-text > p {
   text-align: center;
 }
 
-/* line 386, ../sass/landpage.scss */
+/* line 392, ../sass/landpage.scss */
 .woman-cloud {
   float: left;
   margin: 0 0 0 -120px;
@@ -498,7 +498,7 @@ div.center-text > p {
   background: url(../img/comics/woman-cloud.png) no-repeat;
 }
 
-/* line 394, ../sass/landpage.scss */
+/* line 400, ../sass/landpage.scss */
 div.woman-cloud > p {
   line-height: 17px;
   font-size: 10pt;
@@ -509,7 +509,7 @@ div.woman-cloud > p {
   width: 130px;
 }
 
-/* line 403, ../sass/landpage.scss */
+/* line 409, ../sass/landpage.scss */
 .woman {
   margin-top: -79px;
   float: right;
@@ -518,7 +518,7 @@ div.woman-cloud > p {
   background: url(../img/comics/woman5.png);
 }
 
-/* line 410, ../sass/landpage.scss */
+/* line 416, ../sass/landpage.scss */
 .reg-container {
   z-index: -1;
   box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
@@ -538,7 +538,7 @@ div.woman-cloud > p {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dcedf7', endColorstr='#e6f2f9',GradientType=0 );
 }
 
-/* line 428, ../sass/landpage.scss */
+/* line 434, ../sass/landpage.scss */
 .bottom-container > button {
   position: absolute;
   width: 261px;
@@ -555,21 +555,21 @@ div.woman-cloud > p {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
 }
 
-/* line 444, ../sass/landpage.scss */
+/* line 450, ../sass/landpage.scss */
 .bottom-container > button:hover {
   background-position: center -44px;
   border-color: #52abd9;
   text-shadow: 0 0 5px rgba(0, 105, 255, 0.8);
 }
 
-/* line 449, ../sass/landpage.scss */
+/* line 455, ../sass/landpage.scss */
 .bottom-container > button:active {
   background-position: center -86px;
   border-color: #437390;
   text-shadow: 0 0 4px black;
 }
 
-/* line 454, ../sass/landpage.scss */
+/* line 460, ../sass/landpage.scss */
 .principles > h1 {
   text-shadow: 0 3px 2px rgba(0, 0, 0, 0.1), 0 0 5px rgba(98, 252, 255, 0.3);
   font-size: 27px;
@@ -578,7 +578,7 @@ div.woman-cloud > p {
   padding: 0 0 10px 5px;
 }
 
-/* line 463, ../sass/landpage.scss */
+/* line 469, ../sass/landpage.scss */
 div > .princ-img {
   border-radius: 7px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
@@ -586,7 +586,7 @@ div > .princ-img {
   -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
 }
 
-/* line 469, ../sass/landpage.scss */
+/* line 475, ../sass/landpage.scss */
 .principles > p {
   padding-top: 15px;
   color: #3b3d3e;
@@ -595,17 +595,17 @@ div > .princ-img {
   width: 255px;
 }
 
-/* line 476, ../sass/landpage.scss */
+/* line 482, ../sass/landpage.scss */
 .principles > h1 {
   margin: 0;
 }
 
-/* line 479, ../sass/landpage.scss */
+/* line 485, ../sass/landpage.scss */
 .princ-margin {
   margin-left: 50px;
 }
 
-/* line 483, ../sass/landpage.scss */
+/* line 489, ../sass/landpage.scss */
 .registration {
   display: none;
   position: relative;
@@ -626,7 +626,7 @@ div > .princ-img {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* line 502, ../sass/landpage.scss */
+/* line 508, ../sass/landpage.scss */
 .registration > h2 {
   font-size: 26px;
   margin: 10px 0;
@@ -636,7 +636,7 @@ div > .princ-img {
   line-height: 40px;
 }
 
-/* line 511, ../sass/landpage.scss */
+/* line 517, ../sass/landpage.scss */
 .registration p {
   font-size: 16px;
   font-weight: bold;
@@ -644,12 +644,12 @@ div > .princ-img {
   padding-left: 45px;
 }
 
-/* line 519, ../sass/landpage.scss */
+/* line 525, ../sass/landpage.scss */
 .input-wrapper {
   position: relative;
 }
 
-/* line 522, ../sass/landpage.scss */
+/* line 528, ../sass/landpage.scss */
 div.input-wrapper > input {
   background: #f8f8f8;
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y4ZjhmOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlOWVhZWMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -672,13 +672,13 @@ div.input-wrapper > input {
   height: 45px;
 }
 
-/* line 548, ../sass/landpage.scss */
+/* line 554, ../sass/landpage.scss */
 .reg-button {
   display: block;
   margin: 20px auto 0 auto;
 }
 
-/* line 552, ../sass/landpage.scss */
+/* line 558, ../sass/landpage.scss */
 .reg-button[disabled] {
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.51);
@@ -686,7 +686,7 @@ div.input-wrapper > input {
   cursor: wait;
 }
 
-/* line 558, ../sass/landpage.scss */
+/* line 564, ../sass/landpage.scss */
 .reg-button[disabled]:hover {
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.51);
   -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
@@ -694,7 +694,7 @@ div.input-wrapper > input {
   background-position: 50% 100%;
 }
 
-/* line 565, ../sass/landpage.scss */
+/* line 571, ../sass/landpage.scss */
 .input-error {
   position: absolute;
   background: #ffdada;
@@ -704,7 +704,7 @@ div.input-wrapper > input {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.29);
 }
 
-/* line 573, ../sass/landpage.scss */
+/* line 579, ../sass/landpage.scss */
 .input-error > span {
   text-align: left;
   white-space: nowrap;
@@ -714,13 +714,13 @@ div.input-wrapper > input {
   color: #b8211d;
 }
 
-/* line 581, ../sass/landpage.scss */
+/* line 587, ../sass/landpage.scss */
 .right-side {
   top: 14%;
   left: 92%;
 }
 
-/* line 585, ../sass/landpage.scss */
+/* line 591, ../sass/landpage.scss */
 .right-side:before {
   content: "";
   position: absolute;
@@ -732,7 +732,7 @@ div.input-wrapper > input {
   border-color: transparent #fd2929 transparent transparent;
 }
 
-/* line 595, ../sass/landpage.scss */
+/* line 601, ../sass/landpage.scss */
 .right-side:after {
   content: "";
   position: absolute;
@@ -744,13 +744,13 @@ div.input-wrapper > input {
   border-color: transparent #ffdada transparent transparent;
 }
 
-/* line 605, ../sass/landpage.scss */
+/* line 611, ../sass/landpage.scss */
 .left-side {
   top: 14%;
   right: 92%;
 }
 
-/* line 609, ../sass/landpage.scss */
+/* line 615, ../sass/landpage.scss */
 .left-side:before {
   content: "";
   position: absolute;
@@ -762,7 +762,7 @@ div.input-wrapper > input {
   border-color: transparent transparent transparent #fd2929;
 }
 
-/* line 619, ../sass/landpage.scss */
+/* line 625, ../sass/landpage.scss */
 .left-side:after {
   content: "";
   position: absolute;
