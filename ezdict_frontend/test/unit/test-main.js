@@ -8,7 +8,7 @@ for (var file in window.__karma__.files) {
 }
 
 require.config({
-    baseUrl: '/base',
+    baseUrl: '/base/app/js',
     // alias libraries paths
     paths: {
         'domReady': '../lib/require/domReady',
@@ -16,7 +16,7 @@ require.config({
         'angular-animate': '../lib/angular/angular-animate',
         'angular-route': '../lib/angular/angular-route',
         'angular-resource': '../lib/angular/angular-resource',
-        'angular-mock': '../lib/angular/angular-mock',
+        'angular-mock': '../../test/lib/angular/angular-mocks',
         'ngProgress': '../lib/angular/ngProgress.min',
         'toaster': '../lib/toastr/toaster',
     },
@@ -43,6 +43,8 @@ require.config({
         },
     },
 
-    // kick start application
-    deps: ['./bootstrap'].concat(tests)
+    deps: tests,
+
+    // start test run, once Require.js is done
+    callback: window.__karma__.start
 });

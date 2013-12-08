@@ -1,35 +1,43 @@
-module.exports = function(config){
+module.exports = function (config) {
     config.set({
-    basePath : '../',
+        basePath: '../',
 
-    files : [
-      'app/js/vendor/jquery-1.9.0.min.js',
-      'app/lib/require/require.js',
-      'app/js/main.js',
-    ],
+        files: [
+            'app/js/vendor/jquery-1.9.0.min.js',
 
-    exclude : [
-      'app/lib/angular/angular-loader.js',
-      'app/lib/angular/^angular*.min.js',
-      'app/lib/angular/angular-scenario.js'
-    ],
+            {pattern: 'app/lib/**/*.js', included: false},
+            {pattern: 'app/js/**/*.js', included: false},
+            {pattern: 'test/lib/**/*.js', included: false},
+            {pattern: 'test/unit/controllersSpec.js', included: false},
 
-    autoWatch : true,
+            'test/unit/test-main.js'
+        ],
 
-    frameworks: ['jasmine'],
+        exclude: [
+            'app/lib/angular/angular-loader.js',
+            'app/lib/angular/^angular*.min.js',
+            'test/lib/angular/angular-scenario.js',
+            'app/js/main.js'
+        ],
 
-    browsers : ['Chrome'],
+        autoWatch: true,
 
-    plugins : [
+        frameworks: ['jasmine', 'requirejs'],
+
+        browsers: ['Chrome'],
+
+        plugins: [
             'karma-junit-reporter',
             'karma-chrome-launcher',
             'karma-firefox-launcher',
-            'karma-jasmine'
-            ],
+            'karma-jasmine',
+            'karma-requirejs',
+        ],
 
-    junitReporter : {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    }
+        junitReporter: {
+            outputFile: 'test_out/unit.xml',
+            suite: 'unit'
+        }
 
-})}
+    })
+}

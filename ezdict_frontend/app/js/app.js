@@ -3,10 +3,10 @@ define([
      'angular-animate',
      'angular-route',
      'angular-resource',
-     './controllers/index',
-     './directives/index',
-     './filters/index',
-     './services/index'
+     'controllers/index',
+     'directives/index',
+     'filters/index',
+     'services/index'
  ], function (ng) {
      'use strict';
 

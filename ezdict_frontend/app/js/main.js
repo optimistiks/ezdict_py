@@ -8,7 +8,7 @@ require.config({
         'angular-route': '../lib/angular/angular-route',
         'angular-resource': '../lib/angular/angular-resource',
         'ngProgress': '../lib/angular/ngProgress.min',
-        'toaster': '../lib/toastr/toaster',
+        'toaster': '../lib/toastr/toaster'
     },
 
     // angular does not support AMD out of the box, put it in a shim
@@ -31,5 +31,5 @@ require.config({
     },
 
     // kick start application
-    deps: ['./bootstrap']
+    deps: ['bootstrap']
 });
