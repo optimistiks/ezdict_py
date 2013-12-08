@@ -6,10 +6,15 @@ $(document).ready(function(){
                 $('#registration').fadeIn();
             });
     });
-    $('input, textarea').placeholder();
+    //$('input, textarea').placeholder();
 
     $(document).on('click','.header-login-btn', function (){
-        $('.login-form').fadeToggle();
+        var $form = $('.login-form');
+        $form.fadeToggle().promise().done(function(){
+            if ($form.is(':visible')) {
+                $form.find('input').first().focus();
+            }
+        });
     });
 
     $(document).on('click', function(event){
@@ -18,10 +23,4 @@ $(document).ready(function(){
             $('.login-form').fadeOut()
         }
     });
-
-    $('#login-button').on('click',function(){
-        $('.login-form').find('input[type=text]').focus();
-    });
-
-
 });
