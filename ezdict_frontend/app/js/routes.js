@@ -1,4 +1,4 @@
-define(['app'], function (app) {
+inedefine(['app'], function (app) {
      'use strict';
      return app.config(['$routeProvider', function ($routeProvider) {
          $routeProvider.when('/view1', {
