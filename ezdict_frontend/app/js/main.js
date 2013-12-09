@@ -5,7 +5,7 @@ require.config({
         'domReady': '../lib/require/domReady',
         'angular': '../lib/angular/angular',
         'angular-animate': '../lib/angular/angular-animate',
-        'angular-route': '../lib/angular/angular-route',
+        'angular-ui-router': '../lib/angular/angular-ui-router',
         'angular-resource': '../lib/angular/angular-resource',
         'ngProgress': '../lib/angular/ngProgress.min',
         'toaster': '../lib/toastr/toaster'
@@ -19,7 +19,7 @@ require.config({
         'angular-animate': {
             deps: ['angular']
         },
-        'angular-route': {
+        'angular-ui-router':{
             deps: ['angular']
         },
         'angular-resource': {
@@ -27,7 +27,7 @@ require.config({
         },
         'ngProgress': {
             deps: ['angular']
-        },
+        }
     },
 
     // kick start application
