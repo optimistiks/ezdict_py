@@ -7,6 +7,13 @@ html, body {
 }
 
 /* line 5, ../sass/about.scss */
+* html .main {
+  /* хак для ie6 */
+  height: 100%;
+  /* для ие6, т.к. не понимает min-height */
+}
+
+/* line 8, ../sass/about.scss */
 .main-wrapper {
   /* основной блок, который должен растянуться до подвала */
   background: white;
@@ -17,20 +24,20 @@ html, body {
   background: -o-radial-gradient(center, ellipse cover, white 53%, #d9dde0 100%);
   background: -ms-radial-gradient(center, ellipse cover, white 53%, #d9dde0 100%);
   background: radial-gradient(ellipse at center, #ffffff 53%, #d9dde0 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#d9dde0',GradientType=1 );
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Q5ZGRlMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9yYWRpYWxHcmFkaWVudD4KICA8cmVjdCB4PSItNTAiIHk9Ii01MCIgd2lkdGg9IjEwMSIgaGVpZ2h0PSIxMDEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
   min-height: 100%;
   /* задаем минимальную высоту основного блока */
   opacity: 0.99;
 }
 
-/* line 18, ../sass/about.scss */
+/* line 21, ../sass/about.scss */
 .main-container > h3 {
   font-weight: 300;
   text-align: center;
   color: #636363;
 }
 
-/* line 23, ../sass/about.scss */
+/* line 26, ../sass/about.scss */
 .gray-stripe {
   margin: 5px 0;
   text-align: center;
@@ -39,54 +46,47 @@ html, body {
   background: url("../img/gray-stripe.png") 50% no-repeat;
 }
 
-/* line 31, ../sass/about.scss */
+/* line 34, ../sass/about.scss */
 .idea-man {
   float: left;
   margin: 0 15px 10px 0;
 }
 
-/* line 36, ../sass/about.scss */
+/* line 39, ../sass/about.scss */
 .promo-text {
   color: #6b6b6b;
   font-size: 17px;
   line-height: 25px;
 }
 
-/* line 42, ../sass/about.scss */
+/* line 45, ../sass/about.scss */
 .promo-text > p {
   color: #3b3d3e;
   margin: 0 0 20px;
   text-indent: 15px;
 }
 
-/* line 48, ../sass/about.scss */
+/* line 51, ../sass/about.scss */
 .contacts-field {
   font-size: 16px;
   text-align: left;
 }
 
-/* line 54, ../sass/about.scss */
+/* line 57, ../sass/about.scss */
 .appeal {
   margin-top: 30px;
   font-size: 20px;
   color: #808080;
 }
 
-/* line 62, ../sass/about.scss */
-* html .main {
-  /* хак для ie6 */
-  height: 100%;
-  /* для ие6, т.к. не понимает min-height */
-}
-
-/* line 65, ../sass/about.scss */
+/* line 64, ../sass/about.scss */
 .hFooter {
   /* это распорка в основном блоке - резервируем место для подвала */
   height: 200px;
   /* высота нашего подвала */
 }
 
-/* line 68, ../sass/about.scss */
+/* line 67, ../sass/about.scss */
 .footer {
   opacity: 0.99;
   height: 200px;

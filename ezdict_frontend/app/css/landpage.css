@@ -110,9 +110,9 @@ header {
   background: -ms-radial-gradient(center, ellipse cover, #eef6fb 45%, #dfeef8 100%);
   background: radial-gradient(ellipse at center, #eef6fb 45%, #dfeef8 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eef6fb', endColorstr='#dfeef8',GradientType=1 );
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.24);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.24);
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
@@ -644,13 +644,13 @@ div > .princ-img {
   padding-left: 45px;
 }
 
-/* line 525, ../sass/landpage.scss */
+/* line 524, ../sass/landpage.scss */
 .input-wrapper {
   position: relative;
 }
 
-/* line 528, ../sass/landpage.scss */
-div.input-wrapper > input {
+/* line 527, ../sass/landpage.scss */
+input.reg-form {
   background: #f8f8f8;
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y4ZjhmOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlOWVhZWMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
   background: -moz-linear-gradient(top, #f8f8f8 0%, #f3f4f6 100%);
@@ -672,13 +672,25 @@ div.input-wrapper > input {
   height: 45px;
 }
 
-/* line 554, ../sass/landpage.scss */
+/* line 550, ../sass/landpage.scss */
+input.reg-valid-ok {
+  border: 1px solid #23a054;
+  box-shadow: 0 0 5px #23a054;
+}
+
+/* line 555, ../sass/landpage.scss */
+input.reg-valid-error {
+  border: 1px solid #fb3135;
+  box-shadow: 0 0 5px #fb3135;
+}
+
+/* line 561, ../sass/landpage.scss */
 .reg-button {
   display: block;
   margin: 20px auto 0 auto;
 }
 
-/* line 558, ../sass/landpage.scss */
+/* line 565, ../sass/landpage.scss */
 .reg-button[disabled] {
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.51);
@@ -686,7 +698,7 @@ div.input-wrapper > input {
   cursor: wait;
 }
 
-/* line 564, ../sass/landpage.scss */
+/* line 571, ../sass/landpage.scss */
 .reg-button[disabled]:hover {
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.51);
   -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
@@ -694,7 +706,7 @@ div.input-wrapper > input {
   background-position: 50% 100%;
 }
 
-/* line 571, ../sass/landpage.scss */
+/* line 578, ../sass/landpage.scss */
 .input-error {
   position: absolute;
   background: #ffdada;
@@ -704,7 +716,7 @@ div.input-wrapper > input {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.29);
 }
 
-/* line 579, ../sass/landpage.scss */
+/* line 586, ../sass/landpage.scss */
 .input-error > span {
   text-align: left;
   white-space: nowrap;
@@ -714,13 +726,13 @@ div.input-wrapper > input {
   color: #b8211d;
 }
 
-/* line 587, ../sass/landpage.scss */
+/* line 594, ../sass/landpage.scss */
 .right-side {
   top: 14%;
-  left: 92%;
+  left: 93%;
 }
 
-/* line 591, ../sass/landpage.scss */
+/* line 598, ../sass/landpage.scss */
 .right-side:before {
   content: "";
   position: absolute;
@@ -732,7 +744,7 @@ div.input-wrapper > input {
   border-color: transparent #fd2929 transparent transparent;
 }
 
-/* line 601, ../sass/landpage.scss */
+/* line 608, ../sass/landpage.scss */
 .right-side:after {
   content: "";
   position: absolute;
@@ -744,13 +756,13 @@ div.input-wrapper > input {
   border-color: transparent #ffdada transparent transparent;
 }
 
-/* line 611, ../sass/landpage.scss */
+/* line 618, ../sass/landpage.scss */
 .left-side {
   top: 14%;
-  right: 92%;
+  right: 93%;
 }
 
-/* line 615, ../sass/landpage.scss */
+/* line 622, ../sass/landpage.scss */
 .left-side:before {
   content: "";
   position: absolute;
@@ -762,7 +774,7 @@ div.input-wrapper > input {
   border-color: transparent transparent transparent #fd2929;
 }
 
-/* line 625, ../sass/landpage.scss */
+/* line 632, ../sass/landpage.scss */
 .left-side:after {
   content: "";
   position: absolute;

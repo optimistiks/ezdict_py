@@ -3,16 +3,19 @@
 <head>
     <meta charset="utf-8">
     <title>Интерактивный словарь</title>
-    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="css/landpage.css" type="text/css">
     <link rel="stylesheet" href="lib/toastr/toaster.css" type="text/css">
     <link rel="stylesheet" href="lib/angular/ngProgress.css">
+    <!--[if gte IE 9]>
+    <link href="css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/vendor/html5shiv.js"></script>
+    <![endif]-->
 </head>
 <body class="gradient">
 <toaster-container> </toaster-container>
-<!--[if gte IE 9]>
-<link href="css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
-<![endif]-->
 <div class="headline gradient">
     <div class="inline">
         <p class="header-name">EzDict.com | uRdict.com</p>
@@ -20,7 +23,9 @@
     </div>
 </div>
 <header>
-    <img class="easydict" src="img/logo3.png">
+    <a href="index.html">
+        <img class="easydict" src="img/logo3.png">
+    </a>
     <p class="slogan">Your personal Dictionary</p>
     <div class="container-buttons">
         <a href="index.html" class="nav-button">Главная</a>
@@ -29,7 +34,7 @@
         <a href="index.html" class="nav-button">Помощь</a>
     </div>
 
-     <!--Форма входа на сайте-->
+    <!--Форма входа на сайте-->
 
     <div class="login-form gradient">
         <h4>Вход в личный кабинет</h4>
@@ -39,6 +44,7 @@
         <a href="#">Восстановить пароль</a>
         <label><input type="checkbox"/> Запомнить меня</label>
     </div>
+
 </header>
 <div class="main-container">
     <div>
@@ -94,7 +100,6 @@
         </div>
         <div class="woman-cloud">
             <p>Где-то я уже видела это слово!</p>
-
         </div>
         <div class="woman">
         </div>
@@ -128,21 +133,21 @@
             <h2>Создание аккаунта</h2>
             <!--<p>Электронный адрес</p>-->
             <div class="input-wrapper">
-                <input class="gradient" type="text" value="" ng-model="user.email" placeholder="E-mail">
+                <input class="gradient reg-form reg-valid-ok" type="text" value="" ng-model="user.email" placeholder="E-mail">
                 <div class="input-error right-side" ng-show="user.hasErrors('email')">
                     <span>{{ user.getErrorString('email') }}</span>
                 </div>
             </div>
             <!--<p>Имя пользователя</p>-->
             <div class="input-wrapper">
-                <input class="gradient" type="text" value="" ng-model="user.nickname" placeholder="Имя пользователя">
+                <input class="gradient reg-form reg-valid-error" type="text" value="" ng-model="user.nickname" placeholder="Имя пользователя">
                 <div class="input-error left-side" ng-show="user.hasErrors('nickname')">
                     <span>{{ user.getErrorString('nickname') }}</span>
                 </div>
             </div>
             <!--<p>Пароль</p>-->
             <div class="input-wrapper">
-                <input class="gradient" type="password" value="" ng-model="user.password" placeholder="Пароль">
+                <input class="gradient reg-form" type="password" value="" ng-model="user.password" placeholder="Пароль">
                 <div class="input-error right-side" ng-show="user.hasErrors('password')">
                     <span>{{ user.getErrorString('password')  }}</span>
                 </div>
