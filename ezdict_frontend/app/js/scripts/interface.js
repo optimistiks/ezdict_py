@@ -70,7 +70,7 @@ $(document).ready(function () {
 
     });
 //    код для расширения общего поля при закрытии всех виджетов(на данный момент 1 виджет))
-    $('#rw-close-btn').on('click',function(){
+    $(document).on('click', '#rw-close-btn', function(){
         $.when(
         $('#random-words-widget').fadeOut()
             ).done(function(){

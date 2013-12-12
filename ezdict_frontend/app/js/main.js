@@ -1,5 +1,6 @@
 require.config({
     baseUrl: '/js',
+    urlArgs: 'v='+Date.now(),
     // alias libraries paths
     paths: {
         'domReady': '../lib/require/domReady',
@@ -26,6 +27,9 @@ require.config({
             deps: ['angular']
         },
         'ngProgress': {
+            deps: ['angular']
+        },
+        'toaster': {
             deps: ['angular']
         }
     },

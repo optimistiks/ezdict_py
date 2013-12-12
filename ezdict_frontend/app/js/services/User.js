@@ -2,8 +2,8 @@ define(['./module'], function (factory) {
     'use strict';
     factory.
 
-        factory('User', ['$resource', 'API_URL', 'API_FORMAT', function ($resource, API_URL, API_FORMAT) {
-            var User = $resource([API_URL, '/users/:userId/:action', API_FORMAT].join(''), {}, {});
+        factory('User', ['$resource', 'constants', function ($resource, constants) {
+            var User = $resource([constants.API_URL, '/users/:userId/:action', constants.API_FORMAT].join(''), {}, {});
 
             User.prototype.errors = {};
 

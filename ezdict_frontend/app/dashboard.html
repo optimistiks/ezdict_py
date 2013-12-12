@@ -2,13 +2,13 @@
 <html>
 <head xmlns="http://www.w3.org/1999/html">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/vendor/font-awesome.min.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/interface.css">
-    <link rel="stylesheet" href="css/search-result.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="lib/toastr/toaster.css" type="text/css">
-    <link rel="stylesheet" href="lib/angular/ngProgress.css">
+    <link rel="stylesheet" href="/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/interface.css">
+    <link rel="stylesheet" href="/css/search-result.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/lib/toastr/toaster.css" type="text/css">
+    <link rel="stylesheet" href="/lib/angular/ngProgress.css">
     <title>Easy dictionary</title>
 </head>
 <body class="gradient">
@@ -22,55 +22,12 @@
 </style>
 <![endif]-->
 <div class="main-wrapper">
-    <header class="header gradient">
-        <div class="logo">
-            <img src="img/logo5.png">
-        </div>
-        <div class="right-header">
-            <ul class="header-buttons">
-                <li>Username</li>
-                <li>Материалы</li>
-                <li>Статистика</li>
-                <li>Добавить контент</li>
-                <li>О Нас</li>
-                <li>F.A.Q</li>
-            </ul>
-            <div class="exit-button">
-                <button type="button">Выход</button>
-            </div>
-            <div class="search-wrapper gradient">
-                <form>
-                    <div class="search-div">
-                        <input class="content-search" type="text" placeholder="Искать материалы">
-                        <button class="search-button" type="button">Поиск</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </header>
+    <div ui-view="header"></div>
     <div class="content-wrapper">
-        <div class="first-col">
-            <div class="widgets">
-                <div class="widgets-btn">
-                    <button type="button" id="widgets-btn"></button>
-                </div>
-                <div class="random-words gradient" id="random-words-widget">
-                    <div class="rw-close-btn">
-                        <button class="button" id="rw-close-btn"></button>
-                    </div>
-                    <div class="fisherman"></div>
-                    <div class="random-words-content">
-                        <div class="random-words-spacer"></div>
-                        <div class="widget-name">
-                            <span>Случайные слова</span>
-                        </div>
-                        <div class="word-in-random-widg">
-                            <span>Participate</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="first-col">
+        <div ui-view="widgets"></div>
+    </div>
+
         <div class="two-col-wrapper">
             <div class="second-col-wrapper" id="second-col-wrapper">
                 <div class="second-col">
@@ -340,11 +297,11 @@
         </footer>
     </div>
 </div>
-<script type="text/javascript" src="js/vendor/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="/js/vendor/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/vendor/jquery.slimscroll.min.js"></script>
-<script type="text/javascript" src="js/scripts/interface.js"></script>
-<script src="lib/require/require.js" data-main="js/main.js"></script>
+<script type="text/javascript" src="/js/vendor/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/vendor/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="/js/scripts/interface.js"></script>
+<script src="/lib/require/require.js" data-main="/js/dashboard-main.js"></script>
 </body>
 </html>

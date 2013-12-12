@@ -1,20 +1,11 @@
 define(['app'], function (app) {
     'use strict';
-    return app.config(function ($stateProvider, $urlRouterProvider) {
+    console.log('loading index routes');
+    return app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+        $locationProvider.html5Mode(true);
         //$urlRouterProvider.otherwise("/");
         $stateProvider.state('index', {
                 url: '/',
-                views: {
-                    'headline': {
-                        templateUrl: 'partials/index/headline.html'
-                    },
-                    'header': {
-                        templateUrl: 'partials/index/header.html'
-                    },
-                    'main': {
-                        templateUrl: 'partials/index/main.html'
-                    }
-                }
             }).state('about', {
                 url: '/about',
                 templateUrl: 'partials/index/about.html'

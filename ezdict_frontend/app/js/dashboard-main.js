@@ -1,25 +1,15 @@
-var tests = [];
-for (var file in window.__karma__.files) {
-    if (window.__karma__.files.hasOwnProperty(file)) {
-        if (/Spec\.js$/.test(file)) {
-            tests.push(file);
-        }
-    }
-}
-
 require.config({
-    baseUrl: '/base/app/js',
+    baseUrl: '/js',
     urlArgs: 'v='+Date.now(),
     // alias libraries paths
     paths: {
         'domReady': '../lib/require/domReady',
         'angular': '../lib/angular/angular',
         'angular-animate': '../lib/angular/angular-animate',
-        'angular-route': '../lib/angular/angular-route',
+        'angular-ui-router': '../lib/angular/angular-ui-router',
         'angular-resource': '../lib/angular/angular-resource',
-        'angular-mock': '../../test/lib/angular/angular-mocks',
         'ngProgress': '../lib/angular/ngProgress.min',
-        'toaster': '../lib/toastr/toaster',
+        'toaster': '../lib/toastr/toaster'
     },
 
     // angular does not support AMD out of the box, put it in a shim
@@ -30,22 +20,20 @@ require.config({
         'angular-animate': {
             deps: ['angular']
         },
-        'angular-route': {
+        'angular-ui-router':{
             deps: ['angular']
         },
         'angular-resource': {
             deps: ['angular']
         },
-        'angular-mock': {
-            deps: ['angular']
-        },
         'ngProgress': {
             deps: ['angular']
         },
+        'toaster': {
+            deps: ['angular']
+        }
     },
 
-    deps: tests,
-
-    // start test run, once Require.js is done
-    callback: window.__karma__.start
+    // kick start application
+    deps: ['dashboard-bootstrap']
 });

@@ -1,4 +1,9 @@
 define(['app'], function (app) {
     'use strict';
-    return app.constant('API_URL', '/api').constant('API_FORMAT', '.json');
+    return app.
+        constant('constants', {
+            'API_URL': '/api',
+            'API_FORMAT': '.json',
+            'DASHBOARD_PATHNAME': '/dashboard'
+        });
 });

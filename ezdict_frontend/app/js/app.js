@@ -16,8 +16,5 @@ define([
             'ezdict.filters',
             'ezdict.directives',
             'ui.router'
-        ]).
-        run(function($window){
-            $window.alert('hallo')
-        });
+        ]);
 });
