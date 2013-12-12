@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#his-label').on('click', function () {
+    $(document).on('click', '#his-label', function () {
         if ($('#third-col').width() == '200') {
             $('#third-col').animate({
                 width: "10px"
@@ -18,11 +18,11 @@ $(document).ready(function () {
                 });
             }
     });
-    $('.words-wrapper').find('div').on('click', function(){
+    $(document).on('click', '.words-wrapper div', function(){
         $('.words-wrapper').find('div').removeClass('words-in-history-opened').addClass('words-in-history-closed')
         $(this).removeClass('words-in-history-closed').addClass('words-in-history-opened').fadeIn('400');
     });
-    $('.basket-wrapper').on('click', function(){
+    $(document).on('click', '.basket-wrapper', function(){
         $('.active-sticker').stop().slideToggle()
     });
 //    --------------- код для анимации редактора сикеров через Transition--------------
@@ -30,7 +30,7 @@ $(document).ready(function () {
 //       $('#footer').toggleClass('edit-field');
 //    });
     // -----------Анимация редактора стикеров---------
-    $('#edit-sticker').on('click',function(){
+    $(document).on('click', '#edit-sticker', function(){
         if($('#footer').height() == '70') {
             $.when(
                 $(this).toggleClass('edit-sticker-active'),
@@ -86,7 +86,7 @@ $(document).ready(function () {
             });
     });
 
-    $('.widgets-btn').on('click',function(){
+    $(document).on('click', '.widgets-btn', function(){
         if ($('#random-words-widget').not(':visible').length === 1){
             $.when(
                 $('.first-col').width('210'),
