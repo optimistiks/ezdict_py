@@ -649,22 +649,21 @@ input.reg-valid-error {
 }
 .logo-img1 {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-
+  bottom: 10px;
+  left: 0px;
 }
 .logo-img2{
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: -200px;
 }
 .footer-slogan{
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 270px;
 
-
   p {
+    font-size: 12px;
     margin: 0;
     font-family: cooper;
     color: #ffffff;

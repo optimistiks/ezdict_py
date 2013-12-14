@@ -803,25 +803,26 @@ input.reg-valid-error {
 /* line 650, ../sass/landpage.scss */
 .logo-img1 {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 10px;
+  left: 0px;
 }
 
-/* line 656, ../sass/landpage.scss */
+/* line 655, ../sass/landpage.scss */
 .logo-img2 {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: -200px;
 }
 
-/* line 661, ../sass/landpage.scss */
+/* line 660, ../sass/landpage.scss */
 .footer-slogan {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 270px;
 }
-/* line 667, ../sass/landpage.scss */
+/* line 665, ../sass/landpage.scss */
 .footer-slogan p {
+  font-size: 12px;
   margin: 0;
   font-family: cooper;
   color: #ffffff;
