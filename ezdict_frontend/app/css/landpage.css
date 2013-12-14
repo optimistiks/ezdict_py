@@ -807,7 +807,7 @@ input.reg-valid-error {
 .footer-container {
   position: relative;
   margin: 0 auto;
-  width: 840px;
+  width: 850px;
   height: 100%;
 }
 /* line 659, ../sass/landpage.scss */
@@ -831,7 +831,7 @@ input.reg-valid-error {
 
 /* line 673, ../sass/landpage.scss */
 .footer-slogan {
-  right: 300px;
+  left: 350px;
 }
 /* line 675, ../sass/landpage.scss */
 .footer-slogan p {
