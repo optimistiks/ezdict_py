@@ -2,11 +2,11 @@ define(['./module'], function (factory) {
     'use strict';
     factory.
 
-        factory('Interceptor', ['$injector', '$q', '$rootScope', 'toaster', function ($injector, $q, $rootScope, toaster) {
+        factory('Interceptor', ['$log', '$injector', '$q', '$rootScope', 'toaster', function ($log, $injector, $q, $rootScope, toaster) {
             var ngProgress = null;
             var getNgProgress = function () {
                 var ngProgress = ngProgress || $injector.get('ngProgress');
-                console.log(ngProgress);
+                $log.log(ngProgress);
                 return ngProgress
             };
 
@@ -14,7 +14,7 @@ define(['./module'], function (factory) {
 
             return {
                 'request': function (config) {
-                    console.log('interceptor.request()');
+                    $log.log('interceptor.request()');
 
                     if ($rootScope.pendingRequests === 0) {
                         getNgProgress().start();
@@ -26,7 +26,7 @@ define(['./module'], function (factory) {
                 },
 
                 'requestError': function (rejection) {
-                    console.log('interceptor.requestError()');
+                    $log.log('interceptor.requestError()');
 
                     $rootScope.pendingRequests--;
 
@@ -38,7 +38,7 @@ define(['./module'], function (factory) {
                 },
 
                 'response': function (response) {
-                    console.log('interceptor.response()');
+                    $log.log('interceptor.response()');
 
                     $rootScope.pendingRequests--;
 
@@ -50,7 +50,7 @@ define(['./module'], function (factory) {
                 },
 
                 'responseError': function (rejection) {
-                    console.log('interceptor.responseError()');
+                    $log.log('interceptor.responseError()');
 
                     $rootScope.pendingRequests--;
 
