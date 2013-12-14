@@ -333,10 +333,7 @@ header {
     height: 340px;
     margin: 0 auto;
 }
-.footer {
-    background: url(../img/footer.png) repeat-x;
-    height: 200px;
-}
+
 .principles {
 
     position: relative;
@@ -640,28 +637,41 @@ input.reg-valid-error {
     border: 7px solid;
     border-color: transparent  transparent transparent #ffdada ;
 }
+.footer {
+  background: url(../img/footer.png) repeat-x;
+  height: 200px;
+  position: relative;
 
-.main-footer{
+}
+.footer-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.footer-container {
   position: relative;
   margin: 0 auto;
   width: 840px;
   height: 100%;
+  div {
+    position: absolute;
+    bottom: 10px;
+  }
 }
 .logo-img1 {
-  position: absolute;
-  bottom: 10px;
   left: 0px;
 }
-.logo-img2{
-  position: absolute;
-  bottom: 10px;
-  right: -200px;
+.logo-img2 {
+  width: 211px;
+  height: 56px;
+  right: -250px;
+  background: url("../img/footer_img2.png")no-repeat;
 }
-.footer-slogan{
-  position: absolute;
-  bottom: 10px;
-  right: 270px;
-
+.footer-slogan {
+  right: 300px;
   p {
     font-size: 12px;
     margin: 0;
