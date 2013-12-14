@@ -1,3 +1,4 @@
 .idea/*
 *.pyc
 .*swp
+ezdict_frontend/app/Nginx-1.4.4_vhost.conf
