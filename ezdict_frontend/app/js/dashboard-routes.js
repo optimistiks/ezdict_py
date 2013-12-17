@@ -2,35 +2,40 @@ define(['app'], function (app) {
     'use strict';
     return app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise('/dashboard');
+        $urlRouterProvider.otherwise('/home');
         $stateProvider.
-            state('dashboardLayout', {
+            state('dashboard', {
+                abstract: true,
+                url: '',
+                template: '<div ui-view></div>'
+            }).
+            state('dashboard.layout', {
                 abstract: true,
                 url: '',
                 templateUrl: '/partials/dashboard/dashboard-layout.html'
             }).
-            state('dashboardLayout.dashboard', {
+            state('dashboard.layout.default', {
                 abstract: true,
                 url: '',
                 views: {
-                    'header@dashboardLayout': {
+                    'header': {
                         templateUrl: '/partials/dashboard/header.html'
                     },
-                    'left-column@dashboardLayout': {
+                    'left-column': {
                         templateUrl: '/partials/dashboard/widgets.html'
                     },
-                    'right-column@dashboardLayout': {
+                    'right-column': {
                         templateUrl: '/partials/dashboard/history.html'
                     },
-                    'footer@dashboardLayout': {
+                    'footer': {
                         templateUrl: '/partials/dashboard/ticket-panel.html'
                     }
                 }
             }).
-            state('dashboardLayout.dashboard.search', {
-                url: '/dashboard',
+            state('dashboard.layout.default.search', {
+                url: '/home',
                 views: {
-                    'main@dashboardLayout': {
+                    'main@dashboard.layout': {
                         templateUrl: '/partials/dashboard/search.html'
                     }
                 }

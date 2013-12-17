@@ -4,6 +4,7 @@ define(['app'], function (app) {
         constant('constants', {
             'API_URL': '/api',
             'API_FORMAT': '.json',
-            'DASHBOARD_PATHNAME': '/dashboard'
+            'DASHBOARD_PATHNAME': '/home',
+            'ENTER_KEYCODE': 13
         });
 });

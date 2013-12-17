@@ -1,4 +1,4 @@
-<header class="header gradient">
+<header class="header gradient" ng-controller="DashboardHeaderCtrl">
         <div class="logo">
             <img src="/img/logo5.png">
         </div>
@@ -12,7 +12,7 @@
                 <li>F.A.Q</li>
             </ul>
             <div class="exit-button">
-                <button type="button">Выход</button>
+                <button type="button" ng-click="logout()">Выход</button>
             </div>
             <div class="search-wrapper gradient">
                 <form>

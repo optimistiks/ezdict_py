@@ -1,9 +1,29 @@
 define(['./module'], function (factory) {
     'use strict';
     factory.
-
         factory('User', ['$resource', 'constants', function ($resource, constants) {
-            var User = $resource([constants.API_URL, '/users/:userId/:action', constants.API_FORMAT].join(''), {}, {});
+            var User = $resource([constants.API_URL, '/users/:userId/:action', constants.API_FORMAT].join(''),
+                {},
+                {
+                    isAuthenticated: {
+                        method: 'POST',
+                        params: {
+                            action: 'isAuthenticated'
+                        }
+                    },
+                    login: {
+                        method: 'POST',
+                        params: {
+                            action: 'login'
+                        }
+                    },
+                    logout: {
+                        method: 'POST',
+                        params: {
+                            action: 'logout'
+                        }
+                    }
+                });
 
             User.prototype.errors = {};
 
