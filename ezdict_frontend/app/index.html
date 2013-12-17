@@ -38,12 +38,25 @@
     <!--Форма входа на сайте-->
 
     <div class="login-form gradient" ng-controller="LoginCtrl">
-        <h4>Вход в личный кабинет</h4>
-        <input type="text" name="login" placeholder="Логин" ng-model="loginData.username" ng-keyup="loginOnEnter($event)"/>
-        <input type="password" name="password" placeholder="Пароль" ng-model="loginData.password" ng-keyup="loginOnEnter($event)"/>
-        <button class="gradient" type="button" ng-click="login()" ng-disabled="loginButtonDisabled">Вход</button>
-        <a href="#">Восстановить пароль</a>
-        <label><input type="checkbox"/> Запомнить меня</label>
+        <div id="log-in">
+            <h4>Вход в личный кабинет</h4>
+            <input type="text" name="login" placeholder="Логин" ng-model="loginData.username" ng-keyup="loginOnEnter($event)"/>
+            <input type="password" name="password" placeholder="Пароль" ng-model="loginData.password" ng-keyup="loginOnEnter($event)"/>
+            <p class="login-error">Неверный логин или пароль.</p>
+            <button class="gradient" type="button" ng-click="login()" ng-disabled="loginButtonDisabled">Вход</button>
+            <a href="#">Восстановить пароль</a>
+            <label><input type="checkbox"/> Запомнить меня</label>
+        </div>
+
+    <!--Форма восстановления пароля   -->
+
+        <div id="pass-recovery">
+            <h4>Восстановление пароля</h4>
+            <p id=""> Забыли пароль? Не беда, мы вышлем его Вам на электронный адрес.</p>
+            <input placeholder="E-mail" name="e-mail" type="text"/>
+            <a href="#">Войти в кабинет</a>
+            <button class="gradient" type="button">Готово</button>
+        </div>
     </div>
 
 </header>
@@ -157,17 +170,17 @@
         </div>
     </div>
     <footer class="footer">
-        <div class="main-footer">
-            <div class="logo-img1">
-                <a href="index.html">
-                    <img src="/img/footer_img1.png" alt="Easy-dict"/>
-                </a>
-            </div>
-            <div class="logo-img2">
-                <img src="/img/footer_img2.png" alt="Easy-dict"/>
-            </div>
-            <div class="footer-slogan">
-                <p>Your Memory`s Security</p>
+        <div class="footer-wrapper">
+            <div class="footer-container">
+                <div class="logo-img1">
+                    <a href="index.html">
+                        <img src="/img/footer_img1.png" alt="Easy-dict"/>
+                    </a>
+                </div>
+                <div class="logo-img2"></div>
+                <div class="footer-slogan">
+                    <p>Your Memory`s Security</p>
+                </div>
             </div>
         </div>
     </footer>
