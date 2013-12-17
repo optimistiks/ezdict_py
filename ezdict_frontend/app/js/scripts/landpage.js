@@ -23,4 +23,15 @@ $(document).ready(function(){
             $('.login-form').fadeOut()
         }
     });
+    $(document).on('click','#log-in a', function(){
+        $.when($('#log-in').fadeOut()).done(function(){
+            $('#pass-recovery').fadeIn();
+        });
+    });
+    $(document).on('click','#pass-recovery a', function(){
+        $.when($('#pass-recovery').fadeOut()).done(function(){
+            $('#log-in').fadeIn();
+        });
+     });
+
 });
