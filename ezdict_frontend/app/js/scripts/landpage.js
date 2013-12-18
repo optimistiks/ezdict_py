@@ -1,11 +1,13 @@
 $(document).ready(function(){
-    $("#reg-button").on('click', function(){
+    $(document).on('click', "#reg-button", function(){
         $.when(
                 $('#princ-wrapper').fadeOut()
                ).done(function(){
                 $('#registration').fadeIn();
             });
     });
+
+    //todo: put in on $viewContentReady
     $('input, textarea').placeholder();
 
     $(document).on('click','.header-login-btn', function (){
