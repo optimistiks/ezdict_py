@@ -212,7 +212,7 @@ header {
 /* line 160, ../sass/landpage.scss */
 .login-form .login-error {
   width: 100%;
-  padding: 5px;
+  padding: 3px 5px;
   color: #B8211D;
   border: 1px solid #FD2929;
   background: #FFDADA;
