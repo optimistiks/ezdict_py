@@ -1,57 +1,106 @@
 define(['bootstrap', 'angular-mock'], function () {
     'use strict';
 
-    //this is a test suite for controllers used in ezdictIndex application
-    describe('ezdictIndex controllers', function () {
+    describe('ezdict controllers', function () {
 
-        //load application before each test
-        beforeEach(module('ezdict'));
+        /**
+         * mocked $window module
+         * @type {{}}
+         */
+        var $window;
 
-        //this is a test suite for controller which handles the user registration
+        beforeEach(function () {
+
+            /**
+             * load application
+             */
+            module('ezdict');
+
+            /**
+             * mock the $window module
+             */
+            module(function ($provide) {
+                // We are defining the new $window
+                $window = {location: {}};
+
+                // this $window will be used when injected in our controller
+                $provide.constant('$window', $window);
+            })
+        });
+
         describe('RegistrationCtrl', function () {
-            var scope, ctrl, $httpBackend;
+
+            var
+                /**
+                 * controller scope
+                 */
+                    $scope,
+
+                /**
+                 * controller instance
+                 */
+                    ctrl,
+
+                /**
+                 * mocked http backend for handling api calls
+                 */
+                    $httpBackend;
 
             beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
-                //create a mock of $http service, which will respond to various requests
-                //initiated by controller
                 $httpBackend = _$httpBackend_;
+                $scope = $rootScope.$new();
+                ctrl = $controller('RegistrationCtrl', {$scope: $scope});
 
-                //create a new scope for the controller
-                scope = $rootScope.$new();
+                /**
+                 * handle authentication check
+                 */
+                $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
 
-                //instantiate a controller
-                ctrl = $controller('RegistrationCtrl', {$scope: scope});
+                /**
+                 * handle template loading
+                 */
+                $httpBackend.when('GET', /\.html$/).respond(200);
             }));
 
             it('should test controller instantiation', function () {
-                expect(scope.register).toBeDefined();
-                expect(scope.user).toBeDefined();
-                expect(scope.registerButtonDisabled).toBeFalsy();
+                expect($scope.register).toBeDefined();
+                expect($scope.user).toBeDefined();
+                expect($scope.registerButtonDisabled).toBeFalsy();
+                expect($scope.password).toBeNull();
             });
 
             it('should successfully create a user', function () {
-                var userResponseSuccess = {
+                var user = {
                     'id': 1,
                     'nickname': 'chuck',
                     'email': 'norris@chuck.com'
                 };
 
-                $httpBackend.when('POST', '/api/users.json').respond(200, userResponseSuccess);
+                $httpBackend.when('POST', '/api/users.json').respond(200, user);
+                $httpBackend.when('POST', '/api/users/login.json').respond(200);
 
-                expect(scope.user.id).toBeUndefined();
-                expect(scope.registerButtonDisabled).toBeFalsy();
+                expect($scope.user.id).toBeUndefined();
+                expect($scope.registerButtonDisabled).toBeFalsy();
 
-                scope.register();
+                $scope.user.email = user.email;
+                $scope.user.nickname = user.nickname;
+                $scope.password = 'roundhouse';
 
-                expect(scope.registerButtonDisabled).toBeTruthy();
+                $scope.register();
+
+                expect($scope.registerButtonDisabled).toBeTruthy();
+
+                expect($scope.user.password).toEqual($scope.password);
 
                 $httpBackend.flush();
 
-                expect(scope.registerButtonDisabled).toBeTruthy();
+                expect($scope.registerButtonDisabled).toBeTruthy();
 
-                expect(scope.user.id).toEqual(userResponseSuccess.id);
-                expect(scope.user.nickname).toEqual(userResponseSuccess.nickname);
-                expect(scope.user.email).toEqual(userResponseSuccess.email);
+                expect($scope.user.id).toEqual(user.id);
+                expect($scope.user.nickname).toEqual(user.nickname);
+                expect($scope.user.email).toEqual(user.email);
+
+                expect($window.location.href).toEqual('/home');
             });
 
             it('should fail to create a user', function () {
@@ -63,21 +112,62 @@ define(['bootstrap', 'angular-mock'], function () {
 
                 $httpBackend.when('POST', '/api/users.json').respond(400, userResponseFail);
 
-                expect(scope.registerButtonDisabled).toBeFalsy();
+                expect($scope.registerButtonDisabled).toBeFalsy();
 
-                scope.register();
+                $scope.register();
 
-                expect(scope.registerButtonDisabled).toBeTruthy();
+                expect($scope.registerButtonDisabled).toBeTruthy();
 
                 $httpBackend.flush();
 
-                expect(scope.registerButtonDisabled).toBeFalsy();
+                expect($scope.registerButtonDisabled).toBeFalsy();
 
-                expect(scope.user.errors.nickname.length).toEqual(1);
-                expect(scope.user.errors.email.length).toEqual(1);
-                expect(scope.user.errors.password.length).toEqual(1);
+                expect($scope.user.errors.nickname.length).toEqual(1);
+                expect($scope.user.errors.email.length).toEqual(1);
+                expect($scope.user.errors.password.length).toEqual(1);
+            });
+        });
+
+        describe('LoginCtrl', function () {
+
+            var $scope, ctrl, $httpBackend;
+
+            beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
+                $httpBackend = _$httpBackend_;
+                $scope = $rootScope.$new();
+                ctrl = $controller('LoginCtrl', {$scope: $scope});
+
+                $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
+                $httpBackend.when('GET', /\.html$/).respond(200);
+            }));
+
+            it('should test controller instantiation', function () {
+                expect($scope.login).toBeDefined();
+                expect($scope.loginData).toBeDefined();
+                expect($scope.loginButtonDisabled).toBeFalsy();
+            });
+
+            it('should successfully login a user', function () {
+                $httpBackend.when('POST', '/api/users/login.json').respond(200);
+                expect($scope.loginButtonDisabled).toBeFalsy();
+                $scope.login();
+                expect($scope.loginButtonDisabled).toBeTruthy();
+                $httpBackend.flush();
+                expect($scope.loginButtonDisabled).toBeTruthy();
+                expect($window.location.href).toEqual('/home');
+            });
+
+            it('should fail to login', function () {
+                var failedLogin = {'detail': ''};
+                $httpBackend.when('POST', '/api/users/login.json').respond(400, failedLogin);
+                expect($scope.loginButtonDisabled).toBeFalsy();
+                $scope.login();
+                expect($scope.loginButtonDisabled).toBeTruthy();
+                $httpBackend.flush();
+                expect($scope.loginButtonDisabled).toBeFalsy();
             });
         });
 
     });
-});
+})
+;

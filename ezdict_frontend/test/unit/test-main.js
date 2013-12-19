@@ -9,17 +9,16 @@ for (var file in window.__karma__.files) {
 
 require.config({
     baseUrl: '/base/app/js',
-    urlArgs: 'v='+Date.now(),
     // alias libraries paths
     paths: {
         'domReady': '../lib/require/domReady',
         'angular': '../lib/angular/angular',
         'angular-animate': '../lib/angular/angular-animate',
-        'angular-route': '../lib/angular/angular-route',
+        'angular-ui-router': '../lib/angular/angular-ui-router',
         'angular-resource': '../lib/angular/angular-resource',
         'angular-mock': '../../test/lib/angular/angular-mocks',
         'ngProgress': '../lib/angular/ngProgress.min',
-        'toaster': '../lib/toastr/toaster',
+        'toaster': '../lib/toastr/toaster'
     },
 
     // angular does not support AMD out of the box, put it in a shim
@@ -30,7 +29,7 @@ require.config({
         'angular-animate': {
             deps: ['angular']
         },
-        'angular-route': {
+        'angular-ui-router':{
             deps: ['angular']
         },
         'angular-resource': {
@@ -41,7 +40,7 @@ require.config({
         },
         'ngProgress': {
             deps: ['angular']
-        },
+        }
     },
 
     deps: tests,

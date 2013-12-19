@@ -17,7 +17,8 @@ module.exports = function (config) {
             'app/lib/angular/angular-loader.js',
             'app/lib/angular/^angular*.min.js',
             'test/lib/angular/angular-scenario.js',
-            'app/js/main.js'
+            'app/js/main.js',
+            'app/js/dashboard-main.js',
         ],
 
         autoWatch: true,
