@@ -6,9 +6,9 @@ require.config({
         'domReady': '../lib/require/domReady',
         'angular': '../lib/angular/angular',
         'angular-animate': '../lib/angular/angular-animate',
-        'angular-ui-router': '../lib/angular/angular-ui-router',
+        'angular-ui-router': '../lib/angularUi/angular-ui-router',
         'angular-resource': '../lib/angular/angular-resource',
-        'ngProgress': '../lib/angular/ngProgress.min',
+        'ngProgress': '../lib/ngProgress/ngProgress.min',
         'toaster': '../lib/toastr/toaster'
     },
 
