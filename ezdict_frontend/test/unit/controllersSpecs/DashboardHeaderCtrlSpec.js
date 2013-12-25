@@ -23,12 +23,9 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
             });
 
             inject(function (_$httpBackend_, $rootScope, $controller) {
-
                 $httpBackend = _$httpBackend_;
                 $scope = $rootScope.$new();
                 ctrl = $controller('DashboardHeaderCtrl', {$scope: $scope});
-                $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
-
             })
         });
 
@@ -38,6 +35,7 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
 
         it('should successfully logout a user', function () {
             $httpBackend.when('POST', '/api/users/logout.json').respond(200);
+            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
             $window.location.href = '/home';
             $scope.logout();
             $httpBackend.flush();

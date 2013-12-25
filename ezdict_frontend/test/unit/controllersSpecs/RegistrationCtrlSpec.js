@@ -50,11 +50,6 @@ define(['bootstrap', 'angular-mock'], function () {
                 ctrl = $controller('RegistrationCtrl', {$scope: $scope});
 
                 /**
-                 * handle authentication check
-                 */
-                $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
-
-                /**
                  * handle template loading
                  */
                 $httpBackend.when('GET', /\.html$/).respond(200);
@@ -77,6 +72,7 @@ define(['bootstrap', 'angular-mock'], function () {
 
             $httpBackend.when('POST', '/api/users.json').respond(200, user);
             $httpBackend.when('POST', '/api/users/login.json').respond(200);
+            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(200, {id: 1});
 
             expect($scope.user.id).toBeUndefined();
             expect($scope.registerButtonDisabled).toBeFalsy();
@@ -110,6 +106,7 @@ define(['bootstrap', 'angular-mock'], function () {
             };
 
             $httpBackend.when('POST', '/api/users.json').respond(400, userResponseFail);
+            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
 
             expect($scope.registerButtonDisabled).toBeFalsy();
 

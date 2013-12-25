@@ -23,12 +23,9 @@ define(['bootstrap', 'angular-mock'], function () {
             });
 
             inject(function (_$httpBackend_, $rootScope, $controller) {
-
                 $httpBackend = _$httpBackend_;
                 $scope = $rootScope.$new();
                 ctrl = $controller('LoginCtrl', {$scope: $scope});
-
-                $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
                 $httpBackend.when('GET', /\.html$/).respond(200);
             })
         });
@@ -41,6 +38,7 @@ define(['bootstrap', 'angular-mock'], function () {
 
         it('should successfully login a user', function () {
             $httpBackend.when('POST', '/api/users/login.json').respond(200);
+            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(200, {id: 1});
             expect($scope.loginButtonDisabled).toBeFalsy();
             $scope.login();
             expect($scope.loginButtonDisabled).toBeTruthy();
@@ -52,6 +50,7 @@ define(['bootstrap', 'angular-mock'], function () {
         it('should fail to login', function () {
             var failedLogin = {'detail': ''};
             $httpBackend.when('POST', '/api/users/login.json').respond(400, failedLogin);
+            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
             expect($scope.loginButtonDisabled).toBeFalsy();
             $scope.login();
             expect($scope.loginButtonDisabled).toBeTruthy();
