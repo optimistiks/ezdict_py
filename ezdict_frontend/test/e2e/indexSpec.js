@@ -1,12 +1,35 @@
 var EzdictIndex = require('./pages/ezdictIndex');
 
-describe('angularjs homepage', function () {
-    it('should greet the named user', function () {
-        var ezdictIndex = new EzdictIndex();
+describe('index page', function () {
+    var ezdictIndex,
+        timestamp = Date.now(),
+        ptor = protractor.getInstance(),
+        SLEEP_TIMEOUT = 4000;
+
+    beforeEach(function () {
+        ezdictIndex = new EzdictIndex();
         ezdictIndex.get();
+        ptor.driver.executeScript('$.fx.off = true;');
+    });
 
-        ezdictIndex.setNickname('Julie');
+    it('checks user registration', function () {
+        ezdictIndex.registerButton.click();
+        ezdictIndex.setEmail('test@test.test' + timestamp);
+        ezdictIndex.setNickname('test' + timestamp);
+        ezdictIndex.setPassword('test' + timestamp);
+        ezdictIndex.completeRegisterButton.click();
+        ptor.sleep(SLEEP_TIMEOUT);
+        expect(ptor.getCurrentUrl()).toContain('/home');
+        ptor.manage().deleteAllCookies();
+    });
 
-        expect(ezdictIndex.nicknameInput.getText()).toEqual('Hello Julie!');
+    it('checks user login', function () {
+        ezdictIndex.loginButton.click();
+        ezdictIndex.setLogin('test@test.test' + timestamp);
+        ezdictIndex.setLoginPassword('test' + timestamp);
+        ezdictIndex.completeLoginButton.click();
+        ptor.sleep(SLEEP_TIMEOUT);
+        expect(ptor.getCurrentUrl()).toContain('/home');
+        ptor.manage().deleteAllCookies();
     });
 });
