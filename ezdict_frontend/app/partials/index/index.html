@@ -95,7 +95,7 @@
             <h2>Создание аккаунта</h2>
             <!--<p>Электронный адрес</p>-->
             <div class="input-wrapper">
-                <input class="gradient reg-form reg-valid-ok" type="text" value="" ng-model="user.email"
+                <input class="gradient reg-form" ng-class="inputValidityClass('email')" type="text" value="" ng-model="user.email"
                        placeholder="E-mail" ng-keyup="registerOnEnter($event)">
 
                 <div class="input-error right-side" ng-show="user.hasErrors('email')">
@@ -104,7 +104,7 @@
             </div>
             <!--<p>Имя пользователя</p>-->
             <div class="input-wrapper">
-                <input class="gradient reg-form reg-valid-error" type="text" value="" ng-model="user.nickname"
+                <input class="gradient reg-form" ng-class="inputValidityClass('nickname')" type="text" value="" ng-model="user.nickname"
                        placeholder="Имя пользователя" ng-keyup="registerOnEnter($event)">
 
                 <div class="input-error left-side" ng-show="user.hasErrors('nickname')">
@@ -113,7 +113,7 @@
             </div>
             <!--<p>Пароль</p>-->
             <div class="input-wrapper">
-                <input class="gradient reg-form" type="password" value="" ng-model="password" placeholder="Пароль"
+                <input class="gradient reg-form" ng-class="inputValidityClass('password')" type="password" value="" ng-model="password" placeholder="Пароль"
                        ng-keyup="registerOnEnter($event)">
 
                 <div class="input-error right-side" ng-show="user.hasErrors('password')">

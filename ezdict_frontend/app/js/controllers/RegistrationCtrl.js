@@ -7,12 +7,16 @@ define(['./module'], function (controllers) {
                 toaster.popSaved();
                 $scope.user = new User();
                 $scope.password = null;
+                $scope.registerButtonDisabled = false;
+                $scope.triedToRegister = false;
 
                 /**
                  * this is called when register button is clicked
                  */
                 $scope.register = function () {
                     $scope.registerButtonDisabled = true;
+                    $scope.triedToRegister = true;
+
                     $scope.user.password = $scope.password;
                     $scope.user.$save(function (user, responseHeaders) {
                         User.login({}, {'username': $scope.user.email, 'password': $scope.password},
@@ -32,6 +36,20 @@ define(['./module'], function (controllers) {
                 $scope.registerOnEnter = function ($event) {
                     if ($event.keyCode === constants.ENTER_KEYCODE) {
                         $scope.register();
+                    }
+                };
+
+                /**
+                 * @param fieldname
+                 * @returns {string}
+                 */
+                $scope.inputValidityClass = function (fieldname) {
+                    if ($scope.triedToRegister) {
+                        if ($scope.user.hasErrors(fieldname)) {
+                            return 'reg-valid-error';
+                        } else {
+                            return 'reg-valid-ok';
+                        }
                     }
                 }
             }]);

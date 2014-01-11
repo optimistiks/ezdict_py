@@ -11,18 +11,21 @@ define(['./module'], function (controllers) {
                   */
                  $scope.loginData = {};
 
+                 $scope.loginError = false;
+
                  /**
                   * this is called on login button click
                   */
                  $scope.login = function () {
                      $scope.loginButtonDisabled = true;
+                     $scope.loginError = false;
                      User.login({}, $scope.loginData,
                          function (user, responseHeaders) {
                              $window.location.href = constants.DASHBOARD_PATHNAME;
                          },
                          function (httpResponse) {
-                            toaster.pop('error', 'Ошибка', httpResponse.data.detail);
-                            $scope.loginButtonDisabled = false;
+                             $scope.loginError = true;
+                             $scope.loginButtonDisabled = false;
                          }
                      );
                  }

@@ -22,7 +22,7 @@
             <input type="password" name="password" placeholder="Пароль" ng-model="loginData.password"
                    ng-keyup="loginOnEnter($event)"/>
 
-            <p class="login-error">Неверный логин или пароль.</p>
+            <p class="login-error" ng-show="loginError">Неверный логин или пароль.</p>
             <button class="gradient" type="button" ng-click="login()" ng-disabled="loginButtonDisabled">Вход</button>
             <a href="#">Восстановить пароль</a>
             <label><input type="checkbox"/> Запомнить меня</label>
