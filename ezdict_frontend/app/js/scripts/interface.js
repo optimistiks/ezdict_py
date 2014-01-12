@@ -50,25 +50,6 @@ $(document).ready(function () {
         }
     });
 
-    $(function(){
-    // скролл активного стикера
-        $('.active-sticker-cont').slimScroll({
-            height: '220px',
-            railVisible: true,
-            distance: '5px',
-            color: '#1B3F32'
-
-        });
-    // скролл  стикера на доске
-        $('.desk-sticker-content').slimScroll({
-            height: '280px',
-            railVisible: true,
-            distance: '5px',
-            color: '#1B3F32'
-
-        });
-
-    });
 //    код для расширения общего поля при закрытии всех виджетов(на данный момент 1 виджет))
     $(document).on('click', '#rw-close-btn', function(){
         $.when(

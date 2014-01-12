@@ -4,6 +4,7 @@ module.exports = function (config) {
 
         files: [
             'app/js/vendor/jquery-1.9.0.min.js',
+            'app/js/vendor/jquery.slimscroll.min.js',
 
             {pattern: 'app/lib/**/*.js', included: false},
             {pattern: 'app/js/**/*.js', included: false},

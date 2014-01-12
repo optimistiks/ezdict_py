@@ -1,1 +1,3 @@
-define(['./module'], function () {});
+define([
+    './SlimScroll'
+], function () {});
