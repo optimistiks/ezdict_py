@@ -7,21 +7,14 @@ describe('dashboard page', function () {
         ptor = protractor.getInstance(),
         SLEEP_TIMEOUT = 4000;
 
-    ezdictIndex = new EzdictIndex();
-    ezdictIndex.get();
-    ezdictIndex.loginButton.click();
-    ezdictIndex.setLogin('protractor@protractor.com');
-    ezdictIndex.setLoginPassword('protractor');
-    ezdictIndex.completeLoginButton.click();
-    ptor.sleep(SLEEP_TIMEOUT);
-
-    beforeEach(function () {
+    it('checks user logout', function () {
+        ezdictIndex = new EzdictIndex();
+        ezdictIndex.get();
+        ezdictIndex.login();
+        ptor.sleep(SLEEP_TIMEOUT);
         ezdictDashboard = new EzdictDashboard();
         ezdictDashboard.get();
         ptor.driver.executeScript('$.fx.off = true;');
-    });
-
-    it('checks user logout', function () {
         ezdictDashboard.logoutButton.click();
         ptor.sleep(SLEEP_TIMEOUT);
         expect(ptor.getCurrentUrl()).not.toContain('/home');

@@ -36,4 +36,11 @@ module.exports = function () {
     this.setLoginPassword = function (value) {
         this.loginPasswordInput.sendKeys(value);
     }
+
+    this.login = function () {
+        this.loginButton.click();
+        this.setLogin('protractor@protractor.com');
+        this.setLoginPassword('protractor');
+        this.completeLoginButton.click();
+    }
 };

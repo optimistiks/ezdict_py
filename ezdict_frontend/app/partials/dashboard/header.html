@@ -16,9 +16,9 @@
             </div>
             <div class="search-wrapper gradient">
                 <form>
-                    <div class="search-div">
-                        <input class="content-search" type="text" placeholder="Искать материалы">
-                        <button class="search-button" type="button">Поиск</button>
+                    <div class="search-div" ng-controller="SearchCtrl">
+                        <input class="content-search" type="text" placeholder="Искать материалы" ng-model="query" ng-keyup="searchOnEnter($event)">
+                        <button class="search-button" type="button" ng-click="search()">Поиск</button>
                     </div>
                 </form>
             </div>
