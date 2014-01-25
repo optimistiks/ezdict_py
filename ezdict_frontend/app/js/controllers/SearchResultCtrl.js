@@ -2,14 +2,13 @@ define(['./module'], function (controllers) {
     'use strict';
     controllers.
 
-        controller('SearchResultCtrl', ['$scope', function ($scope) {
+        controller('SearchResultCtrl', ['$scope', '$stateParams', 'Text', function ($scope, $stateParams, Text) {
             $scope.textSearchResult = null;
 
-            /**
-             * listens to content search result broadcast
-             */
-            $scope.$on('searchResult', function (event, result) {
-                $scope.textSearchResult = result;
-            });
+            if ($stateParams.query) {
+                Text.query({query: $stateParams.query}, function (texts, responseHeaders) {
+                    $scope.textSearchResult = texts;
+                });
+            }
         }]);
 });

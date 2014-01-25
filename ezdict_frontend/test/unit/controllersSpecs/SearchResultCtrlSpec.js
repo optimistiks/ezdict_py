@@ -3,7 +3,7 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
 
     describe('SearchResultCtrlSpec', function () {
 
-        var $httpBackend, $scope, ctrl, Text, $window, $rootScope;
+        var $httpBackend, $scope, ctrl, Text, $window, $rootScope, $stateParams;
 
         beforeEach(function () {
             /**
@@ -14,28 +14,27 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
             module(function ($provide) {
                 // We are defining the new $window
                 $window = {location: {}};
+                $stateParams = {query: 'testagain'};
 
                 // this $window will be used when injected in our controller
                 $provide.constant('$window', $window);
+                $provide.constant('$stateParams', $stateParams);
             });
 
             inject(function (_$httpBackend_, _$rootScope_, $controller, _Text_) {
                 $httpBackend = _$httpBackend_;
                 $scope = _$rootScope_.$new();
+                $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(200, {id: 1});
+                $httpBackend.when('GET', '/api/texts.json?query=testagain').respond(200, [{id: 1}, {id:2}]);
                 ctrl = $controller('SearchResultCtrl', {$scope: $scope});
                 $rootScope = _$rootScope_;
                 Text = _Text_;
             })
         });
 
-        it('should test controller instantiation', function () {
-            expect($scope.textSearchResult).toBeNull();
-        });
-
-        it('should test if controller scope listens to searchResult event', function () {
-            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(200, {id: 1});
-            $rootScope.$broadcast('searchResult', 'testValue');
-            expect($scope.textSearchResult).toEqual('testValue')
+        it('should test if controller loads texts', function () {
+            $httpBackend.flush();
+            expect($scope.textSearchResult.length).toEqual(2)
         });
     })
 });

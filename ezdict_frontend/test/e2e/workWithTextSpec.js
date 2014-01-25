@@ -22,11 +22,12 @@ describe('dashboard page', function () {
         ptor.driver.executeScript('$.fx.off = true;');
     });
 
-    it('tests content search', function () {
+    it('tests text opening', function () {
         ezdictDashboard.setSearchQuery('testagain');
         ezdictDashboard.searchButton.click();
-        expect(element(by.repeater('text in textSearchResult').row(0).column('title')).getText()).toEqual('testagain');
-        expect(element(by.repeater('text in textSearchResult').row(1).column('title')).getText()).toEqual('testagain');
+        element(by.repeater('text in textSearchResult').row(0).column('title')).click();
+        expect(element(by.css('[data-test-id="textHeader"]')).getText()).toEqual('testagain');
+        expect(element(by.css('[data-test-id="textBody"]')).getText()).toBeDefined();
     });
 
     afterEach(function () {

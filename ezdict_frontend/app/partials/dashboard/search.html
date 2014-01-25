@@ -1,4 +1,4 @@
-<div class="second-col" ng-controller="SearchResultCtrl">
+<div class="second-col">
     <div class="mid-col gen-col-style gradient">
         <div class="content-field">
             <!--Результаты поиска, материалы-->
@@ -43,7 +43,7 @@
                     <div ng-show="textSearchResult && !textSearchResult.length">Ничего не найдено</div>
                     <ul>
                         <li ng-repeat="text in textSearchResult">
-                            <a href="#">{{ text.title }}</a> Источник: {{ text.source }}
+                            <a ui-sref='dashboard.layout.default.workon.text({id: text.id})'>{{ text.title }}</a> Источник: {{ text.source }}
                         </li>
                     </ul>
                 </div>

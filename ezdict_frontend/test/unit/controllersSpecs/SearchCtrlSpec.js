@@ -3,7 +3,7 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
 
     describe('SearchCtrlSpec', function () {
 
-        var $httpBackend, $scope, ctrl, Text, $window;
+        var $httpBackend, $scope, ctrl, $state, $window;
 
         beforeEach(function () {
             /**
@@ -19,11 +19,11 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
                 $provide.constant('$window', $window);
             });
 
-            inject(function (_$httpBackend_, $rootScope, $controller, _Text_) {
+            inject(function (_$httpBackend_, $rootScope, $controller, _$state_) {
                 $httpBackend = _$httpBackend_;
                 $scope = $rootScope.$new();
                 ctrl = $controller('SearchCtrl', {$scope: $scope});
-                Text = _Text_;
+                $state = _$state_;
             })
         });
 
@@ -35,13 +35,10 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
 
         it('should test text search and result broadcasting', function () {
             $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(200, {id: 1});
-            $httpBackend.when('GET', '/api/texts.json?query=test').respond(200, [{id: 1}]);
-
-            $scope.query = 'test';
-            spyOn(Text, 'broadcastSearchResult');
+            spyOn($state, 'go');
             $scope.search();
             $httpBackend.flush();
-            expect(Text.broadcastSearchResult).toHaveBeenCalled();
+            expect($state.go).toHaveBeenCalled();
         });
     })
 });

@@ -5,6 +5,7 @@ define(['app'], function (app) {
             'API_URL': '/api',
             'API_FORMAT': '.json',
             'DASHBOARD_PATHNAME': '/home',
+            'ROOT_STATE': 'dashboard.layout.default',
             'ENTER_KEYCODE': 13
         });
 });

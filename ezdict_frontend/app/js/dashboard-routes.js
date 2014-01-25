@@ -1,8 +1,8 @@
 define(['app'], function (app) {
     'use strict';
-    return app.config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+    return app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, constants) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise(constants.DASHBOARD_PATHNAME + '/search');
         $stateProvider.
             state('dashboard', {
                 abstract: true,
@@ -14,9 +14,8 @@ define(['app'], function (app) {
                 url: '',
                 templateUrl: '/partials/dashboard/dashboard-layout.html'
             }).
-            state('dashboard.layout.default', {
-                abstract: true,
-                url: '',
+            state(constants.ROOT_STATE, {
+                url: constants.DASHBOARD_PATHNAME,
                 views: {
                     'header': {
                         templateUrl: '/partials/dashboard/header.html'
@@ -32,13 +31,28 @@ define(['app'], function (app) {
                     }
                 }
             }).
-            state('dashboard.layout.default.search', {
-                url: '/home',
+            state(constants.ROOT_STATE + '.search', {
+                url: '/search?query',
                 views: {
                     'main@dashboard.layout': {
-                        templateUrl: '/partials/dashboard/search.html'
+                        templateUrl: '/partials/dashboard/search.html',
+                        controller: 'SearchResultCtrl'
                     }
                 }
+            }).
+            state(constants.ROOT_STATE + '.workon', {
+                abstract: true,
+                url: '',
+                views: {
+                    'main@dashboard.layout': {
+                        templateUrl: '/partials/dashboard/workon-layout.html'
+                    }
+                }
+            }).
+            state(constants.ROOT_STATE + '.workon.text', {
+                url: '/workon/text/:id',
+                templateUrl: '/partials/dashboard/workon-text.html',
+                controller: 'WorkonTextCtrl'
             });
     })
 });
