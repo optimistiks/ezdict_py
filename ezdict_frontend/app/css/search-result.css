@@ -130,7 +130,7 @@
 }
 
 /* line 117, ../sass/search-result.scss */
-.mus > button:hover {
+.mus > button:hover, .mus > button.active {
   transition: text-shadow 0.5s;
   -webkit-transition: text-shadow 0.3s;
   text-shadow: 0 0 30px #000000;
@@ -138,13 +138,13 @@
 }
 
 /* line 124, ../sass/search-result.scss */
-.txt > button:hover {
+.txt > button:hover, .txt > button.active {
   text-shadow: 0 0 30px #000000;
   background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/txt-img.png") no-repeat 8px 9px;
 }
 
 /* line 130, ../sass/search-result.scss */
-.vid > button:hover {
+.vid > button:hover, .vid > button.active {
   text-shadow: 0 0 30px #000000;
   background: url("../img/hov-stripe.png") no-repeat 0 30px, url("../img/vid-img.png") no-repeat 4px 9px;
 }

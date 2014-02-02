@@ -32,7 +32,7 @@ define(['app'], function (app) {
                 }
             }).
             state(constants.ROOT_STATE + '.search', {
-                url: '/search?query',
+                url: '/search?query&type',
                 views: {
                     'main@dashboard.layout': {
                         templateUrl: '/partials/dashboard/search.html',

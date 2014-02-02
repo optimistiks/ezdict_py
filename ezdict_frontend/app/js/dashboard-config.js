@@ -7,30 +7,41 @@ define(['app'], function (app) {
             $httpProvider.defaults.xsrfCookieName = 'csrftoken';
             $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
         }]).
-        run(['$rootScope', '$state' , 'User', 'constants', function ($rootScope, $state, User, constants) {
+        run(['$rootScope', '$state' , 'User', 'constants', '$log',
+            function ($rootScope, $state, User, constants, $log) {
 
-            /**
-             * current application user
-             * @type {User}
-             */
-            $rootScope.user = new User();
+                /**
+                 * current application user
+                 * @type {User}
+                 */
+                $rootScope.user = new User();
 
-            /**
-             * on state change, if there is no user in rootScope, cancel change, then check authentication,
-             * if it's ok, continue to target state, otherwise it will be redirected to index (interceptor handles that)
-             */
-            $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                if (toState.name === constants.ROOT_STATE) {
-                    event.preventDefault();
-                    $state.go(constants.ROOT_STATE + '.search');
-                }
+                /**
+                 * on state change, if there is no user in rootScope, cancel change, then check authentication,
+                 * if it's ok, continue to target state, otherwise it will be redirected to index (interceptor handles that)
+                 */
+                $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+                    $log.log('$stateChangeStart event, changing from: ', fromState, fromParams);
+                    $log.log('$stateChangeStart event, changing to: ', toState, toParams);
 
-                if (!$rootScope.user.id) {
-                    event.preventDefault();
-                    $rootScope.user.$isAuthenticated(function (user, responseHeaders) {
-                        $state.go(toState.name, toParams);
-                    });
-                }
-            })
-        }]);
+                    /**
+                     * navigate to the search state by default
+                     */
+                    if (toState.name === constants.ROOT_STATE) {
+                        event.preventDefault();
+                        $state.go(constants.ROOT_STATE + '.search');
+                    }
+
+                    /**
+                     * check auth on every state change
+                     */
+                    if (!$rootScope.user.id) {
+                        $log.log('$stateChangeStart event, no user id in rootScope');
+                        event.preventDefault();
+                        $rootScope.user.$isAuthenticated(function (user, responseHeaders) {
+                            $state.go(toState.name, toParams);
+                        });
+                    }
+                })
+            }]);
 });

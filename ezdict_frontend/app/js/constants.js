@@ -6,6 +6,9 @@ define(['app'], function (app) {
             'API_FORMAT': '.json',
             'DASHBOARD_PATHNAME': '/home',
             'ROOT_STATE': 'dashboard.layout.default',
-            'ENTER_KEYCODE': 13
+            'ENTER_KEYCODE': 13,
+            'TYPE_VIDEO': 'video',
+            'TYPE_TEXT': 'text',
+            'TYPE_MUSIC': 'music'
         });
 });

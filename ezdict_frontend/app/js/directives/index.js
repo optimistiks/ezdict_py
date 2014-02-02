@@ -1,3 +1,4 @@
 define([
-    './SlimScroll'
+    './SlimScroll',
+    './EzContentSwitch'
 ], function () {});
