@@ -1,1 +1,9 @@
-<div></div>
+<div>
+    <div ng-controller="AddTextCtrl" ng-show="type === constants.TYPE_TEXT">
+        <button ng-click="save()">Сохранить</button>
+
+        <input type="text" ng-model="text.title" placeholder="Название">
+        <input type="text" ng-model="text.source" placeholder="Источник">
+        <textarea ckeditor="ckEditorOptions" ng-model="text.text"></textarea>
+    </div>
+</div>

@@ -18,7 +18,9 @@ require.config({
         'angular-resource': '../lib/angular/angular-resource',
         'angular-mock': '../../test/lib/angular/angular-mocks',
         'ngProgress': '../lib/ngProgress/ngProgress.min',
-        'toaster': '../lib/toastr/toaster'
+        'toaster': '../lib/toastr/toaster',
+        'ngCkeditor': '../lib/ngCkeditor/ng-ckeditor',
+        'ckeditor': '../lib/ngCkeditor/libs/ckeditor/ckeditor'
     },
 
     // angular does not support AMD out of the box, put it in a shim
@@ -29,7 +31,7 @@ require.config({
         'angular-animate': {
             deps: ['angular']
         },
-        'angular-ui-router':{
+        'angular-ui-router': {
             deps: ['angular']
         },
         'angular-resource': {
@@ -40,6 +42,12 @@ require.config({
         },
         'ngProgress': {
             deps: ['angular']
+        },
+        'ckeditor': {
+            exports: 'CKEDITOR'
+        },
+        'ngCkeditor': {
+            deps: ['angular', 'ckeditor']
         }
     },
 

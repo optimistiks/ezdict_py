@@ -16,7 +16,7 @@ define(['app', 'constants', 'angular-mock'], function () {
              */
             module(function ($provide) {
                 // We are defining the new $window
-                $window = {location: {}};
+                $window = {location: {}, angular: angular};
 
                 // this $window will be used when injected in our controller
                 $provide.constant('$window', $window);

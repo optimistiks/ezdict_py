@@ -15,7 +15,7 @@ define(['app', 'constants', 'angular-mock'], function () {
              * mock the $window module
              */
             module(function ($provide) {
-                $window = {location: {}};
+                $window = {location: {}, angular: angular};
                 $provide.constant('$window', $window);
             });
         });

@@ -4,15 +4,21 @@
             <!--Результаты поиска, материалы-->
             <div class="lside-menu" ng-controller="LeftMenuCtrl">
                 <div class="lside-buttons">
-                    <button type="button" ng-click="goToSearch()" ng-class="{active: currentStateIsSearch()}">Результаты поиска</button>
+                    <button type="button" ng-click="goToSearch()" ng-class="{active: currentStateIsSearch()}">Результаты
+                        поиска
+                    </button>
                     <button type="button">Категории</button>
                     <button type="button">Популярное</button>
                     <button type="button">Новинки</button>
-                    <button type="button" ng-click="goToAddMaterials()" ng-class="{active: currentStateIsAdd()}">Добавить материалы</button>
+                    <button type="button" ng-click="goToAddMaterials()" ng-class="{active: currentStateIsAdd()}">
+                        Добавить материалы
+                    </button>
                 </div>
             </div>
             <div class="rside">
                 <div ezcontentswitch></div>
+                <div class="blue-stripe gradient"></div>
+
                 <div ui-view="inner-main"></div>
             </div>
             <!--результаты поиска, материалы-->

@@ -1,4 +1,4 @@
-define(['angular', 'toaster'], function (ng) {
+define(['angular', 'toaster', 'ngCkeditor'], function (ng) {
      'use strict';
-     return ng.module('ezdict.controllers', ['toaster']);
+     return ng.module('ezdict.controllers', ['toaster', 'ngCkeditor']);
  });
