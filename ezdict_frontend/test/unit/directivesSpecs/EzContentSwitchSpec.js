@@ -35,7 +35,7 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
                 transitionTo: function () {
                 }
             };
-            $stateParams = {type: 'text'};
+            $stateParams = {typeOfContent: 'text'};
             $provide.constant('$state', $state);
             $provide.constant('$stateParams', $stateParams);
         }));
@@ -68,15 +68,6 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
             var $scope = element.isolateScope();
             spyOn($state, 'transitionTo');
             $scope.changeType();
-            expect($state.transitionTo).toHaveBeenCalled();
-        });
-
-        it('tests auto transition if no type parameter exists in state', function () {
-            $stateParams = {type: ''};
-            $provide.constant('$stateParams', $stateParams);
-            spyOn($state, 'transitionTo');
-            $compile('<div ezcontentswitch></div>')($rootScope);
-            $rootScope.$digest();
             expect($state.transitionTo).toHaveBeenCalled();
         });
     });

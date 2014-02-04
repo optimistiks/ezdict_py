@@ -32,11 +32,10 @@ define(['app'], function (app) {
                 }
             }).
             state(constants.ROOT_STATE + '.search', {
-                url: '/search?query&type',
+                url: '/search?query&typeOfContent',
                 views: {
                     'main@dashboard.layout': {
-                        templateUrl: '/partials/dashboard/search.html',
-                        controller: 'SearchResultCtrl'
+                        templateUrl: '/partials/dashboard/search.html'
                     }
                 }
             }).
@@ -51,8 +50,7 @@ define(['app'], function (app) {
             }).
             state(constants.ROOT_STATE + '.workon.text', {
                 url: '/workon/text/:id',
-                templateUrl: '/partials/dashboard/workon-text.html',
-                controller: 'WorkonTextCtrl'
+                templateUrl: '/partials/dashboard/workon-text.html'
             });
     })
 });

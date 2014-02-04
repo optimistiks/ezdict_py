@@ -11,20 +11,14 @@ define(['./module'], function (directives) {
                         $scope.TYPE_VIDEO = constants.TYPE_VIDEO;
                         $scope.TYPE_MUSIC = constants.TYPE_MUSIC;
 
-                        if (!$stateParams.type) {
-                            $state.transitionTo($state.current, {type: $scope.TYPE_TEXT}, {
-                                inherit: true
-                            });
-                        }
-
-                        $scope.changeType = function (type) {
-                            $state.transitionTo($state.current, {type: type}, {
+                        $scope.changeType = function (typeOfContent) {
+                            $state.transitionTo($state.current, {typeOfContent: typeOfContent}, {
                                 inherit: true
                             });
                         };
 
-                        $scope.getIsActive = function (type) {
-                            return type === $stateParams.type;
+                        $scope.getIsActive = function (typeOfContent) {
+                            return typeOfContent === $stateParams.typeOfContent;
                         }
                     }
                 }

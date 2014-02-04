@@ -21,13 +21,16 @@ define(['app'], function (app) {
                  * if it's ok, continue to target state, otherwise it will be redirected to index (interceptor handles that)
                  */
                 $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                    $log.log('$stateChangeStart event, changing from: ', fromState, fromParams);
-                    $log.log('$stateChangeStart event, changing to: ', toState, toParams);
+                    $log.log('$stateChangeStart event start');
+
+                    $log.log('changing from: ', fromState, fromParams);
+                    $log.log('changing to: ', toState, toParams);
 
                     /**
                      * navigate to the search state by default
                      */
                     if (toState.name === constants.ROOT_STATE) {
+                        $log.log('redirecting from default to search');
                         event.preventDefault();
                         $state.go(constants.ROOT_STATE + '.search');
                     }
@@ -36,12 +39,21 @@ define(['app'], function (app) {
                      * check auth on every state change
                      */
                     if (!$rootScope.user.id) {
-                        $log.log('$stateChangeStart event, no user id in rootScope');
+                        $log.log('no user id in rootScope');
                         event.preventDefault();
                         $rootScope.user.$isAuthenticated(function (user, responseHeaders) {
                             $state.go(toState.name, toParams);
                         });
                     }
+
+                    /**
+                     * set default typeOfContent parameter
+                     */
+                    if (!toParams.typeOfContent) {
+                       toParams.typeOfContent = constants.TYPE_TEXT;
+                    }
+
+                    $log.log('$stateChangeStart event end');
                 })
             }]);
 });

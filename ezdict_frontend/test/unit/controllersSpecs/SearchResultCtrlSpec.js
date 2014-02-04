@@ -14,7 +14,7 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
             module(function ($provide) {
                 // We are defining the new $window
                 $window = {location: {}};
-                $stateParams = {query: 'testagain', type: 'text'};
+                $stateParams = {query: 'testagain', typeOfContent: 'text'};
 
                 // this $window will be used when injected in our controller
                 $provide.constant('$window', $window);
