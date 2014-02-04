@@ -50,7 +50,7 @@ define(['app'], function (app) {
                      * set default typeOfContent parameter
                      */
                     if (!toParams.typeOfContent) {
-                       toParams.typeOfContent = constants.TYPE_TEXT;
+                        toParams.typeOfContent = fromParams.typeOfContent || constants.TYPE_TEXT;
                     }
 
                     $log.log('$stateChangeStart event end');

@@ -1,42 +1,26 @@
-<div class="second-col" ng-controller="SearchResultCtrl">
-    <div class="mid-col gen-col-style gradient">
-        <div class="content-field">
-            <!--Результаты поиска, материалы-->
-            <div class="lside-menu">
-                <div class="lside-buttons">
-                    <button type="button">Результаты поиска</button>
-                    <button type="button">Категории</button>
-                    <button type="button">Популярное</button>
-                    <button type="button">Новинки</button>
-                </div>
+<div ng-controller="SearchResultCtrl">
+    <div class="gradient-stripe gradient"></div>
+    <div class="top-content-buttons">
+        <div class="blue-stripe gradient"></div>
+        <div class="sorting-buttons gradient">
+            <div class="diff-wrapper">
+                <button type="button">Сложность</button>
             </div>
-            <div class="rside">
-                <div class="gradient-stripe gradient"></div>
-                <div class="top-content-buttons">
-                    <div ezcontentswitch></div>
-                    <div class="blue-stripe gradient"></div>
-                    <div class="sorting-buttons gradient">
-                        <div class="diff-wrapper">
-                            <button type="button">Сложность</button>
-                        </div>
-                        <div class="dur-wrapper">
-                            <button type="button">Длительность</button>
-                        </div>
-                        <div class="name-wrapper">
-                            <button type="button">Имя</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="content">
-                    <div ng-show="textSearchResult && !textSearchResult.length">Ничего не найдено</div>
-                    <ul>
-                        <li ng-repeat="text in textSearchResult">
-                            <a ui-sref='dashboard.layout.default.workon.text({id: text.id})'>{{ text.title }}</a> Источник: {{ text.source }}
-                        </li>
-                    </ul>
-                </div>
+            <div class="dur-wrapper">
+                <button type="button">Длительность</button>
             </div>
-            <!--результаты поиска, материалы-->
+            <div class="name-wrapper">
+                <button type="button">Имя</button>
+            </div>
         </div>
+    </div>
+    <div class="content">
+        <div ng-show="textSearchResult && !textSearchResult.length">Ничего не найдено</div>
+        <ul>
+            <li ng-repeat="text in textSearchResult">
+                <a ui-sref='dashboard.layout.default.workon.text({id: text.id})'>{{ text.title }}</a>
+                Источник: {{ text.source }}
+            </li>
+        </ul>
     </div>
 </div>

@@ -28,13 +28,16 @@ define(['app'], function (app) {
                     },
                     'footer': {
                         templateUrl: '/partials/dashboard/ticket-panel.html'
+                    },
+                    'main': {
+                        templateUrl: '/partials/dashboard/inner-layout.html'
                     }
                 }
             }).
             state(constants.ROOT_STATE + '.search', {
                 url: '/search?query&typeOfContent',
                 views: {
-                    'main@dashboard.layout': {
+                    'inner-main@dashboard.layout.default': {
                         templateUrl: '/partials/dashboard/search.html'
                     }
                 }
@@ -51,6 +54,14 @@ define(['app'], function (app) {
             state(constants.ROOT_STATE + '.workon.text', {
                 url: '/workon/text/:id',
                 templateUrl: '/partials/dashboard/workon-text.html'
+            }).
+            state(constants.ROOT_STATE + '.add', {
+                url: '/add/:typeOfContent',
+                views: {
+                    'inner-main@dashboard.layout.default': {
+                        templateUrl: '/partials/dashboard/add-content.html'
+                    }
+                }
             });
     })
 });

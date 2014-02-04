@@ -243,7 +243,7 @@
 }
 
 /* line 227, ../sass/search-result.scss */
-.lside-buttons > button:hover {
+.lside-buttons > button:hover, .lside-buttons > button.active {
   background: #9aa5ac;
   color: #000;
 }

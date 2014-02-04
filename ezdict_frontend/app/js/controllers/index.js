@@ -5,4 +5,5 @@ define([
      './SearchCtrl',
      './SearchResultCtrl',
      './WorkonTextCtrl',
+     './LeftMenuCtrl',
 ], function () {});
