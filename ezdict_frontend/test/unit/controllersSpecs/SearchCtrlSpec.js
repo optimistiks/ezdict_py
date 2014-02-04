@@ -1,9 +1,9 @@
-define(['dashboard-bootstrap', 'angular-mock'], function () {
+define(['app', 'constants', 'angular-mock'], function () {
     'use strict';
 
     describe('SearchCtrlSpec', function () {
 
-        var $httpBackend, $scope, ctrl, $state, $window;
+        var $scope, ctrl, $state;
 
         beforeEach(function () {
             /**
@@ -11,16 +11,7 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
              */
             module('ezdict');
 
-            module(function ($provide) {
-                // We are defining the new $window
-                $window = {location: {}};
-
-                // this $window will be used when injected in our controller
-                $provide.constant('$window', $window);
-            });
-
-            inject(function (_$httpBackend_, $rootScope, $controller, _$state_) {
-                $httpBackend = _$httpBackend_;
+            inject(function ($rootScope, $controller, _$state_) {
                 $scope = $rootScope.$new();
                 ctrl = $controller('SearchCtrl', {$scope: $scope});
                 $state = _$state_;
@@ -28,16 +19,14 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
         });
 
         it('should test controller instantiation', function () {
-            expect($scope.query).toBeDefined();
             expect($scope.search).toBeDefined();
             expect($scope.searchOnEnter).toBeDefined();
         });
 
-        it('should test text search and result broadcasting', function () {
-            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(200, {id: 1});
+        it('should test state change on search', function () {
+            $scope.query = 'test';
             spyOn($state, 'go');
             $scope.search();
-            $httpBackend.flush();
             expect($state.go).toHaveBeenCalled();
         });
     })

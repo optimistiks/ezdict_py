@@ -1,25 +1,14 @@
-define(['dashboard-bootstrap', 'angular-mock'], function () {
+define(['app', 'constants', 'angular-mock'], function () {
     'use strict';
 
     describe('ezcontentswitch directive test', function () {
         var $compile,
             $rootScope,
-            $httpBackend,
-
-            /**
-             * fake state parameters
-             */
-            $stateParams,
 
             /**
              * a fake state object for listening to transitionTo calls
              */
-            $state,
-
-            /**
-             * provider instance for mocking objects in specific tests
-             */
-            $provide;
+                $state;
 
         /**
          * load app before each test
@@ -29,22 +18,17 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
         /**
          * provide fake state and fake state parameters before each test
          */
-        beforeEach(module(function (_$provide_) {
-            $provide = _$provide_;
+        beforeEach(module(function ($provide) {
             $state = {
                 transitionTo: function () {
                 }
             };
-            $stateParams = {typeOfContent: 'text'};
             $provide.constant('$state', $state);
-            $provide.constant('$stateParams', $stateParams);
         }));
 
         beforeEach(inject(function (_$compile_, _$rootScope_, _$httpBackend_, $templateCache) {
             $compile = _$compile_;
             $rootScope = _$rootScope_;
-            $httpBackend = _$httpBackend_;
-            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(200, {id: 1});
             $templateCache.put('/partials/dashboard/ez-content-switch.html', '<div>123</div>');
         }));
 

@@ -1,9 +1,9 @@
-define(['dashboard-bootstrap', 'angular-mock'], function () {
+define(['app', 'constants', 'angular-mock'], function () {
     'use strict';
 
     describe('DashboardInterceptor', function () {
 
-        var $window, $httpBackend;
+        var $window;
 
         beforeEach(function () {
             /**
@@ -15,16 +15,9 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
              * mock the $window module
              */
             module(function ($provide) {
-                // We are defining the new $window
                 $window = {location: {}};
-
-                // this $window will be used when injected in our controller
                 $provide.constant('$window', $window);
             });
-
-            inject(function (_$httpBackend_) {
-                $httpBackend = _$httpBackend_;
-            })
         });
 
         it('should test redirection on 403 error', inject(['DashboardInterceptor', function (interceptor) {

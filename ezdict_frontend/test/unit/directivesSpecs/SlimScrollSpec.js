@@ -1,4 +1,4 @@
-define(['dashboard-bootstrap', 'angular-mock'], function () {
+define(['app', 'constants', 'angular-mock'], function () {
     'use strict';
 
     describe('slimscroll directive test', function () {

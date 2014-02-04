@@ -1,4 +1,4 @@
-define(['dashboard-bootstrap', 'angular-mock'], function () {
+define(['app', 'constants', 'angular-mock'], function () {
     'use strict';
 
     describe('DashboardHeaderCtrl', function () {
@@ -35,7 +35,6 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
 
         it('should successfully logout a user', function () {
             $httpBackend.when('POST', '/api/users/logout.json').respond(200);
-            $httpBackend.when('POST', '/api/users/isAuthenticated.json').respond(403);
             $window.location.href = '/home';
             $scope.logout();
             $httpBackend.flush();

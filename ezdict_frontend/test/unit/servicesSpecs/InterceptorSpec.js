@@ -1,9 +1,9 @@
-define(['bootstrap', 'angular-mock'], function () {
+define(['app', 'constants', 'angular-mock'], function () {
     'use strict';
 
     describe('Interceptor', function () {
 
-        var $window, $httpBackend, $rootScope;
+        var $rootScope;
 
         beforeEach(function () {
             /**
@@ -11,19 +11,7 @@ define(['bootstrap', 'angular-mock'], function () {
              */
             module('ezdict.services');
 
-            /**
-             * mock the $window module
-             */
-            module(function ($provide) {
-                // We are defining the new $window
-                $window = {location: {}};
-
-                // this $window will be used when injected in our controller
-                $provide.constant('$window', $window);
-            });
-
-            inject(function (_$httpBackend_, _$rootScope_) {
-                $httpBackend = _$httpBackend_;
+            inject(function (_$rootScope_) {
                 $rootScope = _$rootScope_;
             })
         });

@@ -1,9 +1,9 @@
-define(['dashboard-bootstrap', 'angular-mock'], function () {
+define(['app', 'constants', 'angular-mock'], function () {
     'use strict';
 
     describe('User', function () {
 
-        var $window, $httpBackend, user;
+        var user;
 
         beforeEach(function () {
             /**
@@ -11,19 +11,7 @@ define(['dashboard-bootstrap', 'angular-mock'], function () {
              */
             module('ezdict');
 
-            /**
-             * mock the $window module
-             */
-            module(function ($provide) {
-                // We are defining the new $window
-                $window = {location: {}};
-
-                // this $window will be used when injected in our controller
-                $provide.constant('$window', $window);
-            });
-
-            inject(['$httpBackend', 'User', function (_$httpBackend_, User) {
-                $httpBackend = _$httpBackend_;
+            inject(['User', function (User) {
                 user = new User();
             }])
         });
