@@ -1,24 +1,12 @@
-var EzdictDashboard = require('./pages/ezdictDashboard');
-var EzdictIndex = require('./pages/ezdictIndex');
+var EzdictDashboard = require('../pages/ezdictDashboard');
 
 describe('dashboard page', function () {
     var ezdictDashboard,
-        ezdictIndex,
-        ptor = protractor.getInstance(),
-        SLEEP_TIMEOUT = 4000,
-        isAuthenticated = false;
+        ptor = protractor.getInstance();
 
     beforeEach(function () {
         ezdictDashboard = new EzdictDashboard();
-        if (isAuthenticated === false) {
-            ezdictIndex = new EzdictIndex();
-            ezdictIndex.get();
-            ezdictIndex.login();
-            ptor.sleep(SLEEP_TIMEOUT);
-            isAuthenticated = true;
-        } else {
-            ezdictDashboard.get();
-        }
+        ezdictDashboard.get();
         ptor.driver.executeScript('$.fx.off = true;');
     });
 
@@ -28,9 +16,5 @@ describe('dashboard page', function () {
         element(by.repeater('text in textSearchResult').row(0).column('title')).click();
         expect(element(by.css('[data-test-id="textHeader"]')).getText()).toEqual('testagain');
         expect(element(by.css('[data-test-id="textBody"]')).getText()).toBeDefined();
-    });
-
-    afterEach(function () {
-        ptor.manage().deleteAllCookies();
     });
 });

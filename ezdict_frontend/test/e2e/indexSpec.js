@@ -13,6 +13,7 @@ describe('index page', function () {
     });
 
     it('checks user registration', function () {
+        console.log('Testing index page...');
         ezdictIndex.registerButton.click();
         ezdictIndex.setEmail('test@test.test' + timestamp);
         ezdictIndex.setNickname('test' + timestamp);

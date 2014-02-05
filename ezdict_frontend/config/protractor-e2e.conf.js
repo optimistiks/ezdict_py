@@ -11,7 +11,12 @@ exports.config = {
 
     // Spec patterns are relative to the location of the spec file. They may
     // include glob patterns.
-    specs: ['../test/e2e/*Spec.js'],
+    specs: [
+        '../test/e2e/indexSpec.js',
+        '../test/e2e/logoutSpec.js',
+        '../test/e2e/login.js',
+        '../test/e2e/dashboardSpecs/*Spec.js'
+    ],
 
     // Options to be passed to Jasmine-node.
     jasmineNodeOpts: {

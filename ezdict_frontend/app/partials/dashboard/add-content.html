@@ -1,9 +1,10 @@
 <div>
     <div ng-controller="AddTextCtrl" ng-show="type === constants.TYPE_TEXT">
-        <button ng-click="save()">Сохранить</button>
+        <button ng-click="save()" data-test-id="saveTextButton">Сохранить</button>
+        <a ui-sref="dashboard.layout.default.workon.text({id: text.id})" ng-show="text.id" data-test-id="textToWorkLink">Работать над текстом</a>
 
         <input type="text" ng-model="text.title" placeholder="Название">
         <input type="text" ng-model="text.source" placeholder="Источник">
-        <textarea ckeditor="ckEditorOptions" ng-model="text.text"></textarea>
+        <textarea ckeditor="ckEditorOptions" ng-model="text.text" id="addTextCkeditor"></textarea>
     </div>
 </div>

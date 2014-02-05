@@ -12,13 +12,17 @@ define(['./module'], function (controllers) {
                     width: 'auto'
                 };
                 $scope.save = function () {
-                    $scope.text.$save(
-                        function (text, responseHeaders) {
-                            $state.go(constants.ROOT_STATE + '.workon.text', {id: text.id});
-                        },
-                        function (httpResponse) {
-                            toaster.pop('error', 'Ошибка');
-                        });
+                    var errorCallback = function (httpResponse) {
+                        toaster.pop('error', 'Ошибка');
+                    };
+                    var successCallback = function (text, responseHeaders) {
+                        toaster.pop('success', 'Сохранено');
+                    };
+                    if ($scope.text.id) {
+                        $scope.text.$update(successCallback, errorCallback);
+                    } else {
+                        $scope.text.$save(successCallback, errorCallback);
+                    }
                 }
             }]);
 });
