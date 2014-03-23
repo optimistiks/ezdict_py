@@ -897,7 +897,7 @@ footer {
 .dict-switcher {
   position: absolute;
   margin: 0 auto;
-  width: 400px;
+  width: 500px;
   top: 0;
   left: 0;
   right: 40%;
@@ -986,7 +986,6 @@ footer {
   font-size: 1em;
   margin-right: 500px;
   color: #ffffff;
-  padding-bottom: 140px;
 }
 
 /* line 894, ../sass/interface.scss */

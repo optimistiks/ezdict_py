@@ -27,7 +27,8 @@ define(['app'], function (app) {
                         templateUrl: '/partials/dashboard/history.html'
                     },
                     'footer': {
-                        templateUrl: '/partials/dashboard/ticket-panel.html'
+                        templateUrl: '/partials/dashboard/ticket-panel.html',
+                        controller: 'PanelCtrl'
                     },
                     'main': {
                         templateUrl: '/partials/dashboard/inner-layout.html'

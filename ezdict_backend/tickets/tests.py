@@ -18,7 +18,7 @@ class TicketTests(APITestCase):
         response = self.client.post(self.ticketListUrl, self.ticketsData[0])
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['id'], 1)
-        self.assertEqual(response.data['user'], 'http://testserver/api/users/' + str(self.user.id))
+        self.assertEqual(response.data['user'], self.user.id)
         self.assertEqual(response.data['word'], self.ticketsData[0]['word'])
         self.assertEqual(response.data['tr'], self.ticketsData[0]['tr'])
         self.assertIn('text', response.data)

@@ -12,7 +12,7 @@ define(['./module', './ErrorsHandlerMixin'], function (factory, ErrorsHandlerMix
                 }
             );
 
-            Text.prototype = $window.angular.extend(Text.prototype, new ErrorsHandlerMixin());
+            Text.prototype = $window.angular.extend(Text.prototype, ErrorsHandlerMixin);
 
             return Text;
         }]);

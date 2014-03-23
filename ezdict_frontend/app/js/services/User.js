@@ -25,7 +25,7 @@ define(['./module', './ErrorsHandlerMixin'], function (factory, ErrorsHandlerMix
                     }
                 });
 
-            User.prototype = $window.angular.extend(User.prototype, new ErrorsHandlerMixin());
+            User.prototype = $window.angular.extend(User.prototype, ErrorsHandlerMixin);
 
             return User;
         }]);

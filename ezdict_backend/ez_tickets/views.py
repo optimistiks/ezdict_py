@@ -15,7 +15,7 @@ class EzTicket(APIView):
 
 class EzDictTicket(EzTicket):
 
-    def get(self, request):
+    def get(self, request, format = None):
         ydict = YandexDict(self.getWord(request))
         ticket = ydict.lookup()
         return Response(ticket)
@@ -23,7 +23,7 @@ class EzDictTicket(EzTicket):
 
 class EzTranslateTicket(EzTicket):
 
-    def get(self, request):
+    def get(self, request, format = None):
         ytrans = YandexTranslate(self.getWord(request))
         ticket = ytrans.translate()
         return Response(ticket)

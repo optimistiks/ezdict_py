@@ -4,7 +4,7 @@ from tickets.models import Ticket
 
 
 class TicketSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(view_name='myuser-detail', read_only=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
     liked = serializers.Field(source='liked')
     tr = serializers.CharField(source='transcription')
     text = serializers.CharField(widget=widgets.Textarea, source='translation')

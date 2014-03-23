@@ -3,8 +3,11 @@
         <div class="panel-wrapper gradient">
             <form>
                 <div class="words-search-div">
-                    <input class="content-search words-search" type="text" placeholder="Искать слово">
-                    <button class="search-button" type="button">Перевести</button>
+                    <input class="content-search words-search" type="text" placeholder="Искать слово"
+                           ng-model="text"
+                           enter-key="loadTicket()">
+                    <button class="search-button" type="button" ng-click="loadTicket()">Перевести
+                    </button>
                 </div>
             </form>
             <div class="bottom-interactive-buttons">
@@ -22,53 +25,53 @@
                         <button class="add-to-learn" title="Добавить в изучаемые"></button>
                     </li>
                     <li>
-                        <button class="delete-sticker" title="Удалить стикер"></button>
+                        <button class="delete-sticker" title="Удалить стикер" ng-click="deleteTicket()"></button>
                     </li>
                 </ul>
             </div>
             <div class="stickers-wrapper">
                 <div class="basket-wrapper"></div>
-                <div class="active-sticker ">
-                    <h2>Train</h2>
-                    <span>Вы искали слово</span><b> 100500 </b><span>раз</span>
+                <div class="active-sticker">
+                    <h2>{{ text }}</h2>
 
-                    <div class="active-sticker-cont" slimscroll="{height: '220px', railVisible: true, distance: '5px', color: '#1B3F32'}">
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
+                    <p>Вы искали слово <b>100500</b> раз</p>
 
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
-
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
-
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
-
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
-
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
-
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
-
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
-
-                        <p>Scroll test Scroll test Scroll test Scroll test Scroll testScroll test Scroll test Scroll
-                            test
-                            Scroll test</p>
+                    <div class="active-sticker-cont"
+                         slimscroll="{height: '220px', railVisible: true, distance: '5px', color: '#1B3F32'}">
+                        <div ng-show="ticket" ng-bind="ticket.text"></div>
+                        <div ng-show="dictTicket && !ticket">
+                            <div ng-repeat="def in dictTicket.def">
+                                <div><b>{{ def.text }} [{{ def.ts }}] </b>
+                                    <small><i>({{ def.tr[0].pos }})</i></small>
+                                </div>
+                                <ol>
+                                    <li ng-repeat="tr in def.tr">
+                                        <div>{{ tr.text }} <span
+                                                ng-repeat="syn in tr.syn">{{ ($first ? '(' : '') + syn.text + ($last ? ')' : ', ')  }}</span>
+                                        </div>
+                                        <div ng-repeat="ex in tr.ex">
+                                            <small>{{ ex.text }} - {{ ex.tr[0].text }}</small>
+                                        </div>
+                                        <div ng-show="tr.mean.length > 0">
+                                            <div><b>Синонимы:</b></div>
+                                            <ul>
+                                                <li ng-repeat="mean in tr.mean">
+                                                    <div>{{ mean.text }}</div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div ng-show="translateTicket && !ticket && !dictTicket">
+                            <div><b>Перевод:</b></div>
+                            <ul>
+                                <li ng-repeat="text in translateTicket.text"> {{ text }}</li>
+                            </ul>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -87,54 +90,28 @@
                         <div class="desk-translate">
 
                             <div class="transcription">
-                                <b>train</b>
+                                <b>{{ text }}</b>
                                 <span> - </span>
-                                <i>[trein]</i>
+                                <i>[{{ dictTicket.def[0].ts }}]</i>
                             </div>
                             <table class="tranlation-table">
                                 <tr class="table-title">
-                                    <td>
-                                        <i>Noun:</i>
-                                    </td>
-                                    <td>
-                                        <i>Verb:</i>
-                                    </td>
-                                    <td>
-                                        <i>Adjective:</i>
+                                    <td ng-repeat="def in dictTicket.def">
+                                        <i>{{ def.tr[0].pos }}</i>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td ng-repeat="def in dictTicket.def">
                                         <ul>
-                                            <li>поезд</li>
-                                            <li>состав</li>
-                                            <li>процессия</li>
-                                            <li>кортеж</li>
-                                            <li>караван</li>
-                                            <li>обоз</li>
-                                            <li>свита</li>
-                                            <li>толпа</li>
+                                            <li ng-repeat="text in dictTicket.getFlatDefTrs(def) track by $index">{{ text }}</li>
                                         </ul>
-                                    </td>
-                                    <td>
+                                        <div><b>Синонимы:</b></div>
                                         <ul>
-                                            <li>ехать поездом</li>
-                                            <li>ехать по железной дороге</li>
-                                            <li>воспитывать</li>
-                                            <li>учить</li>
-                                            <li>приучать к дисциплине</li>
-                                            <li>приучать к хорошим навыкам</li>
-                                            <li>приваживать</li>
-                                            <li>обучать</li>
-                                            <li>выучивать</li>
-                                            <li>готоваить</li>
-                                            <li>обучаться</li>
-                                            <li>готовиться</li>
+                                            <li ng-repeat="text in dictTicket.getFlatDefExs(def) track by $index">{{ text }}</li>
                                         </ul>
-                                    </td>
-                                    <td>
+                                        <div><b>Примеры:</b></div>
                                         <ul>
-                                            <li>поездатый</li>
+                                            <li ng-repeat="text in dictTicket.getFlatDefMeans(def) track by $index">{{ text }}</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -146,47 +123,12 @@
                     </div>
                     <div class="desk-sticker">
                         <span class="red-pin"></span>
-                        <b>Train</b>
+                        <b>{{ text }}</b>
                         <br>
 
-                        <div class="desk-sticker-content" slimscroll="{height: '280px', railVisible: true, distance: '5px', color: '#1B3F32'}">
-                            <li>ехать поездом</li>
-                            <li>ехать по железной дороге</li>
-                            <li>воспитывать</li>
-                            <li>учить</li>
-                            <li>приучать к дисциплине</li>
-                            <li>приучать к хорошим навыкам</li>
-                            <li>приваживать</li>
-                            <li>обучать</li>
-                            <li>выучивать</li>
-                            <li>готоваить</li>
-                            <li>обучаться</li>
-                            <li>готовиться</li>
-                            <li>ехать поездом</li>
-                            <li>ехать по железной дороге</li>
-                            <li>воспитывать</li>
-                            <li>учить</li>
-                            <li>приучать к дисциплине</li>
-                            <li>приучать к хорошим навыкам</li>
-                            <li>приваживать</li>
-                            <li>обучать</li>
-                            <li>выучивать</li>
-                            <li>готоваить</li>
-                            <li>обучаться</li>
-                            <li>готовиться</li>
-                            <li>ехать поездом</li>
-                            <li>ехать по железной дороге</li>
-                            <li>воспитывать</li>
-                            <li>учить</li>
-                            <li>приучать к дисциплине</li>
-                            <li>приучать к хорошим навыкам</li>
-                            <li>приваживать</li>
-                            <li>обучать</li>
-                            <li>выучивать</li>
-                            <li>готоваить</li>
-                            <li>обучаться</li>
-                            <li>готовиться</li>
-
+                        <div class="desk-sticker-content"
+                             slimscroll="{height: '280px', railVisible: true, distance: '5px', color: '#1B3F32'}">
+                            <div ng-show="ticket" ng-bind="ticket.text"></div>
                         </div>
                     </div>
                 </div>

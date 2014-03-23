@@ -1,4 +1,6 @@
 define([
     './SlimScroll',
-    './EzContentSwitch'
+    './EzContentSwitch',
+    './TextSelect',
+    './EnterKey',
 ], function () {});

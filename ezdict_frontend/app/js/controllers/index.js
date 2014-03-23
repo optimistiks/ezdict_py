@@ -7,4 +7,5 @@ define([
      './WorkonTextCtrl',
      './LeftMenuCtrl',
      './AddTextCtrl',
+     './PanelCtrl',
 ], function () {});

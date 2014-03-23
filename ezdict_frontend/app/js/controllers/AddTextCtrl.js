@@ -11,18 +11,20 @@ define(['./module'], function (controllers) {
                     height: '200px',
                     width: 'auto'
                 };
+
                 $scope.save = function () {
-                    var errorCallback = function (httpResponse) {
-                        toaster.pop('error', 'Ошибка');
-                    };
-                    var successCallback = function (text, responseHeaders) {
-                        toaster.pop('success', 'Сохранено');
-                    };
+                    var errorCallback = function () {
+                            toaster.pop('error', 'Ошибка');
+                        },
+                        successCallback = function () {
+                            toaster.pop('success', 'Сохранено');
+                        };
+
                     if ($scope.text.id) {
                         $scope.text.$update(successCallback, errorCallback);
                     } else {
                         $scope.text.$save(successCallback, errorCallback);
                     }
-                }
+                };
             }]);
 });

@@ -3,7 +3,7 @@ from texts.models import Text
 
 
 class TextSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(view_name='myuser-detail', read_only=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Text
@@ -11,7 +11,7 @@ class TextSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class TextListSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(view_name='myuser-detail', read_only=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Text

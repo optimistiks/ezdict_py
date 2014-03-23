@@ -1,16 +1,16 @@
 <div class="main-wrapper">
-<div ui-view="header"></div>
-<div class="content-wrapper">
-<div class="first-col">
-    <div ui-view="left-column"></div>
-</div>
+    <div ui-view="header"></div>
+    <div class="content-wrapper">
+        <div class="first-col">
+            <div ui-view="left-column"></div>
+        </div>
 
-<div class="two-col-wrapper">
-    <div class="second-col-wrapper" id="second-col-wrapper">
-        <div ui-view="main"></div>
+        <div class="two-col-wrapper">
+            <div class="second-col-wrapper" id="second-col-wrapper">
+                <div ui-view="main"></div>
+            </div>
+            <div ui-view="right-column"></div>
+        </div>
+        <div ui-view="footer"></div>
     </div>
-    <div ui-view="right-column"></div>
-</div>
-<div ui-view="footer"></div>
-</div>
 </div>
