@@ -1,7 +1,7 @@
 define(['./module'], function (controllers) {
     'use strict';
     controllers.
-        controller('PanelCtrl', ['$scope', 'TextMessages', '$q', 'Ticket', 'EzTicket', 'EventManager',
+        controller('PanelCtrl', ['$scope', 'TextMessages', '$q', 'Ticket', 'EzTicket', 'EventManager', 'TicketSearchLog',
 
             /**
              * @param $scope
@@ -10,8 +10,9 @@ define(['./module'], function (controllers) {
              * @param Ticket
              * @param EzTicket
              * @param EventManager
+             * @param TicketSearchLog
              */
-                function ($scope, messages, $q, Ticket, EzTicket, EventManager) {
+                function ($scope, messages, $q, Ticket, EzTicket, EventManager, TicketSearchLog) {
                 $scope.text = null;
                 $scope.ticket = null;
                 $scope.dictTicket = null;
@@ -25,7 +26,7 @@ define(['./module'], function (controllers) {
 
                 $scope.loadTicket = function () {
                     $scope.resetTicket();
-                    return $scope.findTicket().then(function (ticket) {
+                    var promise = $scope.findTicket().then(function (ticket) {
                         $scope.ticket = ticket;
                     }, function () {
                         return $scope.findDictTicket().then(function (ticket) {
@@ -36,6 +37,13 @@ define(['./module'], function (controllers) {
                             });
                         });
                     });
+
+                    promise.then(function (data) {
+                        $scope.logSearch();
+                        return data;
+                    });
+
+                    return promise;
                 };
 
                 $scope.findTicket = function () {
@@ -56,6 +64,12 @@ define(['./module'], function (controllers) {
                             $scope.loadTicket();
                         });
                     }
+                };
+
+                $scope.logSearch = function () {
+                    TicketSearchLog.log({word: $scope.text}, function (log) {
+                        $scope.log = log;
+                    });
                 };
 
                 EventManager.onTextSelect(function (e, text) {

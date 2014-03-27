@@ -24,6 +24,9 @@ class MyUserManager(BaseUserManager):
  
  
 class MyUser(AbstractBaseUser):
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
     email = models.EmailField(max_length=254, unique=True, db_index=True)
     nickname = models.CharField(max_length=255, unique=True, db_index=True)
  

@@ -38,6 +38,8 @@ class UsersTests(APITestCase):
         self.assertNotIn('password', response.data)
         self.assertEqual(response.data['nickname'], 'testusrname')
         self.assertEqual(response.data['email'], 'testusrname@gmail.com')
+        self.assertIn('created', response.data)
+        self.assertIn('updated', response.data)
 
     def test_user_creation_with_empty_data(self):
         response = self.client.post(self.userListUrl, {})
@@ -52,6 +54,8 @@ class UsersTests(APITestCase):
         self.assertEqual(response.data['id'], self.user.id)
         self.assertEqual(response.data['nickname'], self.user.nickname)
         self.assertEqual(response.data['email'], self.user.email)
+        self.assertIn('created', response.data)
+        self.assertIn('updated', response.data)
         self.assertIn('tickets', response.data)
 
     def test_user_login_with_empty_credentials(self):
@@ -75,6 +79,8 @@ class UsersTests(APITestCase):
         self.assertEqual(response.data['id'], self.user.id)
         self.assertEqual(response.data['nickname'], self.user.nickname)
         self.assertEqual(response.data['email'], self.user.email)
+        self.assertIn('created', response.data)
+        self.assertIn('updated', response.data)
         self.assertIn('tickets', response.data)
 
     def test_user_logout(self):
@@ -86,6 +92,8 @@ class UsersTests(APITestCase):
         self.assertEqual(isAuthenticatedResponse.data['id'], self.user.id)
         self.assertEqual(isAuthenticatedResponse.data['nickname'], self.user.nickname)
         self.assertEqual(isAuthenticatedResponse.data['email'], self.user.email)
+        self.assertIn('created', isAuthenticatedResponse.data)
+        self.assertIn('updated', isAuthenticatedResponse.data)
         self.assertIn('tickets', isAuthenticatedResponse.data)
         logoutResponse = self.client.post(logoutUrl)
         self.assertEqual(logoutResponse.status_code, status.HTTP_200_OK)

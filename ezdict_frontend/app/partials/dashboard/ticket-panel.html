@@ -34,7 +34,7 @@
                 <div class="active-sticker">
                     <h2>{{ text }}</h2>
 
-                    <p>Вы искали слово <b>100500</b> раз</p>
+                    <p ng-show="log">Вы искали слово <b>{{ log.count }}</b> раз</p>
 
                     <div class="active-sticker-cont"
                          slimscroll="{height: '220px', railVisible: true, distance: '5px', color: '#1B3F32'}">
