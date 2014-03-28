@@ -1,0 +1,405 @@
+FORMAT: 1A
+
+# Ezdict API
+
+# Group Users
+
+## User [/users/{id}]
+
++ Parameters
+
+    + id (number) ... ID of the User
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "id": 123050,
+                "nickname": "megadestroyer98",
+                "tickets": "http://ezdict.ru/users/123050/tickets",
+                "texts": "http://ezdict.ru/users/123050/texts"
+                "created": "2013-01-23 15:02:33",
+            }
+
+### Retrieve a single User [GET]
++ Response 200
+    
+    [User][]
+
+## Users Collection [/users]
+
++ Model (application/json)
+
+    + Body
+
+            [
+                {User},
+                {User},
+            ]
+
+
+### Create a User [POST]
+
++ Request (application/json)
+
+        {
+            "nickname": "megadestroyer98",
+            "email": "email@gmail.com",
+            "password": "qwerty",
+        }
+
++ Response 201 (application/json)
+
+    [User][]
+    
+### List all Users [GET]
+
++ Response 200
+
+    [Users Collection][]
+    
+## User login [/users/login]
+
+### Log in a User [POST]
+
++ Parameters
+    + username (string) ... username of the User
+    + password (string) ... password of the User
+
++ Request (application/json)
+
+        {
+            "username": "email@gmail.com",
+            "password": "qwerty",
+        }
+        
++ Response 200
+    [User][]
+
+# Group Tickets
+
+## Ticket [/tickets/{id}]
+
++ Parameters
+    + id (number) ... ID of the Ticket
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "id": 123050,
+                "user": "http://ezdict.ru/users/954832",
+                "word": "about",
+                "tr": "ebaut",
+                "text": "Это слово иногда переводится как <b>около</b>",
+                "created": "2013-01-23 15:02:33",
+                "updated": "2013-01-24 16:02:33",
+                "liked": 12,
+                "likes": "http://ezdict.ru/ticket/123050/likes",
+            }
+
+### Retrieve a Single Ticket [GET]
+
++ Response 200
+    
+    [Ticket][]
+
+### Edit a Ticket [PUT]
+
++ Request (application/json)
+
+        {
+            "tr": "ebaut"
+        }
+
++ Response 200
+    
+    [Ticket][]
+
+### Delete a Ticket [DELETE]
++ Response 204
+
+## Tickets Collection [/tickets{?word,limit,offset,own}]
+
++ Model (application/json)
+
+    + Body
+
+            //array of Ticket models
+            [
+                {Ticket},
+                {Ticket},
+            ]
+
+
+### Create a Ticket [POST]
+
++ Request (application/json)
+
+        {
+            "word": "about",
+            "tr": "ebaut",
+            "text": "Это слово иногда переводится как <b>около</b>",
+        }
+
++ Response 201 (application/hal+json)
+
+    [Ticket][]
+    
+### List all Tickets [GET]
+
++ Parameters
+    + word (optional, string) ... string to translate
+    + limit (optional, number) ... a maximum number of tickets to return
+    + offset (optional, number) ... a number of tickets to skip from the first one
+    + own (optional, boolean) ... search only tickets created by current user
+
++ Response 200
+
+    [Tickets Collection][]
+
+## Like [/tickets/{id}/likes/{like_id}]
+
++ Parameters
+
+    + id (number) ... ID of the Ticket
+    + like_id (number) ... ID of the Like
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "id": 123958,
+                "user": "http://ezdict.ru/users/954832",
+                "ticket": "http://ezdict.ru/tickets/954832",
+                "created": "2013-01-24 15:02:55"
+            }
+
+
+
+### Remove Like from a Ticket [DELETE]
++ Response 204
+
+## LikesCollection [/tickets/{id}/likes]
+
++ Parameters
+
+    + id (number) ... ID of the Ticket
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "likes": [{
+                    "id": 123958,
+                    "user": "http://ezdict.ru/users/954832",
+                    "ticket": "http://ezdict.ru/tickets/954832",
+                    "created": "2013-01-24 15:02:55"
+                }, {
+                    "id": 334723,
+                    "user": "http://ezdict.ru/users/234235",
+                    "ticket": "http://ezdict.ru/tickets/954832",
+                    "created": "2013-02-24 15:02:55"
+                }]
+            }
+
+### Like a Ticket [POST]
++ Response 200
+
+    [Like][]
+
+### Get likes of a Ticket [GET]
++ Response 200
+
+    [LikesCollection][]
+    
+## Ez Dictionary Ticket [/ez_tickets/dict/{?word}]
+
++ Parameters
+
+    + word (string) ... a string to translate
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "head": {}, 
+                "def": [
+                    {
+                        "text": "house", 
+                        "tr": [
+                            {
+                                "ex": [
+                                    {
+                                        "text": "Stenbock house", 
+                                        "tr": [
+                                            {
+                                                "text": "\u0434\u043e\u043c \u0421\u0442\u0435\u043d\u0431\u043e\u043a\u0430"
+                                            }
+                                        ]
+                                    }, 
+                                    {
+                                        "text": "gingerbread house", 
+                                        "tr": [
+                                            {
+                                                "text": "\u043f\u0440\u044f\u043d\u0438\u0447\u043d\u044b\u0439 \u0434\u043e\u043c\u0438\u043a"
+                                            }
+                                        ]
+                                    }
+                                ], 
+                                "text": "\u0434\u043e\u043c", 
+                                "mean": [
+                                    {
+                                        "text": "home"
+                                    }, 
+                                    {
+                                        "text": "lodge"
+                                    }
+                                ], 
+                                "pos": "\u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435", 
+                                "syn": [
+                                    {
+                                        "text": "\u0434\u043e\u043c\u0438\u043a"
+                                    }
+                                ]
+                            }
+                        ]
+                }
+
+### Get an Ez Dictionary Ticket for specified query [GET]
++ Response 200
+
+    [Ez Dictionary Ticket][]
+    
+## Ez Translate Ticket [/ez_tickets/translate/{?word}]
+
++ Parameters
+
+    + word (string) ... a string to translate
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "lang": "en-ru", 
+                "text": [
+                    "\u0434\u043e\u043c"
+                ], 
+                "code": 200
+            }
+
+### Get an Ez Dictionary Ticket for specified query [GET]
++ Response 200
+
+    [Ez Translate Ticket][]
+    
+# Group User Content
+
+## Text [/texts/{id}]
+
++ Parameters
+
+    + id (number) ... ID of the Text
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "id": 123050,
+                "user": "http://ezdict.ru/users/954832",
+                "title": "A Cool Story",
+                "source": "some source",
+                "text": "Hello world",
+                "created": "2013-01-23 15:02:33",
+                "updated": "2013-01-24 16:02:33",
+            }
+
+### Retrieve a single Text [GET]
++ Response 200
+    
+    [Text][]
+
+### Delete a Text [DELETE]
++ Response 204
+
+## Texts Collection [/texts{?query}{?offset}{?limit}]
+
++ Model (application/json)
+
+    + Body
+
+            [
+                {Text},
+                {Text},
+            ]
+
+
+### Create a Text [POST]
+
++ Request (application/json)
+
+        {
+            "title": "A cool story",
+            "source": "some source",
+            "text": "Hello world",
+        }
+
++ Response 201 (application/json)
+
+    [Text][]
+    
+### List all Texts [GET]
+
++ Parameters
+    + query (required, string) ... string to translate
+    + offset (optional, number) ... how many texts to skip
+    + limit (optional, number) ... a maximum number of texts to return
+
++ Response 200
+
+    [Texts Collection][]
+    
+# Group Logs
+
+## TicketSearchLog [/ticketSearchLogs/{word}]
+
++ Parameters
+
+    + word (string) ... a string which is searched for translation
+
++ Model (application/json)
+
+    + Body
+
+            {
+                "id": 123050,
+                "user": "25",
+                "word": "cool story",
+                "count": "50",
+                "created": "2013-01-23 15:02:33",
+                "updated": "2013-01-24 16:02:33",
+            }
+
+### Retrieve a single TicketSearchLog [GET]
++ Response 200
+    
+    [TicketSearchLog][]
+
+### Create a TicketSearchLog  or update a TicketSearchLog, depending on if it already exists for passed word [POST]
+
++ Request (application/json)
+
+        {
+            "word": "cool story",
+        }
+
++ Response 201 (application/json)
+
+    [TicketSearchLog][]
