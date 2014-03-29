@@ -3,12 +3,14 @@ define(['./module'], function (factory) {
     factory.
         factory('TicketSearchLog', ['$resource', 'constants', function ($resource, constants) {
             var TicketSearchLog = $resource(
-                [constants.API_URL, '/ticket_search_log/:word', constants.API_FORMAT].join(''),
+                [constants.API_URL, '/ticket_search_log', constants.API_FORMAT, '?word=:word'].join(''),
                 {
                     word: '@word'
                 },
                 {
-
+                    log: {
+                        method: 'POST'
+                    }
                 }
             );
 

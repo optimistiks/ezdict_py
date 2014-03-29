@@ -1,7 +1,8 @@
 define(['./module'], function (controllers) {
     'use strict';
     controllers.
-        controller('PanelCtrl', ['$scope', 'TextMessages', '$q', 'Ticket', 'EzTicket', 'EventManager', 'TicketSearchLog',
+        controller('PanelCtrl', ['$scope', 'TextMessages', '$q', 'Ticket', 'EzTicket', 'EventManager',
+            'TicketSearchLog',
 
             /**
              * @param $scope
@@ -18,10 +19,16 @@ define(['./module'], function (controllers) {
                 $scope.dictTicket = null;
                 $scope.translateTicket = null;
 
+                $scope.ticketIsVisible = false;
+
                 $scope.resetTicket = function () {
                     $scope.ticket = null;
                     $scope.dictTicket = null;
                     $scope.translateTicket = null;
+                };
+
+                $scope.ticketPresent = function () {
+                    return ($scope.ticket || $scope.dictTicket || $scope.translateTicket);
                 };
 
                 $scope.loadTicket = function () {
@@ -36,11 +43,6 @@ define(['./module'], function (controllers) {
                                 $scope.translateTicket = ticket;
                             });
                         });
-                    });
-
-                    promise.then(function (data) {
-                        $scope.logSearch();
-                        return data;
                     });
 
                     return promise;
@@ -66,10 +68,15 @@ define(['./module'], function (controllers) {
                     }
                 };
 
-                $scope.logSearch = function () {
-                    TicketSearchLog.log({word: $scope.text}, function (log) {
-                        $scope.log = log;
-                    });
+                $scope.toggleTicket = function () {
+                    if ($scope.ticketIsVisible === false && $scope.ticketPresent()) {
+                        TicketSearchLog.log({word: $scope.text}, function (log) {
+                            $scope.log = log;
+                            $scope.ticketIsVisible = true;
+                        });
+                    } else {
+                        $scope.ticketIsVisible = false;
+                    }
                 };
 
                 EventManager.onTextSelect(function (e, text) {

@@ -30,8 +30,8 @@
                 </ul>
             </div>
             <div class="stickers-wrapper">
-                <div class="basket-wrapper"></div>
-                <div class="active-sticker">
+                <div class="basket-wrapper" ng-click="toggleTicket()">{{ ticketPresent() ? 'Показать перевод' : '' }}</div>
+                <div class="active-sticker" ng-show="ticketIsVisible">
                     <h2>{{ text }}</h2>
 
                     <p ng-show="log">Вы искали слово <b>{{ log.count }}</b> раз</p>

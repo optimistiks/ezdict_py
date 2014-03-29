@@ -22,9 +22,9 @@ $(document).ready(function () {
         $('.words-wrapper').find('div').removeClass('words-in-history-opened').addClass('words-in-history-closed')
         $(this).removeClass('words-in-history-closed').addClass('words-in-history-opened').fadeIn('400');
     });
-    $(document).on('click', '.basket-wrapper', function(){
+/*    $(document).on('click', '.basket-wrapper', function(){
         $('.active-sticker').stop().slideToggle()
-    });
+    });*/
 //    --------------- код для анимации редактора сикеров через Transition--------------
 //    $('#edit-sticker').on('click',function(){
 //       $('#footer').toggleClass('edit-field');

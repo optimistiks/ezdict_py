@@ -7,4 +7,5 @@ define([
     './Interceptor',
     './DashboardInterceptor',
     './EventManager',
-], function () {});
+    './TicketSearchLog'
+]);

@@ -855,13 +855,19 @@ footer {
   z-index: 3;
   bottom: 0;
   width: 100%;
-  height: 75px;
+  height: 65px;
   background: url("../img/stickers-basket4.png");
+
+  text-align: center;
+  padding-top: 10px;
+  cursor: pointer;
 }
 
 /* line 777, ../sass/interface.scss */
 .active-sticker {
+/*
   display: none;
+*/
   padding: 0 20px 0 10px;
   left: 0;
   right: 0;
