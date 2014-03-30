@@ -18,13 +18,16 @@ define(['./module'], function (controllers) {
                 $scope.ticket = null;
                 $scope.dictTicket = null;
                 $scope.translateTicket = null;
+                $scope.log = null;
 
                 $scope.ticketIsVisible = false;
 
                 $scope.resetTicket = function () {
+                    $scope.log = null;
                     $scope.ticket = null;
                     $scope.dictTicket = null;
                     $scope.translateTicket = null;
+                    $scope.ticketIsVisible = false;
                 };
 
                 $scope.ticketPresent = function () {

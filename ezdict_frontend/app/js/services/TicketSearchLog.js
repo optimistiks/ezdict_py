@@ -3,7 +3,7 @@ define(['./module'], function (factory) {
     factory.
         factory('TicketSearchLog', ['$resource', 'constants', function ($resource, constants) {
             var TicketSearchLog = $resource(
-                [constants.API_URL, '/ticket_search_log', constants.API_FORMAT, '?word=:word'].join(''),
+                [constants.API_URL, '/ticket_search_logs', constants.API_FORMAT, '?word=:word'].join(''),
                 {
                     word: '@word'
                 },

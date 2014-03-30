@@ -13,6 +13,15 @@ class TicketSearchLogTests(APITestCase):
 
     def test_create_search_log_new_word(self):
         response = self.client.post(self.searchLogCreate, {'word': 'test'})
+        self.client.logout()
+        anotherUser = MyUser.objects.create_user(
+            nickname='testusr2', email='testusr2@gmail.com', password='qwerty')
+        self.client.login(username=anotherUser.email, password='qwerty')
+        anothersResponse = self.client.post(self.searchLogCreate, {'word': 'test'})
+
+        self.client.logout()
+        self.client.login(username=self.user.email, password='qwerty')
+
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertIn('id', response.data)
         self.assertEqual(response.data['user'], self.user.id)
@@ -21,29 +30,62 @@ class TicketSearchLogTests(APITestCase):
         self.assertIn('created', response.data)
         self.assertIn('updated', response.data)
 
+        self.assertEqual(anothersResponse.status_code, status.HTTP_201_CREATED)
+        self.assertIn('id', anothersResponse.data)
+        self.assertNotEqual(response.data['id'], anothersResponse.data['id'])
+        self.assertEqual(anothersResponse.data['user'], anotherUser.id)
+        self.assertEqual(response.data['word'], 'test')
+        self.assertEqual(response.data['count'], 1)
+        self.assertIn('created', response.data)
+        self.assertIn('updated', response.data)
+
     def test_update_search_log_existing_word(self):
-        createResponse = self.client.post(self.searchLogCreate, {'word': 'hello'})
+        wordHello = self.client.post(self.searchLogCreate, {'word': 'hello'})
+        wordHi = self.client.post(self.searchLogCreate, {'word': 'hi'})
+
         self.client.post(self.searchLogCreate, {'word': 'hello'})
-        updateResponse = self.client.post(self.searchLogCreate, {'word': 'hello'})
-        self.assertEqual(updateResponse.status_code, status.HTTP_200_OK)
-        self.assertEqual(updateResponse.data['id'], createResponse.data['id'])
-        self.assertEqual(updateResponse.data['user'], self.user.id)
-        self.assertEqual(updateResponse.data['word'], 'hello')
-        self.assertEqual(updateResponse.data['count'], 3)
-        self.assertIn('created', updateResponse.data)
-        self.assertIn('updated', updateResponse.data)
+        wordHelloUpdate = self.client.post(self.searchLogCreate, {'word': 'hello'})
+
+        self.client.post(self.searchLogCreate, {'word': 'hi'})
+        wordHiUpdate = self.client.post(self.searchLogCreate, {'word': 'hi'})
+
+        self.assertEqual(wordHelloUpdate.status_code, status.HTTP_200_OK)
+        self.assertEqual(wordHelloUpdate.data['id'], wordHello.data['id'])
+        self.assertEqual(wordHelloUpdate.data['user'], self.user.id)
+        self.assertEqual(wordHelloUpdate.data['word'], 'hello')
+        self.assertEqual(wordHelloUpdate.data['count'], 3)
+        self.assertIn('created', wordHelloUpdate.data)
+        self.assertIn('updated', wordHelloUpdate.data)
+
+        self.assertEqual(wordHiUpdate.status_code, status.HTTP_200_OK)
+        self.assertEqual(wordHiUpdate.data['id'], wordHi.data['id'])
+        self.assertEqual(wordHiUpdate.data['user'], self.user.id)
+        self.assertEqual(wordHiUpdate.data['word'], 'hi')
+        self.assertEqual(wordHiUpdate.data['count'], 3)
+        self.assertIn('created', wordHiUpdate.data)
+        self.assertIn('updated', wordHiUpdate.data)
 
     def test_create_search_log_no_word(self):
         response = self.client.post(self.searchLogCreate, {})
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_get_single_search_log(self):
-        created = self.client.post(self.searchLogCreate, {'word': 'test'})
+        wordTest = self.client.post(self.searchLogCreate, {'word': 'test'})
+        self.client.post(self.searchLogCreate, {'word': 'what'})
+        self.client.post(self.searchLogCreate, {'word': 'here'})
+        wordHere = self.client.post(self.searchLogCreate, {'word': 'here'})
         response = self.client.get(reverse('ticket-search-log'), {'word': 'test'})
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['id'], created.data['id'])
+        self.assertEqual(response.data['id'], wordTest.data['id'])
         self.assertEqual(response.data['word'], 'test')
         self.assertEqual(response.data['count'], 1)
+        self.assertIn('created', response.data)
+        self.assertIn('updated', response.data)
+        response = self.client.get(reverse('ticket-search-log'), {'word': 'here'})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['id'], wordHere.data['id'])
+        self.assertEqual(response.data['word'], 'here')
+        self.assertEqual(response.data['count'], 2)
         self.assertIn('created', response.data)
         self.assertIn('updated', response.data)
 

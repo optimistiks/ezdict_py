@@ -8,9 +8,12 @@ from django.http import Http404
 
 class TicketSearchLogView(APIView):
     def getLog(self, word):
-        queryset = TicketSearchLog.objects.all()
-        queryset.filter(user=self.request.user, word=word)
-        return queryset.first()
+        try:
+            ticketSearchLog = TicketSearchLog.objects.get(user__exact=self.request.user.id,
+                                                          word__iexact=word)
+        except TicketSearchLog.DoesNotExist:
+            ticketSearchLog = None
+        return ticketSearchLog
 
     def get(self, request):
         word = request.QUERY_PARAMS.get('word')
