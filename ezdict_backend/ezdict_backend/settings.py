@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     'tickets',
     'ez_tickets',
     'texts',
-    'ticket_search_log',
+    'ticket_search_logs',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

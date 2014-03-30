@@ -17,4 +17,4 @@ class Migration(SchemaMigration):
         
     }
 
-    complete_apps = ['ticket_search_log']
+    complete_apps = ['ticket_search_logs']
