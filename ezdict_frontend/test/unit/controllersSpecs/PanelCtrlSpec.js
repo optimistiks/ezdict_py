@@ -1,3 +1,4 @@
+/*global module, inject, describe, beforeEach, it, expect, spyOn*/
 define(['app', 'constants', 'angular-mock'], function () {
     'use strict';
 
@@ -20,7 +21,7 @@ define(['app', 'constants', 'angular-mock'], function () {
 
                     $scope = _$rootScope_.$new();
                     ctrl = $controller('PanelCtrl', {$scope: $scope});
-                }])
+                }]);
         });
 
         it('should set initial values to null', function () {
@@ -43,6 +44,7 @@ define(['app', 'constants', 'angular-mock'], function () {
         it('should load user ticket', function () {
             var deferred = $q.defer(),
                 ticket = {id: 1};
+            $scope.text = 'test';
             deferred.resolve(ticket);
             spyOn($scope, 'findTicket').andReturn(deferred.promise);
             $scope.loadTicket();
@@ -56,6 +58,7 @@ define(['app', 'constants', 'angular-mock'], function () {
             var deferredTicket = $q.defer(),
                 deferredDictTicket = $q.defer(),
                 dictTicket = {id: 1};
+            $scope.text = 'test';
             deferredTicket.reject();
             deferredDictTicket.resolve(dictTicket);
             spyOn($scope, 'findTicket').andReturn(deferredTicket.promise);
@@ -72,6 +75,7 @@ define(['app', 'constants', 'angular-mock'], function () {
                 deferredDictTicket = $q.defer(),
                 deferredTranslateTicket = $q.defer(),
                 translateTicket = {id: 1};
+            $scope.text = 'test';
             deferredTicket.reject();
             deferredDictTicket.reject();
             deferredTranslateTicket.resolve(translateTicket);
@@ -120,10 +124,8 @@ define(['app', 'constants', 'angular-mock'], function () {
 
         it('should load ticket after onTextSelect event', function () {
             spyOn($scope, 'loadTicket');
-            EventManager.broadcastTextSelect('bb');
-            expect($scope.loadTicket).not.toHaveBeenCalled();
-            EventManager.broadcastTextSelect('bbb');
+            EventManager.broadcastTextSelect('test');
             expect($scope.loadTicket).toHaveBeenCalled();
         });
-    })
+    });
 });

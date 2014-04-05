@@ -7,5 +7,7 @@ define([
     './Interceptor',
     './DashboardInterceptor',
     './EventManager',
-    './TicketSearchLog'
+    './TicketSearchLog',
+    './AbstractTicket',
+    './AbstractModel'
 ]);

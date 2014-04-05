@@ -3,4 +3,5 @@ define([
     './EzContentSwitch',
     './TextSelect',
     './EnterKey',
-], function () {});
+    './TogglePanelAnimated'
+]);

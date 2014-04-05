@@ -1,8 +1,9 @@
-define(['./module', './ErrorsHandlerMixin'], function (factory, ErrorsHandlerMixin) {
+/*global angular*/
+define(['./module'], function (factory) {
     'use strict';
     factory.
-        factory('Ticket', ['$resource', 'constants', '$window', '$q',
-            function ($resource, constants, $window, $q) {
+        factory('Ticket', ['$resource', 'constants', 'AbstractTicket', '$q', 'AbstractModel',
+            function ($resource, constants, AbstractTicket, $q, AbstractModel) {
                 var Ticket = $resource(
                     [constants.API_URL, '/tickets/:id/:action', constants.API_FORMAT, '?word=:word'].join(''),
                     {
@@ -13,7 +14,6 @@ define(['./module', './ErrorsHandlerMixin'], function (factory, ErrorsHandlerMix
                     }
                 );
 
-                //todo: tests
                 Ticket.findTicket = function (word) {
                     var data = {word: word};
                     return Ticket.query(data).$promise.
@@ -24,20 +24,21 @@ define(['./module', './ErrorsHandlerMixin'], function (factory, ErrorsHandlerMix
 
                             if (tickets.length > 0) {
                                 for (i = 0; i < tickets.length; i++) {
-                                    if (tickets[i].user === $scope.user.id) {
+/*                                    if (tickets[i].user === $scope.user.id) {
                                         ownTicket = tickets[i];
-                                    }
+                                    }*/
                                     if (bestTicket === null || bestTicket.rating < tickets[i].rating) {
                                         bestTicket = tickets[i];
                                     }
                                 }
                             }
 
-                            return (ownTicket || bestTicket) || $q.reject(tickets);
+                            return (ownTicket || bestTicket || tickets[0]) || $q.reject(tickets);
                         });
                 };
 
-                Ticket.prototype = $window.angular.extend(Ticket.prototype, ErrorsHandlerMixin);
+                AbstractTicket.prototype = angular.extend(new AbstractModel(), AbstractTicket.prototype);
+                Ticket.prototype = angular.extend(new AbstractTicket(), Ticket.prototype);
 
                 return Ticket;
             }]);

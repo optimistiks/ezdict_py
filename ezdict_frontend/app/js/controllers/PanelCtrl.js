@@ -18,7 +18,9 @@ define(['./module'], function (controllers) {
                 $scope.ticket = null;
                 $scope.dictTicket = null;
                 $scope.translateTicket = null;
+
                 $scope.log = null;
+                $scope.lastLoggedWord = null;
 
                 $scope.ticketIsVisible = false;
 
@@ -35,20 +37,22 @@ define(['./module'], function (controllers) {
                 };
 
                 $scope.loadTicket = function () {
-                    $scope.resetTicket();
-                    var promise = $scope.findTicket().then(function (ticket) {
-                        $scope.ticket = ticket;
-                    }, function () {
-                        return $scope.findDictTicket().then(function (ticket) {
-                            $scope.dictTicket = ticket;
+                    if ($scope.text && $scope.text.length > 2) {
+                        $scope.resetTicket();
+                        var promise = $scope.findTicket().then(function (ticket) {
+                            $scope.ticket = ticket;
                         }, function () {
-                            return $scope.findTranslateTicket().then(function (ticket) {
-                                $scope.translateTicket = ticket;
+                            return $scope.findDictTicket().then(function (ticket) {
+                                $scope.dictTicket = ticket;
+                            }, function () {
+                                return $scope.findTranslateTicket().then(function (ticket) {
+                                    $scope.translateTicket = ticket;
+                                });
                             });
                         });
-                    });
 
-                    return promise;
+                        return promise;
+                    }
                 };
 
                 $scope.findTicket = function () {
@@ -73,8 +77,7 @@ define(['./module'], function (controllers) {
 
                 $scope.toggleTicket = function () {
                     if ($scope.ticketIsVisible === false && $scope.ticketPresent()) {
-                        TicketSearchLog.log({word: $scope.text}, function (log) {
-                            $scope.log = log;
+                        $scope.logSearch()['finally'](function () {
                             $scope.ticketIsVisible = true;
                         });
                     } else {
@@ -82,11 +85,37 @@ define(['./module'], function (controllers) {
                     }
                 };
 
-                EventManager.onTextSelect(function (e, text) {
-                    if (text.length > 2) {
-                        $scope.text = text;
-                        $scope.loadTicket();
+                $scope.logSearch = function () {
+                    var deferred = $q.defer(),
+                        promise = deferred.promise;
+
+                    if ($scope.lastLoggedWord !== $scope.text) {
+                        promise = TicketSearchLog.log({word: $scope.text},function (log) {
+                            $scope.log = log;
+                            $scope.lastLoggedWord = $scope.text;
+                        }).$promise;
+                    } else {
+                        deferred.reject();
                     }
+
+                    return promise;
+                };
+
+                $scope.textPresent = function () {
+                    return $scope.text && $scope.text.length > 2;
+                };
+
+                $scope.ticketIsOwn = function () {
+                    return $scope.getActiveTicket().belongsTo($scope.user);
+                };
+
+                $scope.getActiveTicket = function () {
+                    return $scope.ticket || $scope.dictTicket || $scope.translateTicket;
+                };
+
+                EventManager.onTextSelect(function (e, text) {
+                    $scope.text = text;
+                    $scope.loadTicket();
                 });
             }]);
 });

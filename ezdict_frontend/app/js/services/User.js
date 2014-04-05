@@ -1,32 +1,38 @@
-define(['./module', './ErrorsHandlerMixin'], function (factory, ErrorsHandlerMixin) {
+/*global angular*/
+define(['./module'], function (factory) {
     'use strict';
     factory.
-        factory('User', ['$resource', 'constants', '$window', function ($resource, constants, $window) {
-            var User = $resource([constants.API_URL, '/users/:userId/:action', constants.API_FORMAT].join(''),
-                {},
-                {
-                    isAuthenticated: {
-                        method: 'POST',
-                        params: {
-                            action: 'isAuthenticated'
-                        }
-                    },
-                    login: {
-                        method: 'POST',
-                        params: {
-                            action: 'login'
-                        }
-                    },
-                    logout: {
-                        method: 'POST',
-                        params: {
-                            action: 'logout'
-                        }
-                    }
-                });
+        factory('User', ['$resource', 'constants', 'AbstractModel',
+            function ($resource, constants, AbstractModel) {
 
-            User.prototype = $window.angular.extend(User.prototype, ErrorsHandlerMixin);
+                /**
+                 * @class User
+                 * @property {number} id
+                 */
+                var User = $resource([constants.API_URL, '/users/:userId/:action', constants.API_FORMAT].join(''),
+                    {},
+                    {
+                        isAuthenticated: {
+                            method: 'POST',
+                            params: {
+                                action: 'isAuthenticated'
+                            }
+                        },
+                        login: {
+                            method: 'POST',
+                            params: {
+                                action: 'login'
+                            }
+                        },
+                        logout: {
+                            method: 'POST',
+                            params: {
+                                action: 'logout'
+                            }
+                        }
+                    });
 
-            return User;
-        }]);
+                User.prototype = angular.extend(new AbstractModel(), User.prototype);
+                return User;
+            }]);
 });

@@ -13,31 +13,36 @@
             <div class="bottom-interactive-buttons">
                 <ul class="footer-buttons">
                     <li>
-                        <button class="new-sticker" title="Новый стикер"></button>
+                        <button toggle-panel-animated ng-show="textPresent()" class="new-sticker"
+                                title="Новый стикер"></button>
                     </li>
                     <li>
-                        <button class="edit-sticker" id="edit-sticker" title="Редактировать стикер"></button>
+                        <button toggle-panel-animated ng-show="ticketIsPresent() && ticketIsOwn()"
+                                class="edit-sticker" id="edit-sticker" title="Редактировать стикер"></button>
                     </li>
                     <li>
-                        <button class="customization-sticker" id="customization" title="Кастомизация"></button>
+                        <button ng-show="ticketIsPresent() && ticketIsOwn()" class="customization-sticker"
+                                id="customization" title="Кастомизация"></button>
                     </li>
                     <li>
-                        <button class="add-to-learn" title="Добавить в изучаемые"></button>
+                        <button ng-show="ticketIsPresent()" class="add-to-learn"
+                                title="Добавить в изучаемые"></button>
                     </li>
                     <li>
-                        <button class="delete-sticker" title="Удалить стикер" ng-click="deleteTicket()"></button>
+                        <button ng-show="ticketIsPresent() && ticketIsOwn()" class="delete-sticker"
+                                title="Удалить стикер" ng-click="deleteTicket()"></button>
                     </li>
                 </ul>
             </div>
             <div class="stickers-wrapper">
-                <div class="basket-wrapper" ng-click="toggleTicket()">{{ ticketPresent() ? 'Показать перевод' : '' }}</div>
-                <div class="active-sticker" ng-show="ticketPresent() && ticketIsVisible">
+                <div class="basket-wrapper"></div>
+                <div class="active-sticker" ng-show="ticketPresent()">
                     <h2>{{ text }}</h2>
 
-                    <p ng-show="log">Вы искали слово <b>{{ log.count }}</b> раз</p>
-
-                    <div class="active-sticker-cont"
+                    <div class="active-sticker-cont" ng-show="ticketIsVisible"
                          slimscroll="{height: '220px', railVisible: true, distance: '5px', color: '#1B3F32'}">
+                        <p ng-show="log">Вы смотрели слово <b>{{ log.count }}</b> раз</p>
+
                         <div ng-show="ticket" ng-bind="ticket.text"></div>
                         <div ng-show="dictTicket && !ticket">
                             <div ng-repeat="def in dictTicket.def">
@@ -71,7 +76,7 @@
                             </ul>
                         </div>
                     </div>
-
+                    <p ng-click="toggleTicket()" ng-show="!ticketIsVisible">Показать перевод</p>
                 </div>
             </div>
         </div>
@@ -85,10 +90,9 @@
         </div>
         <div class="edit-field-wrapper">
             <div class="edit-field-container">
-                <div class="desk-wrapper">
+                <div class="desk-wrapper" ng-show="ticketPresent()">
                     <div class="desk-translate-wrap">
                         <div class="desk-translate">
-
                             <div class="transcription">
                                 <b>{{ text }}</b>
                                 <span> - </span>
