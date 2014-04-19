@@ -1,49 +1,60 @@
 <footer id="footer">
     <div class="interactive-panel">
         <div class="panel-wrapper gradient">
+            <!-- поиск тикета -->
             <form>
                 <div class="words-search-div">
                     <input class="content-search words-search" type="text" placeholder="Искать слово"
-                           ng-model="text"
-                           enter-key="loadTicket()">
-                    <button class="search-button" type="button" ng-click="loadTicket()">Перевести
+                           ng-model="inputText"
+                           enter-key="searchFromField()">
+                    <button class="search-button" type="button" ng-click="searchFromField()">Перевести
                     </button>
                 </div>
             </form>
+            <!-- /поиск тикета -->
+            <!-- кнопки управления тикетами -->
             <div class="bottom-interactive-buttons">
-                <ul class="footer-buttons">
+                <ul class="footer-buttons" ng-hide="protection">
                     <li>
-                        <button toggle-panel-animated ng-show="textPresent()" class="new-sticker"
+                        <button toggle-panel-animated ng-show="activeWord && !ticketIsOwn()" class="new-sticker"
                                 title="Новый стикер"></button>
                     </li>
                     <li>
-                        <button toggle-panel-animated ng-show="ticketIsPresent() && ticketIsOwn()"
+                        <button toggle-panel-animated ng-show="ticketIsOwn()"
                                 class="edit-sticker" id="edit-sticker" title="Редактировать стикер"></button>
                     </li>
                     <li>
-                        <button ng-show="ticketIsPresent() && ticketIsOwn()" class="customization-sticker"
+                        <button ng-show="ticketIsOwn()" class="customization-sticker"
                                 id="customization" title="Кастомизация"></button>
                     </li>
                     <li>
-                        <button ng-show="ticketIsPresent()" class="add-to-learn"
+                        <button ng-show="activeTicket()" class="add-to-learn"
                                 title="Добавить в изучаемые"></button>
                     </li>
                     <li>
-                        <button ng-show="ticketIsPresent() && ticketIsOwn()" class="delete-sticker"
+                        <button ng-show="ticketIsOwn()" class="delete-sticker"
                                 title="Удалить стикер" ng-click="deleteTicket()"></button>
                     </li>
                 </ul>
             </div>
+            <!-- /кнопки управления тикетами -->
+            <!-- корзина с тикетами -->
             <div class="stickers-wrapper">
                 <div class="basket-wrapper"></div>
-                <div class="active-sticker" ng-show="ticketPresent()">
-                    <h2>{{ text }}</h2>
+                <!-- тикет -->
+                <div class="active-sticker" ng-show="activeTicket()">
+                    <h2>{{ activeWord }}</h2>
 
-                    <div class="active-sticker-cont" ng-show="ticketIsVisible"
+                    <button ng-show="protection" ng-click="removeProtection()">Показать перевод</button>
+                    <div class="active-sticker-cont" ng-hide="protection"
                          slimscroll="{height: '220px', railVisible: true, distance: '5px', color: '#1B3F32'}">
                         <p ng-show="log">Вы смотрели слово <b>{{ log.count }}</b> раз</p>
 
+                        <!-- пользовательский тикет -->
                         <div ng-show="ticket" ng-bind="ticket.text"></div>
+                        <!-- /пользовательский тикет -->
+
+                        <!-- тикет ezdict -->
                         <div ng-show="dictTicket && !ticket">
                             <div ng-repeat="def in dictTicket.def">
                                 <div><b>{{ def.text }} [{{ def.ts }}] </b>
@@ -69,36 +80,59 @@
                                 </ol>
                             </div>
                         </div>
+                        <!-- /тикет ezdict -->
+
+                        <!-- тикет ezdict-translate -->
                         <div ng-show="translateTicket && !ticket && !dictTicket">
                             <div><b>Перевод:</b></div>
                             <ul>
                                 <li ng-repeat="text in translateTicket.text"> {{ text }}</li>
                             </ul>
                         </div>
+                        <!-- тикет ezdict-translate -->
                     </div>
-                    <p ng-click="toggleTicket()" ng-show="!ticketIsVisible">Показать перевод</p>
                 </div>
+                <!-- /тикет -->
+
             </div>
+            <!-- /корзина с тикетами -->
+
         </div>
     </div>
+    <!-- выезжающая панель -->
     <div class="bottom-edit-panel">
+
+        <!-- переключатель -->
         <div class="dict-switcher">
             <ul>
                 <li>Словарь EzDict</li>
                 <li>Лучшие стикеры пользователей</li>
             </ul>
         </div>
+        <!-- /переключатель -->
+        <!-- доска  с переводом -->
         <div class="edit-field-wrapper">
             <div class="edit-field-container">
-                <div class="desk-wrapper" ng-show="ticketPresent()">
+                <div class="desk-wrapper" ng-show="activeTicket()">
                     <div class="desk-translate-wrap">
                         <div class="desk-translate">
+
+                            <!-- Заголовок доски -->
                             <div class="transcription">
-                                <b>{{ text }}</b>
-                                <span> - </span>
-                                <i>[{{ dictTicket.def[0].ts }}]</i>
+                                <b>{{ activeWord }}</b>
+                                <span ng-show="dictTicket.def[0].ts">
+                                    <span> - </span>
+                                    <i>[{{ dictTicket.def[0].ts }}]</i>
+                                </span>
                             </div>
-                            <table class="tranlation-table">
+                            <!-- /Заголовок доски -->
+
+                            <!-- пользовательский тикет -->
+                            <div ng-show="ticket" ng-bind="ticket.text"></div>
+                            <!-- /пользовательский тикет -->
+
+                            <!-- тикет ezdict -->
+                            <table class="tranlation-table" ng-show="dictTicket && !ticket">
                                 <tr class="table-title">
                                     <td ng-repeat="def in dictTicket.def">
                                         <i>{{ def.tr[0].pos }}</i>
@@ -120,6 +154,17 @@
                                     </td>
                                 </tr>
                             </table>
+                            <!-- тикет /ezdict -->
+
+                            <!-- тикет ezdict-translate -->
+                            <div ng-show="translateTicket && !ticket && !dictTicket">
+                                <div><b>Перевод:</b></div>
+                                <ul>
+                                    <li ng-repeat="text in translateTicket.text"> {{ text }}</li>
+                                </ul>
+                            </div>
+                            <!-- тикет /ezdict-translate -->
+
                         </div>
                     </div>
                     <div class="desk-buttons">
@@ -127,7 +172,7 @@
                     </div>
                     <div class="desk-sticker">
                         <span class="red-pin"></span>
-                        <b>{{ text }}</b>
+                        <b>{{ activeWord }}</b>
                         <br>
 
                         <div class="desk-sticker-content"
@@ -138,5 +183,7 @@
                 </div>
             </div>
         </div>
+        <!-- /доска  с переводом -->
     </div>
+    <!-- /выезжающая панель -->
 </footer>

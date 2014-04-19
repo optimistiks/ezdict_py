@@ -14,108 +14,156 @@ define(['./module'], function (controllers) {
              * @param TicketSearchLog
              */
                 function ($scope, messages, $q, Ticket, EzTicket, EventManager, TicketSearchLog) {
-                $scope.text = null;
+
+                /**
+                 * слово, для которого в данный момент загружен или загружается тикет
+                 * @type {string}
+                 */
+                $scope.activeWord = '';
+
+                /**
+                 * текст, введеный в поле для поиска (на панели тикетов)
+                 * @type {string}
+                 */
+                $scope.inputText = '';
+
                 $scope.ticket = null;
                 $scope.dictTicket = null;
                 $scope.translateTicket = null;
 
                 $scope.log = null;
-                $scope.lastLoggedWord = null;
 
-                $scope.ticketIsVisible = false;
+                /**
+                 * последнее залоггированое слово
+                 * @type {string}
+                 */
+                $scope.previousWord = '';
+
+                /**
+                 * будет ли тикет закрыт, чтобы по нему был засчитан просмотр, или же отображен сразу
+                 * @type {boolean}
+                 */
+                $scope.protection = false;
+
+                /**
+                 * обработка клика по кнопке найти в панели тикетов
+                 */
+                $scope.searchFromField = function () {
+                    if (($scope.previousWord !== $scope.inputText) || $scope.protection) {
+                        $scope.activeWord = $scope.inputText;
+                        $scope.previousWord = $scope.inputText;
+                        $scope.protection = false;
+                        $scope.loadTicket();
+                    }
+
+                }
+                ;
+
+                /**
+                 * обработка выделения слова в тексте
+                 */
+                $scope.searchFromText = function () {
+                    if ($scope.previousWord !== $scope.activeWord) {
+                        $scope.previousWord = $scope.activeWord;
+                        $scope.protection = true;
+                        $scope.loadTicket();
+                    }
+                };
+
+                /**
+                 * загрузка одного из трех видов тикета в $scope
+                 * @returns {promise}
+                 */
+                $scope.loadTicket = function () {
+                    var deferred = $q.defer(),
+                        promise = deferred.promise;
+
+                    $scope.resetTicket();
+                    $scope.findTicket().then(function (ticket) {
+                        $scope.ticket = ticket;
+                        deferred.resolve(ticket);
+                    }, function () {
+                        $scope.findDictTicket().then(function (ticket) {
+                            $scope.dictTicket = ticket;
+                            deferred.resolve(ticket);
+                        }, function () {
+                            $scope.findTranslateTicket().then(function (ticket) {
+                                $scope.translateTicket = ticket;
+                                deferred.resolve(ticket);
+                            });
+                        });
+                    });
+
+                    return promise;
+                };
+
+                /**
+                 * возвращает загруженый тикет
+                 * @returns {AbstractTicket}
+                 */
+                $scope.activeTicket = function () {
+                    return $scope.ticket || $scope.dictTicket || $scope.translateTicket;
+                };
+
+                /**
+                 * засчитывает просмотр слова и снимает защиту
+                 */
+                $scope.removeProtection = function () {
+                    $scope.logSearch().then(function () {
+                        $scope.protection = false;
+                    });
+                };
 
                 $scope.resetTicket = function () {
                     $scope.log = null;
                     $scope.ticket = null;
                     $scope.dictTicket = null;
                     $scope.translateTicket = null;
-                    $scope.ticketIsVisible = false;
                 };
 
-                $scope.ticketPresent = function () {
-                    return ($scope.ticket || $scope.dictTicket || $scope.translateTicket);
-                };
-
-                $scope.loadTicket = function () {
-                    if ($scope.text && $scope.text.length > 2) {
-                        $scope.resetTicket();
-                        var promise = $scope.findTicket().then(function (ticket) {
-                            $scope.ticket = ticket;
-                        }, function () {
-                            return $scope.findDictTicket().then(function (ticket) {
-                                $scope.dictTicket = ticket;
-                            }, function () {
-                                return $scope.findTranslateTicket().then(function (ticket) {
-                                    $scope.translateTicket = ticket;
-                                });
-                            });
-                        });
-
-                        return promise;
-                    }
-                };
-
+                /**
+                 * @returns {promise}
+                 */
                 $scope.findTicket = function () {
-                    return Ticket.findTicket($scope.text);
+                    return Ticket.findTicket($scope.activeWord);
                 };
 
+                /**
+                 * @returns {promise}
+                 */
                 $scope.findDictTicket = function () {
-                    return EzTicket.findDictTicket($scope.text);
+                    return EzTicket.findDictTicket($scope.activeWord);
                 };
 
                 $scope.findTranslateTicket = function () {
-                    return EzTicket.translate({word: $scope.text}).$promise;
+                    return EzTicket.translate({word: $scope.activeWord}).$promise;
                 };
 
                 $scope.deleteTicket = function () {
                     if (confirm(messages.TICKET_DELETE_PROMPT)) {
                         $scope.ticket.$delete(function () {
-                            $scope.loadTicket();
+                            $scope.resetTicket();
                         });
-                    }
-                };
-
-                $scope.toggleTicket = function () {
-                    if ($scope.ticketIsVisible === false && $scope.ticketPresent()) {
-                        $scope.logSearch()['finally'](function () {
-                            $scope.ticketIsVisible = true;
-                        });
-                    } else {
-                        $scope.ticketIsVisible = false;
                     }
                 };
 
                 $scope.logSearch = function () {
-                    var deferred = $q.defer(),
-                        promise = deferred.promise;
-
-                    if ($scope.lastLoggedWord !== $scope.text) {
-                        promise = TicketSearchLog.log({word: $scope.text},function (log) {
-                            $scope.log = log;
-                            $scope.lastLoggedWord = $scope.text;
-                        }).$promise;
-                    } else {
-                        deferred.reject();
-                    }
-
-                    return promise;
-                };
-
-                $scope.textPresent = function () {
-                    return $scope.text && $scope.text.length > 2;
+                    return TicketSearchLog.log({word: $scope.activeWord},function (log) {
+                        $scope.log = log;
+                    }).$promise;
                 };
 
                 $scope.ticketIsOwn = function () {
-                    return $scope.getActiveTicket().belongsTo($scope.user);
-                };
-
-                $scope.getActiveTicket = function () {
-                    return $scope.ticket || $scope.dictTicket || $scope.translateTicket;
+                    return $scope.activeTicket() && $scope.activeTicket().belongsTo($scope.user);
                 };
 
                 EventManager.onTextSelect(function (e, text) {
-                    $scope.text = text;
-                    $scope.loadTicket();
+                    if (text.length > 2) {
+                        $scope.activeWord = text;
+                        $scope.searchFromText();
+                    }
                 });
-            }]);
+            }
+        ])
+    ;
 });

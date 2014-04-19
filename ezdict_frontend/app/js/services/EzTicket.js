@@ -2,8 +2,8 @@
 define(['./module'], function (factory) {
     'use strict';
     factory.
-        factory('EzTicket', ['$resource', 'constants', 'AbstractModel', '$q',
-            function ($resource, constants, AbstractModel, $q) {
+        factory('EzTicket', ['$resource', 'constants', 'AbstractModel', '$q', 'AbstractTicket',
+            function ($resource, constants, AbstractModel, $q, AbstractTicket) {
                 var EzTicket = $resource(
                     [constants.API_URL, '/ez_tickets/:id/:action', constants.API_FORMAT, '?word=:word'].join(''),
                     {
@@ -22,7 +22,8 @@ define(['./module'], function (factory) {
                         });
                 };
 
-                EzTicket.prototype = angular.extend(EzTicket.prototype, new AbstractModel());
+                AbstractTicket.prototype = angular.extend(new AbstractModel(), AbstractTicket.prototype);
+                EzTicket.prototype = angular.extend(new AbstractTicket(), EzTicket.prototype);
 
                 EzTicket.prototype.isEmptyDictTicket = function () {
                     return !this.def || this.def.length === 0;
