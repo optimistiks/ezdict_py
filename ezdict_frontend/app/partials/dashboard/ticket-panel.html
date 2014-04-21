@@ -1,189 +1,192 @@
 <footer id="footer">
-    <div class="interactive-panel">
-        <div class="panel-wrapper gradient">
-            <!-- поиск тикета -->
-            <form>
-                <div class="words-search-div">
-                    <input class="content-search words-search" type="text" placeholder="Искать слово"
-                           ng-model="inputText"
-                           enter-key="searchFromField()">
-                    <button class="search-button" type="button" ng-click="searchFromField()">Перевести
-                    </button>
-                </div>
-            </form>
-            <!-- /поиск тикета -->
-            <!-- кнопки управления тикетами -->
-            <div class="bottom-interactive-buttons">
-                <ul class="footer-buttons" ng-hide="protection">
-                    <li>
-                        <button toggle-panel-animated ng-show="activeWord && !ticketIsOwn()" class="new-sticker"
-                                title="Новый стикер"></button>
-                    </li>
-                    <li>
-                        <button toggle-panel-animated ng-show="ticketIsOwn()"
-                                class="edit-sticker" id="edit-sticker" title="Редактировать стикер"></button>
-                    </li>
-                    <li>
-                        <button ng-show="ticketIsOwn()" class="customization-sticker"
-                                id="customization" title="Кастомизация"></button>
-                    </li>
-                    <li>
-                        <button ng-show="activeTicket()" class="add-to-learn"
-                                title="Добавить в изучаемые"></button>
-                    </li>
-                    <li>
-                        <button ng-show="ticketIsOwn()" class="delete-sticker"
-                                title="Удалить стикер" ng-click="deleteTicket()"></button>
-                    </li>
-                </ul>
+<div class="interactive-panel">
+    <div class="panel-wrapper gradient">
+        <!-- поиск тикета -->
+        <form>
+            <div class="words-search-div">
+                <input class="content-search words-search" type="text" placeholder="Искать слово"
+                       ng-model="inputText"
+                       enter-key="searchFromField()">
+                <button class="search-button" type="button" ng-click="searchFromField()">Перевести
+                </button>
             </div>
-            <!-- /кнопки управления тикетами -->
-            <!-- корзина с тикетами -->
-            <div class="stickers-wrapper">
-                <div class="basket-wrapper"></div>
-                <!-- тикет -->
-                <div class="active-sticker" ng-show="activeTicket()">
-                    <h2>{{ activeWord }}</h2>
-
-                    <button ng-show="protection" ng-click="removeProtection()">Показать перевод</button>
-                    <div class="active-sticker-cont" ng-hide="protection"
-                         slimscroll="{height: '220px', railVisible: true, distance: '5px', color: '#1B3F32'}">
-                        <p ng-show="log">Вы смотрели слово <b>{{ log.count }}</b> раз</p>
-
-                        <!-- пользовательский тикет -->
-                        <div ng-show="ticket" ng-bind="ticket.text"></div>
-                        <!-- /пользовательский тикет -->
-
-                        <!-- тикет ezdict -->
-                        <div ng-show="dictTicket && !ticket">
-                            <div ng-repeat="def in dictTicket.def">
-                                <div><b>{{ def.text }} [{{ def.ts }}] </b>
-                                    <small><i>({{ def.tr[0].pos }})</i></small>
-                                </div>
-                                <ol>
-                                    <li ng-repeat="tr in def.tr">
-                                        <div>{{ tr.text }} <span
-                                                ng-repeat="syn in tr.syn">{{ ($first ? '(' : '') + syn.text + ($last ? ')' : ', ')  }}</span>
-                                        </div>
-                                        <div ng-repeat="ex in tr.ex">
-                                            <small>{{ ex.text }} - {{ ex.tr[0].text }}</small>
-                                        </div>
-                                        <div ng-show="tr.mean.length > 0">
-                                            <div><b>Синонимы:</b></div>
-                                            <ul>
-                                                <li ng-repeat="mean in tr.mean">
-                                                    <div>{{ mean.text }}</div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ol>
-                            </div>
-                        </div>
-                        <!-- /тикет ezdict -->
-
-                        <!-- тикет ezdict-translate -->
-                        <div ng-show="translateTicket && !ticket && !dictTicket">
-                            <div><b>Перевод:</b></div>
-                            <ul>
-                                <li ng-repeat="text in translateTicket.text"> {{ text }}</li>
-                            </ul>
-                        </div>
-                        <!-- тикет ezdict-translate -->
-                    </div>
-                </div>
-                <!-- /тикет -->
-
-            </div>
-            <!-- /корзина с тикетами -->
-
-        </div>
-    </div>
-    <!-- выезжающая панель -->
-    <div class="bottom-edit-panel">
-
-        <!-- переключатель -->
-        <div class="dict-switcher">
-            <ul>
-                <li>Словарь EzDict</li>
-                <li>Лучшие стикеры пользователей</li>
+        </form>
+        <!-- /поиск тикета -->
+        <!-- кнопки управления тикетами -->
+        <div class="bottom-interactive-buttons">
+            <ul class="footer-buttons" ng-hide="protection">
+                <li>
+                    <button toggle-panel-animated ng-click="loadPanel()" ng-show="activeWord && !ticketIsOwn()" class="new-sticker"
+                            title="Новый стикер"></button>
+                </li>
+                <li>
+                    <button toggle-panel-animated ng-click="loadPanel()" ng-show="ticketIsOwn()"
+                            class="edit-sticker" id="edit-sticker" title="Редактировать стикер"></button>
+                </li>
+                <li>
+                    <button ng-show="ticketIsOwn()" class="customization-sticker"
+                            id="customization" title="Кастомизация"></button>
+                </li>
+                <li>
+                    <button ng-show="activeTicket()" class="add-to-learn"
+                            title="Добавить в изучаемые"></button>
+                </li>
+                <li>
+                    <button ng-show="ticketIsOwn()" class="delete-sticker"
+                            title="Удалить стикер" ng-click="deleteTicket()"></button>
+                </li>
             </ul>
         </div>
-        <!-- /переключатель -->
-        <!-- доска  с переводом -->
-        <div class="edit-field-wrapper">
-            <div class="edit-field-container">
-                <div class="desk-wrapper" ng-show="activeTicket()">
-                    <div class="desk-translate-wrap">
-                        <div class="desk-translate">
+        <!-- /кнопки управления тикетами -->
+        <!-- корзина с тикетами -->
+        <div class="stickers-wrapper">
+            <div class="basket-wrapper"></div>
+            <!-- тикет -->
+            <div class="active-sticker" ng-show="activeTicket()">
+                <h2>{{ activeWord }}</h2>
 
-                            <!-- Заголовок доски -->
-                            <div class="transcription">
-                                <b>{{ activeWord }}</b>
-                                <span ng-show="dictTicket.def[0].ts">
-                                    <span> - </span>
-                                    <i>[{{ dictTicket.def[0].ts }}]</i>
-                                </span>
+                <button ng-show="protection" ng-click="removeProtection()">Показать перевод</button>
+                <div class="active-sticker-cont" ng-hide="protection"
+                     slimscroll="{height: '220px', railVisible: true, distance: '5px', color: '#1B3F32'}">
+                    <p ng-show="log">Вы смотрели слово <b>{{ log.count }}</b> раз</p>
+
+                    <!-- пользовательский тикет -->
+                    <div ng-show="ticket" ng-bind-html="userTicketContent"></div>
+                    <!-- /пользовательский тикет -->
+
+                    <!-- тикет ezdict -->
+                    <div ng-show="dictTicket && !ticket">
+                        <div ng-repeat="def in dictTicket.def">
+                            <div><b>{{ def.text }} [{{ def.ts }}] </b>
+                                <small><i>({{ def.tr[0].pos }})</i></small>
                             </div>
-                            <!-- /Заголовок доски -->
-
-                            <!-- пользовательский тикет -->
-                            <div ng-show="ticket" ng-bind="ticket.text"></div>
-                            <!-- /пользовательский тикет -->
-
-                            <!-- тикет ezdict -->
-                            <table class="tranlation-table" ng-show="dictTicket && !ticket">
-                                <tr class="table-title">
-                                    <td ng-repeat="def in dictTicket.def">
-                                        <i>{{ def.tr[0].pos }}</i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td ng-repeat="def in dictTicket.def">
-                                        <ul>
-                                            <li ng-repeat="text in dictTicket.getFlatDefTrs(def) track by $index">{{ text }}</li>
-                                        </ul>
+                            <ol>
+                                <li ng-repeat="tr in def.tr">
+                                    <div>{{ tr.text }} <span
+                                            ng-repeat="syn in tr.syn">{{ ($first ? '(' : '') + syn.text + ($last ? ')' : ', ')  }}</span>
+                                    </div>
+                                    <div ng-repeat="ex in tr.ex">
+                                        <small>{{ ex.text }} - {{ ex.tr[0].text }}</small>
+                                    </div>
+                                    <div ng-show="tr.mean.length > 0">
                                         <div><b>Синонимы:</b></div>
                                         <ul>
-                                            <li ng-repeat="text in dictTicket.getFlatDefExs(def) track by $index">{{ text }}</li>
+                                            <li ng-repeat="mean in tr.mean">
+                                                <div>{{ mean.text }}</div>
+                                            </li>
                                         </ul>
-                                        <div><b>Примеры:</b></div>
-                                        <ul>
-                                            <li ng-repeat="text in dictTicket.getFlatDefMeans(def) track by $index">{{ text }}</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </table>
-                            <!-- тикет /ezdict -->
-
-                            <!-- тикет ezdict-translate -->
-                            <div ng-show="translateTicket && !ticket && !dictTicket">
-                                <div><b>Перевод:</b></div>
-                                <ul>
-                                    <li ng-repeat="text in translateTicket.text"> {{ text }}</li>
-                                </ul>
-                            </div>
-                            <!-- тикет /ezdict-translate -->
-
+                                    </div>
+                                </li>
+                            </ol>
                         </div>
                     </div>
-                    <div class="desk-buttons">
-                        <button class="copy-button" title="Копировать перевод в стикер"></button>
-                    </div>
-                    <div class="desk-sticker">
-                        <span class="red-pin"></span>
-                        <b>{{ activeWord }}</b>
-                        <br>
+                    <!-- /тикет ezdict -->
 
-                        <div class="desk-sticker-content"
-                             slimscroll="{height: '280px', railVisible: true, distance: '5px', color: '#1B3F32'}">
-                            <div ng-show="ticket" ng-bind="ticket.text"></div>
+                    <!-- тикет ezdict-translate -->
+                    <div ng-show="translateTicket && !ticket && !dictTicket">
+                        <div><b>Перевод:</b></div>
+                        <ul>
+                            <li ng-repeat="text in translateTicket.text"> {{ text }}</li>
+                        </ul>
+                    </div>
+                    <!-- тикет ezdict-translate -->
+                </div>
+            </div>
+            <!-- /тикет -->
+
+        </div>
+        <!-- /корзина с тикетами -->
+
+    </div>
+</div>
+<!-- выезжающая панель -->
+<div class="bottom-edit-panel">
+
+    <!-- переключатель -->
+    <div class="dict-switcher">
+        <ul>
+            <li class="active">Словарь EzDict</li>
+            <li>Лучшие стикеры пользователей</li>
+        </ul>
+    </div>
+    <!-- /переключатель -->
+    <!-- доска  с переводом -->
+    <div class="edit-field-wrapper">
+        <div class="edit-field-container">
+            <div ng-if="editVisible">
+                <button ng-click="saveTicket()">Сохранить</button>
+                <button ng-click="cancelEdit()">Отменить</button>
+                <input type="text" ng-model="ticketToSave.tr" placeholder="Транскрипция">
+                <textarea ckeditor="ckEditorOptions" ng-model="ticketToSave.text" id="addTicketCkeditor"></textarea>
+            </div>
+            <div class="desk-wrapper" ng-hide="editVisible">
+                <div class="desk-translate-wrap">
+                    <div class="desk-translate">
+
+                        <!-- Заголовок доски -->
+                        <div class="transcription">
+                            <b>{{ activeWord }}</b>
+                                <span ng-show="deskDictTicket.def[0].ts">
+                                    <span> - </span>
+                                    <i>[{{ deskDictTicket.def[0].ts }}]</i>
+                                </span>
                         </div>
+                        <!-- /Заголовок доски -->
+
+                        <!-- тикет ezdict -->
+                        <table class="tranlation-table" ng-show="deskDictTicket">
+                            <tr class="table-title">
+                                <td ng-repeat="def in deskDictTicket.def">
+                                    <i>{{ def.tr[0].pos }}</i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td ng-repeat="def in deskDictTicket.def">
+                                    <ul>
+                                        <li ng-repeat="text in deskDictTicket.getFlatDefTrs(def) track by $index">{{ text }}</li>
+                                    </ul>
+                                    <div><b>Синонимы:</b></div>
+                                    <ul>
+                                        <li ng-repeat="text in deskDictTicket.getFlatDefExs(def) track by $index">{{ text }}</li>
+                                    </ul>
+                                    <div><b>Примеры:</b></div>
+                                    <ul>
+                                        <li ng-repeat="text in deskDictTicket.getFlatDefMeans(def) track by $index">{{ text }}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- тикет /ezdict -->
+
+                        <!-- тикет ezdict-translate -->
+                        <div ng-show="deskTranslateTicket && !deskDictTicket">
+                            <div><b>Перевод:</b></div>
+                            <ul>
+                                <li ng-repeat="text in deskTranslateTicket.text"> {{ text }}</li>
+                            </ul>
+                        </div>
+                        <!-- тикет /ezdict-translate -->
+
+                    </div>
+                </div>
+                <div class="desk-buttons">
+                    <button class="copy-button" title="Копировать перевод в стикер"></button>
+                </div>
+                <div class="desk-sticker">
+                    <span class="red-pin"></span>
+                    <b>{{ activeWord }}</b>
+                    <br>
+
+                    <div class="desk-sticker-content"
+                         slimscroll="{height: '280px', railVisible: true, distance: '5px', color: '#1B3F32'}">
+                        <div ng-show="ticket" ng-bind-html="userTicketContent"></div>
+                        <button ng-click="editTicket()">Редактировать тикет</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /доска  с переводом -->
     </div>
-    <!-- /выезжающая панель -->
+    <!-- /доска  с переводом -->
+</div>
+<!-- /выезжающая панель -->
 </footer>

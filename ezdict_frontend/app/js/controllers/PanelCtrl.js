@@ -2,7 +2,7 @@ define(['./module'], function (controllers) {
     'use strict';
     controllers.
         controller('PanelCtrl', ['$scope', 'TextMessages', '$q', 'Ticket', 'EzTicket', 'EventManager',
-            'TicketSearchLog',
+            'TicketSearchLog', '$sce', 'toaster',
 
             /**
              * @param $scope
@@ -13,7 +13,7 @@ define(['./module'], function (controllers) {
              * @param EventManager
              * @param TicketSearchLog
              */
-                function ($scope, messages, $q, Ticket, EzTicket, EventManager, TicketSearchLog) {
+                function ($scope, messages, $q, Ticket, EzTicket, EventManager, TicketSearchLog, $sce, toaster) {
 
                 /**
                  * слово, для которого в данный момент загружен или загружается тикет
@@ -31,7 +31,17 @@ define(['./module'], function (controllers) {
                 $scope.dictTicket = null;
                 $scope.translateTicket = null;
 
+                $scope.deskDictTicket = null;
+                $scope.deskTranslateTicket = null;
+
                 $scope.log = null;
+
+                /**
+                 * @type {string}
+                 */
+                $scope.userTicketContent = '';
+
+                $scope.ticketToSave = new Ticket();
 
                 /**
                  * последнее залоггированое слово
@@ -44,6 +54,15 @@ define(['./module'], function (controllers) {
                  * @type {boolean}
                  */
                 $scope.protection = false;
+
+                /**
+                 * опции ckeditor редактирование тикетов
+                 * @type {Object}
+                 */
+                $scope.ckEditorOptions = {
+                    height: '200px',
+                    width: 'auto'
+                };
 
                 /**
                  * обработка клика по кнопке найти в панели тикетов
@@ -80,6 +99,7 @@ define(['./module'], function (controllers) {
 
                     $scope.resetTicket();
                     $scope.findTicket().then(function (ticket) {
+                        $scope.userTicketContent = $sce.trustAsHtml(ticket.text);
                         $scope.ticket = ticket;
                         deferred.resolve(ticket);
                     }, function () {
@@ -155,6 +175,46 @@ define(['./module'], function (controllers) {
 
                 $scope.ticketIsOwn = function () {
                     return $scope.activeTicket() && $scope.activeTicket().belongsTo($scope.user);
+                };
+
+                $scope.editTicket = function () {
+                    $scope.ticketToSave = $scope.ticket || $scope.ticketToSave;
+                    $scope.editVisible = true;
+                };
+
+                $scope.cancelEdit = function () {
+                    $scope.editVisible = false;
+                };
+
+                $scope.saveTicket = function () {
+                    var errorCallback = function () {
+                            toaster.pop('error', 'Ошибка');
+                        },
+                        successCallback = function () {
+                            toaster.pop('success', 'Сохранено');
+                            $scope.userTicketContent = $sce.trustAsHtml($scope.ticketToSave.text);
+                            $scope.editVisible = false;
+                            if (!$scope.ticket) {
+                                $scope.ticket = $scope.ticketToSave;
+                            }
+                        };
+
+                    if ($scope.ticketToSave.id) {
+                        $scope.ticketToSave.$update(successCallback, errorCallback);
+                    } else {
+                        $scope.ticketToSave.word = $scope.activeWord;
+                        $scope.ticketToSave.$save(successCallback, errorCallback);
+                    }
+                };
+
+                $scope.loadPanel = function () {
+                    $scope.findDictTicket().then(function (dictTicket) {
+                        $scope.deskDictTicket = dictTicket;
+                    }, function () {
+                        $scope.findTranslateTicket().then(function(translateTicket){
+                            $scope.deskTranslateTicket = translateTicket;
+                        });
+                    });
                 };
 
                 EventManager.onTextSelect(function (e, text) {
