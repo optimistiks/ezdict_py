@@ -10,8 +10,20 @@ define(['./module'], function (factory) {
                         id: '@id'
                     },
                     {
-                        'dict': { method: 'GET', params: {action: 'dict'}},
-                        'translate': { method: 'GET', params: {action: 'translate'} }
+                        'dict': {
+                            method: 'JSONP',
+                            url: 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=:key&lang=en-ru&text=:word&callback=JSON_CALLBACK',
+                            params: {
+                                key: 'dict.1.1.20131027T115553Z.881398786442095e.51bb0420197e3eecd21c1dff059a2636b3976867'
+                            }
+                        },
+                        'translate': {
+                            method: 'JSONP',
+                            url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=:key&text=:word&lang=ru&callback=JSON_CALLBACK',
+                            params: {
+                                key: 'trnsl.1.1.20131027T115234Z.fa108187c88cfaef.a410c2ed5ad3b5107f12fb7a31bf91de5b920fe7'
+                            }
+                        }
                     }
                 );
 
