@@ -5,7 +5,8 @@ define([
      './SearchCtrl',
      './SearchResultCtrl',
      './WorkonTextCtrl',
+     './WorkonVideoCtrl',
      './LeftMenuCtrl',
      './AddTextCtrl',
-     './PanelCtrl',
-], function () {});
+     './PanelCtrl'
+]);

@@ -56,6 +56,10 @@ define(['app'], function (app) {
                 url: '/workon/text/:id',
                 templateUrl: '/partials/dashboard/workon-text.html'
             }).
+            state(constants.ROOT_STATE + '.workon.video', {
+                url: '/workon/video/:id',
+                templateUrl: '/partials/dashboard/workon-video.html'
+            }).
             state(constants.ROOT_STATE + '.add', {
                 url: '/add/:typeOfContent',
                 views: {

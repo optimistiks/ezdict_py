@@ -9,5 +9,6 @@ define([
     './EventManager',
     './TicketSearchLog',
     './AbstractTicket',
-    './AbstractModel'
+    './AbstractModel',
+    './YouTube'
 ]);

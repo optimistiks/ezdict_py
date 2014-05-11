@@ -24,13 +24,6 @@ define(['app', 'constants', 'angular-mock'], function () {
                 }]);
         });
 
-        it('should set initial values to null', function () {
-            expect($scope.text).toBeNull();
-            expect($scope.ticket).toBeNull();
-            expect($scope.dictTicket).toBeNull();
-            expect($scope.translateTicket).toBeNull();
-        });
-
         it('should set initial ticket values to null', function () {
             $scope.ticket = 1;
             $scope.dictTicket = 1;
@@ -118,8 +111,7 @@ define(['app', 'constants', 'angular-mock'], function () {
             spyOn($scope.ticket, '$delete').andCallThrough();
             spyOn($scope, 'loadTicket');
             $scope.deleteTicket();
-            expect($scope.ticket.$delete).toHaveBeenCalled();
-            expect($scope.loadTicket).toHaveBeenCalled();
+            expect($scope.ticket).toBeNull();
         });
 
         it('should load ticket after onTextSelect event', function () {

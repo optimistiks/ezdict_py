@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from rest_framework.reverse import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from accounts.models import MyUser
@@ -10,9 +10,9 @@ class TicketTests(APITestCase):
             nickname='testusr', email='testusr@gmail.com', password='qwerty')
         self.client.login(username=self.user.email, password='qwerty')
         self.ticketsData = []
-        self.ticketsData.append({'word': 'what is', 'tr': 'uot iz', 'text': 'тестовый тикет'})
-        self.ticketsData.append({'word': 'bang bang', 'tr': 'beng beng', 'text': 'тестовый тикет 2'})
-        self.ticketListUrl = reverse('ticket-list')
+        self.ticketsData.append({'word': 'what is', 'tr': 'asd', 'text': 'тестовый тикет'})
+        self.ticketsData.append({'word': 'bang bang', 'tr': 'dsa', 'text': 'тестовый тикет 2'})
+        self.ticketListUrl = reverse('ticket-list', format='json')
 
     def test_create_ticket_correct_data(self):
         response = self.client.post(self.ticketListUrl, self.ticketsData[0])
@@ -35,7 +35,8 @@ class TicketTests(APITestCase):
 
     def test_get_single_ticket(self):
         created = self.client.post(self.ticketListUrl, self.ticketsData[0])
-        response = self.client.get(reverse('ticket-detail', args=(created.data['id'],)))
+        url = reverse('ticket-detail', args=(created.data['id'], 'json'))
+        response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['id'], created.data['id'])
         self.assertEqual(response.data['word'], self.ticketsData[0]['word'])

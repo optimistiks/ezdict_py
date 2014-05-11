@@ -30,6 +30,7 @@ class TicketSearchLogView(APIView):
         word = request.DATA.get('word')
         if word is None:
             raise ParseError('Parameter "word" is required')
+        word = word.strip().lower()
         ticketSearchLog = self.getLog(word)
         if ticketSearchLog is not None:
             ticketSearchLog.incrementSearchCount()

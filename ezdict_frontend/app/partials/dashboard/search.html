@@ -21,5 +21,13 @@
                 Источник: {{ text.source }}
             </li>
         </ul>
+
+        <div ng-show="videoSearchResult && !videoSearchResult.length">Ничего не найдено</div>
+        <ul>
+            <li ng-repeat="video in videoSearchResult">
+                <img ng-src="{{ video.snippet.thumbnails.default.url }}">
+                <a ui-sref='dashboard.layout.default.workon.video({id: video.id.videoId})'>{{ video.snippet.title }}</a>
+            </li>
+        </ul>
     </div>
 </div>
