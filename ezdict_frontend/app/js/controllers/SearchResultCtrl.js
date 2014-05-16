@@ -21,7 +21,8 @@ define(['./module'], function (controllers) {
                                     part: 'id,snippet',
                                     type: 'video',
                                     videoEmbeddable: true,
-                                    maxResults: 20
+                                    maxResults: 20,
+                                    videoCaption: 'closedCaption'
                                 });
                                 request.execute(function (response) {
                                     $scope.videoSearchResult = response.items;

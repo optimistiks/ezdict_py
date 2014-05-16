@@ -3,5 +3,6 @@ define([
     './EzContentSwitch',
     './TextSelect',
     './EnterKey',
-    './TogglePanelAnimated'
+    './TogglePanelAnimated',
+    './YoutubePlayer'
 ]);

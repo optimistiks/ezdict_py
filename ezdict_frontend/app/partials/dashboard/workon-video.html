@@ -1,3 +1,9 @@
 <div ng-controller="WorkonVideoCtrl" text-select>
-    <p>Video id: {{ videoId }}</p>
+    <div style="float: left;">
+        <div youtube-player video-id="{{ videoId }}"></div>
+    </div>
+    <div style="padding-left: 20px; margin-left: 425px;">
+        <p ng-show="noCaptions">Нет субтитров</p>
+        <p ng-repeat="caption in currentCaptions track by $index"><small>{{ sToMin(caption._start) }} - </small>{{ caption.__text }}</p>
+    </div>
 </div>
