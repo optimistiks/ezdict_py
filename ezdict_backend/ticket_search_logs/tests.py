@@ -65,6 +65,22 @@ class TicketSearchLogTests(APITestCase):
         self.assertIn('created', wordHiUpdate.data)
         self.assertIn('updated', wordHiUpdate.data)
 
+    def test_search_the_same_word_with_whitespaces(self):
+        response = self.client.post(self.searchLogCreate, {'word': 'test_whitespaces'})
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['user'], self.user.id)
+        self.assertEqual(response.data['word'], 'test_whitespaces')
+        self.assertEqual(response.data['count'], 1)
+
+        response = self.client.post(self.searchLogCreate, {'word': ' test_whitespaces '})
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['user'], self.user.id)
+        self.assertEqual(response.data['word'], 'test_whitespaces')
+        self.assertEqual(response.data['count'], 2)
+
+
     def test_create_search_log_no_word(self):
         response = self.client.post(self.searchLogCreate, {})
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

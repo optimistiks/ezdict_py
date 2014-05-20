@@ -41,5 +41,13 @@ define(['app', 'constants', 'angular-mock'], function () {
             expect($scope.getSelectedText).toHaveBeenCalled();
             expect(EventManager.broadcastTextSelect).toHaveBeenCalledWith('test');
         });
+
+        it('should trim a string before broadcasting', function () {
+            spyOn(EventManager, 'broadcastTextSelect');
+            spyOn($scope, 'getSelectedText').andReturn(' test ');
+            $scope.mouseupHandler();
+            expect($scope.getSelectedText).toHaveBeenCalled();
+            expect(EventManager.broadcastTextSelect).toHaveBeenCalledWith('test');
+        });
     });
 });

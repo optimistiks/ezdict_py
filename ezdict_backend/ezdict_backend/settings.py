@@ -128,7 +128,6 @@ INSTALLED_APPS = (
     'rest_framework',
     'accounts',
     'tickets',
-    'ez_tickets',
     'texts',
     'ticket_search_logs',
 )

@@ -29,7 +29,7 @@ define(['./module'], function (directives) {
                         };
 
                         $scope.mouseupHandler = function () {
-                            var selectedText = $scope.getSelectedText();
+                            var selectedText = $scope.getSelectedText().replace(/^\s+|\s+$/g, '');
                             $log.log('findTicket.mouseup', selectedText);
                             EventManager.broadcastTextSelect(selectedText);
                         };

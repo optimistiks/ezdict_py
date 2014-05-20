@@ -6,6 +6,7 @@
             <div class="words-search-div">
                 <input class="content-search words-search" type="text" placeholder="Искать слово"
                        ng-model="inputText"
+                       ng-trim="true"
                        enter-key="searchFromField()">
                 <button class="search-button" type="button" ng-click="searchFromField()">Перевести
                 </button>
