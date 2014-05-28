@@ -3,11 +3,11 @@ define(['./module'], function (controllers) {
     controllers.
 
         controller('WorkonVideoCtrl', [
-            '$scope', '$stateParams', '$rootScope', '$http', '$window', '$interval', '$timeout', 'YouTubePlayer',
-            function ($scope, $stateParams, $rootScope, $http, $window, $interval, $timeout, YouTubePlayer) {
+            '$scope', '$stateParams', '$rootScope', '$http', '$window', '$interval', '$timeout', 'YouTubePlayer', '$sce',
+            function ($scope, $stateParams, $rootScope, $http, $window, $interval, $timeout, YouTubePlayer, $sce) {
                 var urlForCaptions = 'https://www.youtube.com/api/timedtext',
                     isPlaying = function () {
-                        return $scope.player && $scope.player.getPlayerState() === 1;
+                        return $scope.player && $scope.player.instance.getPlayerState() === YouTubePlayer.STATE_PLAYING;
                     },
                     txt,
                     decodeHtml = function (html) {
@@ -51,21 +51,23 @@ define(['./module'], function (controllers) {
                             captions = x2js.xml_str2json(response.data), i;
 
                         if (captions) {
-                            $scope.captions = captions.transcript.text;
+                            captions = captions.transcript.text;
 
-                            for (i = 0; i < $scope.captions.length; i++) {
-                                //todo: check for crossing captions
+                            for (i = 0; i < captions.length; i++) {
+                                captions[i].__text = $sce.trustAsHtml(decodeHtml(captions[i].__text));
                             }
+
+                            $scope.captions = captions;
                         } else {
                             $scope.noCaptions = true;
                         }
                     });
 
-                $scope.showNextCaption = function(previousCaption) {
+                $scope.showNextCaption = function() {
                     debugger;
                     var caption, timeMs, cStartMs, cDurMs;
-                    caption = $scope.getNextCaption(previousCaption);
-                    if (caption)
+                    caption = $scope.getNextCaption();
+                    if (caption && isPlaying())
                     {
                         cStartMs = parseFloat(caption._start) * 1000;
                         cDurMs = parseFloat(caption._dur) * 1000;
@@ -75,8 +77,7 @@ define(['./module'], function (controllers) {
                             $scope.caption = caption;
 
                             $timeout(function() {
-                                $scope.showNextCaption($scope.caption);
-                                $scope.caption = null;
+                                $scope.showNextCaption();
                             }, cDurMs);
 
                         }, cStartMs - timeMs);
@@ -84,13 +85,13 @@ define(['./module'], function (controllers) {
                     }
                 };
 
-                $scope.getNextCaption = function(previousCaption) {
+                $scope.getNextCaption = function() {
                     var caption;
 
-                    if (!previousCaption) {
+                    if (!$scope.caption) {
                         caption = angular.extend({index: 0}, $scope.captions[0]);
                     } else {
-                        caption = angular.extend({index: previousCaption.index + 1}, $scope.captions[previousCaption.index + 1]);
+                        caption = angular.extend({index: $scope.caption.index + 1}, $scope.captions[$scope.caption.index + 1]);
                     }
 
                     return caption;
@@ -104,7 +105,6 @@ define(['./module'], function (controllers) {
                         {
                             $scope.showNextCaption();
                         }
-                        //todo: pause somehow
                     };
 
                     $scope.player.instance.addEventListener("onStateChange", "onPlayerStateChange");
