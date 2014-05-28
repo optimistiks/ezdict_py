@@ -10,5 +10,6 @@ define([
     './TicketSearchLog',
     './AbstractTicket',
     './AbstractModel',
-    './YouTube'
+    './YouTube',
+    './YouTubePlayer'
 ]);

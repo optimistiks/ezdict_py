@@ -3,22 +3,18 @@ define(['./module'], function (controllers) {
     controllers.
 
         controller('WorkonVideoCtrl', [
-            '$scope', '$stateParams', '$rootScope', '$http', '$window', '$interval', '$timeout',
-            function ($scope, $stateParams, $rootScope, $http, $window, $interval, $timeout) {
+            '$scope', '$stateParams', '$rootScope', '$http', '$window', '$interval', '$timeout', 'YouTubePlayer',
+            function ($scope, $stateParams, $rootScope, $http, $window, $interval, $timeout, YouTubePlayer) {
                 var urlForCaptions = 'https://www.youtube.com/api/timedtext',
                     isPlaying = function () {
                         return $scope.player && $scope.player.getPlayerState() === 1;
                     },
-                    shownCaptionsStartTimes = [],
-                    CAPTIONS_REFRESH_TIME = 100,
-                    TO_FIXED = 1,
                     txt,
                     decodeHtml = function (html) {
                         txt = txt || document.createElement("textarea");
                         txt.innerHTML = html;
                         return txt.value;
                     },
-                    previousTime,
                     interval;
 
                 $scope.videoId = $stateParams.id;
@@ -26,6 +22,7 @@ define(['./module'], function (controllers) {
                 $scope.player = null;
                 $scope.currentCaptions = [];
                 $scope.noCaptions = false;
+                $scope.caption = null;
 
                 $scope.sToMin = function (s) {
                     var min, sec;
@@ -43,27 +40,6 @@ define(['./module'], function (controllers) {
                     }
                 });
 
-                interval = $interval(function () {
-                    if (isPlaying()) {
-                        var
-                            curTime = $scope.player.getCurrentTime().toFixed(TO_FIXED),
-                            caption;
-
-                        if (previousTime === curTime) {
-                            curTime = (parseFloat(curTime) - 0.1).toFixed(TO_FIXED);
-                        }
-
-                        previousTime = curTime;
-
-                        caption = $scope.captions[curTime];
-
-                        if (caption && shownCaptionsStartTimes.indexOf(caption._start) === -1) {
-                            shownCaptionsStartTimes.push(caption._start);
-                            $scope.currentCaptions.push(caption);
-                        }
-                    }
-                }, CAPTIONS_REFRESH_TIME);
-
                 $scope.$on('$destroy', function () {
                         $interval.cancel(interval);
                     }
@@ -72,26 +48,66 @@ define(['./module'], function (controllers) {
                 $http.get(urlForCaptions, {params: {lang: 'en', v: $scope.videoId}})
                     .then(function (response) {
                         var x2js = new $window.X2JS(),
-                            captions = x2js.xml_str2json(response.data),
-                            captionsByStartTime = {},
-                            i,
-                            index;
+                            captions = x2js.xml_str2json(response.data), i;
 
                         if (captions) {
-                            captions = captions.transcript.text;
-                            for (i = 0; i < captions.length; i++) {
-                                index = parseFloat(captions[i]._start).toFixed(TO_FIXED);
-                                captions[i].__text = decodeHtml(captions[i].__text);
-                                captionsByStartTime[index] = captions[i];
+                            $scope.captions = captions.transcript.text;
+
+                            for (i = 0; i < $scope.captions.length; i++) {
+                                //todo: check for crossing captions
                             }
-                            $scope.captions = captionsByStartTime;
                         } else {
                             $scope.noCaptions = true;
                         }
                     });
 
+                $scope.showNextCaption = function(previousCaption) {
+                    debugger;
+                    var caption, timeMs, cStartMs, cDurMs;
+                    caption = $scope.getNextCaption(previousCaption);
+                    if (caption)
+                    {
+                        cStartMs = parseFloat(caption._start) * 1000;
+                        cDurMs = parseFloat(caption._dur) * 1000;
+                        timeMs = $scope.player.instance.getCurrentTime() * 1000;
+
+                        $timeout(function() {
+                            $scope.caption = caption;
+
+                            $timeout(function() {
+                                $scope.showNextCaption($scope.caption);
+                                $scope.caption = null;
+                            }, cDurMs);
+
+                        }, cStartMs - timeMs);
+
+                    }
+                };
+
+                $scope.getNextCaption = function(previousCaption) {
+                    var caption;
+
+                    if (!previousCaption) {
+                        caption = angular.extend({index: 0}, $scope.captions[0]);
+                    } else {
+                        caption = angular.extend({index: previousCaption.index + 1}, $scope.captions[previousCaption.index + 1]);
+                    }
+
+                    return caption;
+                };
+
                 $rootScope.$on('youTubePlayerIsReady', function (evt, player) {
-                    $scope.player = player;
+                    $scope.player = new YouTubePlayer(player);
+
+                    $window.onPlayerStateChange = function(newState) {
+                        if (newState === YouTubePlayer.STATE_PLAYING)
+                        {
+                            $scope.showNextCaption();
+                        }
+                        //todo: pause somehow
+                    };
+
+                    $scope.player.instance.addEventListener("onStateChange", "onPlayerStateChange");
                 });
             }
         ])
