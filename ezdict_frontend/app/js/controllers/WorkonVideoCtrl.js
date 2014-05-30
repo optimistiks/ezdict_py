@@ -74,7 +74,7 @@ define(['./module'], function (controllers) {
                         timeMs = $scope.player.instance.getCurrentTime() * 1000;
 
                         $timeout(function() {
-                            $scope.caption = caption;
+                            $scope.currentCaptions.push(caption);
 
                             $timeout(function() {
                                 $scope.showNextCaption();
@@ -86,22 +86,24 @@ define(['./module'], function (controllers) {
                 };
 
                 $scope.getNextCaption = function() {
-                    var caption;
+                    var nextCaption, lastCaption;
 
-                    if (!$scope.caption) {
-                        caption = angular.extend({index: 0}, $scope.captions[0]);
+                    lastCaption = $scope.currentCaptions[$scope.currentCaptions.length - 1];
+
+                    if (!lastCaption) {
+                        nextCaption = angular.extend({index: 0}, $scope.captions[0]);
                     } else {
-                        caption = angular.extend({index: $scope.caption.index + 1}, $scope.captions[$scope.caption.index + 1]);
+                        nextCaption = angular.extend({index: lastCaption.index + 1}, $scope.captions[lastCaption.index + 1]);
                     }
 
-                    return caption;
+                    return nextCaption;
                 };
 
                 $rootScope.$on('youTubePlayerIsReady', function (evt, player) {
                     $scope.player = new YouTubePlayer(player);
 
-                    $window.onPlayerStateChange = function(newState) {
-                        if (newState === YouTubePlayer.STATE_PLAYING)
+                    $window.onPlayerStateChange = function(event) {
+                        if (event.data === YouTubePlayer.STATE_PLAYING)
                         {
                             $scope.showNextCaption();
                         }

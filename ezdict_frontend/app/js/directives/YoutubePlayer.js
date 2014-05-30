@@ -5,9 +5,8 @@ define(['./module'], function(directives) {
     .directive('youtubePlayer', [
       '$window', '$q', '$rootScope',
       function($window, $q, $rootScope) {
-        var PLAYER_ID = 'myytplayer',
-          ELEMENT_ID = 'ytapiplayer',
-          API_ID = 'ytplayer';
+        var
+          ELEMENT_ID = 'ytapiplayer';
 
         return {
           scope: {
@@ -16,17 +15,23 @@ define(['./module'], function(directives) {
           templateUrl: '/partials/dashboard/youtube-player.html',
           replace: true,
           link: function($scope, element, attrs) {
-            var
-              playerParams = {allowScriptAccess: "always", allowFullScreen: "true"},
-              playerAttrs = {id: PLAYER_ID},
-              playerUrl = "http://www.youtube.com/v/" + $scope.videoId + "?enablejsapi=1&playerapiid=" + API_ID;
+            var ytScriptTag,
+              firstScriptTag;
 
-            $window.onYouTubePlayerReady = function() {
-              var player = document.getElementById(PLAYER_ID);
+            $window.onYouTubeIframeAPIReady = function() {
+              var player = new YT.Player(ELEMENT_ID, {
+                height: '390',
+                width: '640',
+                videoId: $scope.videoId
+              });
+
               $rootScope.$broadcast('youTubePlayerIsReady', player);
             };
 
-            $window.swfobject.embedSWF(playerUrl, ELEMENT_ID, "425", "356", "8", null, null, playerParams, playerAttrs);
+            ytScriptTag = document.createElement('script');
+            ytScriptTag.src = "https://www.youtube.com/iframe_api";
+            firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(ytScriptTag, firstScriptTag);
           }
         };
       }
