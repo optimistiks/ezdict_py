@@ -3,7 +3,8 @@ define(['./module'], function (controllers) {
     controllers.
 
         controller('WorkonVideoCtrl', [
-            '$scope', '$stateParams', '$rootScope', '$http', '$window', '$interval', '$timeout', 'YouTubePlayer', '$sce',
+            '$scope', '$stateParams', '$rootScope', '$http', '$window', '$interval', '$timeout', 'YouTubePlayer',
+            '$sce',
             function ($scope, $stateParams, $rootScope, $http, $window, $interval, $timeout, YouTubePlayer, $sce) {
                 var urlForCaptions = 'https://www.youtube.com/api/timedtext',
                     isPlaying = function () {
@@ -15,7 +16,8 @@ define(['./module'], function (controllers) {
                         txt.innerHTML = html;
                         return txt.value;
                     },
-                    interval;
+                    interval,
+                    cleanYouTubePlayerIsReady;
 
                 $scope.videoId = $stateParams.id;
                 $scope.captions = [];
@@ -63,20 +65,19 @@ define(['./module'], function (controllers) {
                         }
                     });
 
-                $scope.showNextCaption = function() {
+                $scope.showNextCaption = function () {
                     debugger;
                     var caption, timeMs, cStartMs, cDurMs;
                     caption = $scope.getNextCaption();
-                    if (caption && isPlaying())
-                    {
+                    if (caption && isPlaying()) {
                         cStartMs = parseFloat(caption._start) * 1000;
                         cDurMs = parseFloat(caption._dur) * 1000;
                         timeMs = $scope.player.instance.getCurrentTime() * 1000;
 
-                        $timeout(function() {
+                        $timeout(function () {
                             $scope.currentCaptions.push(caption);
 
-                            $timeout(function() {
+                            $timeout(function () {
                                 $scope.showNextCaption();
                             }, cDurMs);
 
@@ -85,7 +86,7 @@ define(['./module'], function (controllers) {
                     }
                 };
 
-                $scope.getNextCaption = function() {
+                $scope.getNextCaption = function () {
                     var nextCaption, lastCaption;
 
                     lastCaption = $scope.currentCaptions[$scope.currentCaptions.length - 1];
@@ -99,17 +100,20 @@ define(['./module'], function (controllers) {
                     return nextCaption;
                 };
 
-                $rootScope.$on('youTubePlayerIsReady', function (evt, player) {
+                cleanYouTubePlayerIsReady = $rootScope.$on('youTubePlayerIsReady', function (evt, player) {
                     $scope.player = new YouTubePlayer(player);
 
-                    $window.onPlayerStateChange = function(event) {
-                        if (event.data === YouTubePlayer.STATE_PLAYING)
-                        {
+                    $window.onPlayerStateChange = function (event) {
+                        if (event.data === YouTubePlayer.STATE_PLAYING) {
                             $scope.showNextCaption();
                         }
                     };
 
                     $scope.player.instance.addEventListener("onStateChange", "onPlayerStateChange");
+                });
+
+                $scope.$on('$destroy', function () {
+                    cleanYouTubePlayerIsReady();
                 });
             }
         ])
