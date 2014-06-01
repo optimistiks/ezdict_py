@@ -20,11 +20,14 @@ define(['./module'], function (controllers) {
                     cleanYouTubePlayerIsReady;
 
                 $scope.videoId = $stateParams.id;
-                $scope.captions = [];
                 $scope.player = null;
-                $scope.currentCaptions = [];
-                $scope.noCaptions = false;
                 $scope.caption = null;
+
+                $scope.currentCaptions = [];
+                $scope.captions = [];
+
+                $scope.noCaptions = false;
+                $scope.shownCaptions = {};
 
                 $scope.sToMin = function (s) {
                     var min, sec;
@@ -66,15 +69,15 @@ define(['./module'], function (controllers) {
                     });
 
                 $scope.showNextCaption = function () {
-                    debugger;
                     var caption, timeMs, cStartMs, cDurMs;
                     caption = $scope.getNextCaption();
-                    if (caption && isPlaying()) {
-                        cStartMs = parseFloat(caption._start) * 1000;
+                    cStartMs = parseFloat(caption._start) * 1000;
+
+                    if (caption && isPlaying() && !$scope.shownCaptions[cStartMs]) {
                         cDurMs = parseFloat(caption._dur) * 1000;
                         timeMs = $scope.player.instance.getCurrentTime() * 1000;
 
-                        $timeout(function () {
+                        $scope.shownCaptions[cStartMs] = $timeout(function () {
                             $scope.currentCaptions.push(caption);
 
                             $timeout(function () {
