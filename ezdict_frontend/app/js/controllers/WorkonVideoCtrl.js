@@ -77,7 +77,9 @@ define(['./module'], function (controllers) {
                         cDurMs = parseFloat(caption._dur) * 1000;
                         timeMs = $scope.player.instance.getCurrentTime() * 1000;
 
+                        $scope.caption = null;
                         $scope.shownCaptions[cStartMs] = $timeout(function () {
+                            $scope.caption = caption;
                             $scope.currentCaptions.push(caption);
 
                             $timeout(function () {

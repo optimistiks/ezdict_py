@@ -1,6 +1,7 @@
 <div ng-controller="WorkonVideoCtrl" text-select>
-    <div>
+    <div class="player-container">
         <div youtube-player video-id="{{ videoId }}"></div>
+        <div class="caption-container" ng-bind-html="caption.__text"></div>
     </div>
     <div>
         <p ng-show="noCaptions">Нет субтитров</p>

@@ -20,9 +20,12 @@ define(['./module'], function (directives) {
 
                         $scope.createPlayer = function () {
                             var player = new $window.YT.Player(ELEMENT_ID, {
-                                height: '390',
+                                height: '200',
                                 width: '100%',
-                                videoId: $scope.videoId
+                                videoId: $scope.videoId,
+                                playerVars: {
+                                    wmode: 'opaque'
+                                }
                             });
 
                             $rootScope.$broadcast('youTubePlayerIsReady', player);

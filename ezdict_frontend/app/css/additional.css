@@ -1,0 +1,23 @@
+.caption-container {
+    width: 100%;
+    padding: 5px 0;
+    position: absolute;
+    bottom: 45px;
+    color: white;
+    text-align: center;
+}
+
+.caption-container:hover {
+    background: rgba(1, 1, 1, 0.5);
+}
+
+.caption-container:empty {
+    display: none;
+}
+
+.caption-container .fullscreen {
+}
+
+.player-container {
+    position: relative;
+}
