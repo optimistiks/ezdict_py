@@ -4,5 +4,6 @@ define([
     './TextSelect',
     './EnterKey',
     './TogglePanelAnimated',
-    './YoutubePlayer'
+    './YoutubePlayer',
+    './YoutubeCaption'
 ]);

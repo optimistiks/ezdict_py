@@ -40,6 +40,8 @@ define(['./module'], function (directives) {
                             ytScriptTag.src = "https://www.youtube.com/iframe_api";
                             firstScriptTag = document.getElementsByTagName('script')[0];
                             firstScriptTag.parentNode.insertBefore(ytScriptTag, firstScriptTag);
+                        } else {
+                            $scope.createPlayer();
                         }
                     }
                 };
