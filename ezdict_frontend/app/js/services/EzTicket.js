@@ -19,7 +19,7 @@ define(['./module'], function (factory) {
                         },
                         'translate': {
                             method: 'JSONP',
-                            url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=:key&text=:word&lang=ru&callback=JSON_CALLBACK',
+                            url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=:key&text=:word&lang=en-ru&callback=JSON_CALLBACK',
                             params: {
                                 key: 'trnsl.1.1.20131027T115234Z.fa108187c88cfaef.a410c2ed5ad3b5107f12fb7a31bf91de5b920fe7'
                             }
