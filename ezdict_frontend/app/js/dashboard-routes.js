@@ -43,6 +43,38 @@ define(['app'], function (app) {
                     }
                 }
             }).
+            state(constants.ROOT_STATE + '.profile', {
+                url: '/profile',
+                views: {
+                    'main@dashboard.layout': {
+                        templateUrl: '/partials/dashboard/profile.html'
+                    }
+                }
+            }).
+            state(constants.ROOT_STATE + '.stats', {
+                url: '/stats',
+                views: {
+                    'main@dashboard.layout': {
+                        templateUrl: '/partials/dashboard/stats.html'
+                    }
+                }
+            }).
+            state(constants.ROOT_STATE + '.about', {
+                url: '/about',
+                views: {
+                    'main@dashboard.layout': {
+                        templateUrl: '/partials/dashboard/about.html'
+                    }
+                }
+            }).
+            state(constants.ROOT_STATE + '.faq', {
+                url: '/faq',
+                views: {
+                    'main@dashboard.layout': {
+                        templateUrl: '/partials/dashboard/faq.html'
+                    }
+                }
+            }).
             state(constants.ROOT_STATE + '.workon', {
                 abstract: true,
                 url: '',

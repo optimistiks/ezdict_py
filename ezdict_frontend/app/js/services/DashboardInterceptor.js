@@ -9,7 +9,7 @@ define(['./module'], function (factory) {
                             toaster.save('error', 'Требуется авторизация', messages.AUTH_REQUEST_AFTER_REDIRECT);
                             $window.location.href = '/';
                         } else {
-                            toaster.pop('error', rejection.message);
+                            toaster.pop('error', 'Ошибка ' + rejection.status, rejection.message);
                         }
 
                         return $q.reject(rejection);

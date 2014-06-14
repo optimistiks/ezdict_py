@@ -21,3 +21,14 @@
 .player-container {
     position: relative;
 }
+
+.header-buttons li a {
+    text-decoration: none;
+    color: white;
+}
+
+.header-buttons li.active {
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px #19555d inset;
+}

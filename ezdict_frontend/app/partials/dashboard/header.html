@@ -4,11 +4,11 @@
         </div>
         <div class="right-header">
             <ul class="header-buttons">
-                <li>Username</li>
-                <li>Материалы</li>
-                <li>Статистика</li>
-                <li>О Нас</li>
-                <li>F.A.Q</li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.layout.default.profile">{{ user.nickname }}</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.layout.default.search">Материалы</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.layout.default.stats">Статистика</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.layout.default.about">О Нас</a></li>
+                <li ui-sref-active="active"><a ui-sref="dashboard.layout.default.faq">F.A.Q</a></li>
             </ul>
             <div class="exit-button">
                 <button type="button" ng-click="logout()">Выход</button>
