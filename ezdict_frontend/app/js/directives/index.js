@@ -5,5 +5,6 @@ define([
     './EnterKey',
     './TogglePanelAnimated',
     './YoutubePlayer',
-    './YoutubeCaption'
+    './YoutubeCaption',
+    './VideoJs'
 ]);
