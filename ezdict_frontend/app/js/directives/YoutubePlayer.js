@@ -20,7 +20,7 @@ define(['./module'], function (directives) {
 
                         $scope.createPlayer = function () {
                             var player = new $window.YT.Player(ELEMENT_ID, {
-                                height: '200',
+                                height: '385',
                                 width: '100%',
                                 videoId: $scope.videoId,
                                 playerVars: {
@@ -40,6 +40,8 @@ define(['./module'], function (directives) {
                             ytScriptTag.src = "https://www.youtube.com/iframe_api";
                             firstScriptTag = document.getElementsByTagName('script')[0];
                             firstScriptTag.parentNode.insertBefore(ytScriptTag, firstScriptTag);
+                        } else {
+                            $scope.createPlayer();
                         }
                     }
                 };

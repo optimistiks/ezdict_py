@@ -6,6 +6,7 @@ define([
      './SearchResultCtrl',
      './WorkonTextCtrl',
      './WorkonVideoCtrl',
+     './WorkonTVideoCtrl',
      './LeftMenuCtrl',
      './AddTextCtrl',
      './PanelCtrl'
