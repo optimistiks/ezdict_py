@@ -22,7 +22,7 @@ define(['./module', 'videojs'], function (directives, videojs) {
                             };
 
                         $scope.getMovieUrl = function () {
-                            return '/tvideo/' + $scope.movieId;
+                            return '/api/tvideo/' + $scope.movieId;
                         };
 
                         $scope.$watch('videoEl.src', function () {
