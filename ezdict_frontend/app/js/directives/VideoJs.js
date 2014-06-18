@@ -12,15 +12,28 @@ define(['./module', 'videojs'], function (directives, videojs) {
                     replace: true,
                     link: function ($scope, element, attrs) {
                         $scope.videoEl = element.find('source').get(0);
+                        $scope.player = null;
 
-                        $scope.getMovieUrl = function() {
+                        var
+                            dispose = function () {
+                                if ($scope.player) {
+                                    $scope.player.dispose();
+                                }
+                            };
+
+                        $scope.getMovieUrl = function () {
                             return '/tvideo/' + $scope.movieId;
                         };
 
-                        $scope.$watch('videoEl.src', function() {
-                            videojs("example_video_1", {}, function(){
+                        $scope.$watch('videoEl.src', function () {
+                            dispose();
+                            $scope.player = videojs("example_video_1", {}, function () {
                                 // Player (this) is initialized and ready.
                             });
+                        });
+
+                        $scope.$on('$destroy', function () {
+                            dispose();
                         });
                     }
                 }
