@@ -9,7 +9,7 @@ def start(data):
     url = None
     regexp = 'https?://.+:\d+/'
     proc = subprocess.Popen(
-        ['peerflix', 'https://yts.re/download/start/344E74A9B07EC8D3F00627A38F45483A3DB08A04.torrent', '-r'],
+        ['peerflix', 'https://yts.re/download/start/CF70D983A67D8E88D0D2C42EDBD62CFCF998225E.torrent', '-r'],
         stdout=subprocess.PIPE)
 
     stdout = proc.stdout.readline()
