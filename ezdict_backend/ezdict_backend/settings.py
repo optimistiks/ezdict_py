@@ -1,4 +1,6 @@
 # Django settings for ezdict_backend project.
+import djcelery
+djcelery.setup_loader()
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -126,6 +128,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'south',
     'rest_framework',
+    'djcelery',
+    'kombu.transport.django',
     'accounts',
     'tickets',
     'texts',
@@ -171,3 +175,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     )
 }
+
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+BROKER_BACKEND = "django"
+

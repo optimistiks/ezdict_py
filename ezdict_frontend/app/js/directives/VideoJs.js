@@ -21,14 +21,9 @@ define(['./module', 'videojs'], function (directives, videojs) {
                                 }
                             };
 
-                        $scope.getMovieUrl = function () {
-                            return '/api/tvideo/' + $scope.movieId;
-                        };
-
                         $scope.$watch('videoEl.src', function () {
                             dispose();
                             $scope.player = videojs("example_video_1", {}, function () {
-                                // Player (this) is initialized and ready.
                             });
                         });
 
