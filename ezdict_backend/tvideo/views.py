@@ -1,7 +1,7 @@
 from django.http import HttpResponse
-from tvideo.tasks import stream
+from tvideo.tasks import start
 
 
 def stream_response(request):
-    task = stream.delay({})
+    task = start.delay({})
     return HttpResponse(task.id)
