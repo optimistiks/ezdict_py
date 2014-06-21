@@ -1,5 +1,9 @@
 <link href="//vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
 <div ng-controller="WorkonTVideoCtrl" text-select>
-    {{ movieId }}
-    <div video-js movie-id="{{ movieId }}"></div>
+    <div ng-show="streamUrl">
+        <div video-js stream-url="streamUrl"></div>
+    </div>
+    <div ng-if="!streamUrl">
+        Видео загружается...
+    </div>
 </div>

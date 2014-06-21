@@ -6,6 +6,6 @@ URL_PART = 'api/tvideo'
 
 urlpatterns = format_suffix_patterns(patterns('tvideo.views',
     url(r'^'+URL_PART,
-        views.stream_response,
+        views.StartStream.as_view(),
         name='tvideo-view'),
 ))

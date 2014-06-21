@@ -3,10 +3,11 @@ define(['./module', 'videojs'], function (directives, videojs) {
     'use strict';
     directives
         .directive('videoJs', [
-            function () {
+            '$sce',
+            function ($sce) {
                 return {
                     scope: {
-                        movieId: '@'
+                        streamUrl: '&'
                     },
                     templateUrl: '/partials/dashboard/video-js.html',
                     replace: true,
@@ -21,17 +22,22 @@ define(['./module', 'videojs'], function (directives, videojs) {
                                 }
                             };
 
-                        $scope.$watch('videoEl.src', function () {
-                            dispose();
-                            $scope.player = videojs("example_video_1", {}, function () {
-                            });
+                        $scope.getTrustedStreamUrl = function () {
+                            return $sce.trustAsResourceUrl($scope.streamUrl());
+                        };
+
+                        $scope.$watch('videoEl.src', function (newSrc, oldSrc) {
+                            if (newSrc) {
+                                $scope.player = videojs("example_video_1", {}, function () {
+                                });
+                            }
                         });
 
                         $scope.$on('$destroy', function () {
                             dispose();
                         });
                     }
-                }
+                };
             }
         ]);
 });

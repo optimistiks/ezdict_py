@@ -5,8 +5,13 @@ define(['./module'], function (controllers) {
             '$scope', '$stateParams', '$http',
             function ($scope, $stateParams, $http) {
                 $scope.movieId = $stateParams.id;
+                $scope.streamUrl = null;
 
-                $http.post('/api/tvideo').then(function(response) {console.log('responsee', response)});
+                $http.post('/api/tvideo').
+                    then(function(response) {
+                        $scope.streamUrl = response.data.url;
+                    }
+                );
             }
         ])
     ;
