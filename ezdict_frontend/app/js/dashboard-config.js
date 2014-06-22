@@ -54,6 +54,6 @@ define(['app'], function (app) {
                     }
 
                     $log.log('$stateChangeStart event end');
-                })
+                });
             }]);
 });
