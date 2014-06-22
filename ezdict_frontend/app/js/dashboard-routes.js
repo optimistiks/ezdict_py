@@ -92,9 +92,9 @@ define(['app'], function (app) {
                 url: '/workon/video/:id',
                 templateUrl: '/partials/dashboard/workon-video.html'
             }).
-            state(constants.ROOT_STATE + '.workon.tvideo', {
-                url: '/workon/tvideo/:id',
-                templateUrl: '/partials/dashboard/workon-tvideo.html'
+            state(constants.ROOT_STATE + '.workon.movie', {
+                url: '/workon/movie/:id',
+                templateUrl: '/partials/dashboard/workon-movie.html'
             }).
             state(constants.ROOT_STATE + '.add', {
                 url: '/add/:typeOfContent',
