@@ -15,10 +15,11 @@ define(['./module'], function (controllers) {
                             });
                             break;
                         case constants.TYPE_VIDEO:
-                            $scope.videoSearchResult = Movie.query({
-                                keywords: $stateParams.query,
-                                quality: '720p'
-                            });
+                            Movie.search({
+                                keywords: $stateParams.query
+                            }).then(function(movies) {
+                                    $scope.videoSearchResult = movies;
+                                });
                             /*                            youtube.ready(function () {
                              var request = youtube.search.list({
                              q: $stateParams.query,

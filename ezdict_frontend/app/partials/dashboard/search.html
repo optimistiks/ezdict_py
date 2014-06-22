@@ -23,11 +23,15 @@
         </ul>
 
         <div ng-show="videoSearchResult && !videoSearchResult.length">Ничего не найдено</div>
-        <ul>
+        <!--<ul>
             <li ng-repeat="video in videoSearchResult">
                 <img ng-src="{{ video.snippet.thumbnails.default.url }}">
                 <a ui-sref='dashboard.layout.default.workon.video({id: video.id.videoId})'>{{ video.snippet.title }}</a>
             </li>
-        </ul>
+        </ul>-->
+            <div ng-repeat="video in videoSearchResult">
+                <img ng-src="{{ video.CoverImage }}">
+                <a ui-sref='dashboard.layout.default.workon.movie({id: video.MovieID})'>{{ video.MovieTitle }}</a>
+            </div>
     </div>
 </div>

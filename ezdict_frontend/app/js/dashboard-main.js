@@ -12,7 +12,7 @@ require.config({
         'toaster': '../lib/toastr/toaster',
         'ngCkeditor': '../lib/ngCkeditor/ng-ckeditor',
         'ckeditor': '../lib/ngCkeditor/libs/ckeditor/ckeditor',
-        'videojs': '//vjs.zencdn.net/4.6/video'
+        'videojs': '../lib/videojs/video'
     },
 
     // angular does not support AMD out of the box, put it in a shim
