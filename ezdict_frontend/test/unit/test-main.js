@@ -20,7 +20,8 @@ require.config({
         'ngProgress': '../lib/ngProgress/ngProgress.min',
         'toaster': '../lib/toastr/toaster',
         'ngCkeditor': '../lib/ngCkeditor/ng-ckeditor',
-        'ckeditor': '../lib/ngCkeditor/libs/ckeditor/ckeditor'
+        'ckeditor': '../lib/ngCkeditor/libs/ckeditor/ckeditor',
+        'videojs': '../lib/videojs/video'
     },
 
     // angular does not support AMD out of the box, put it in a shim

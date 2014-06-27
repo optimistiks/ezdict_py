@@ -1,13 +1,13 @@
 from celery.task import task
 import subprocess
 import re
-# other imports
-
+from streams.models import Stream
 
 @task
-def start(data):
+def start(movieId, user):
     url = None
     regexp = 'https?://.+:\d+/'
+
     proc = subprocess.Popen(
         ['peerflix', 'https://yts.re/download/start/CF70D983A67D8E88D0D2C42EDBD62CFCF998225E.torrent', '-r'],
         stdout=subprocess.PIPE)
@@ -21,4 +21,7 @@ def start(data):
             break
         stdout = proc.stdout.readline()
 
-    return url
+    stream = Stream(task_id=start.request.id, p_id=proc.pid, user=user, movie_id=movieId, url=url)
+    stream.save()
+
+    return stream

@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     'tickets',
     'texts',
     'ticket_search_logs',
-    'stream',
+    'streams',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

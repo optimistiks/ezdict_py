@@ -12,5 +12,6 @@ define([
     './AbstractModel',
     './YouTube',
     './YouTubePlayer',
-    './Movie'
+    './Movie',
+    './Stream'
 ]);
