@@ -25,3 +25,9 @@ def start(movieId, user):
     stream.save()
 
     return stream
+
+
+@task
+def stop(stream):
+    stream.stop()
+    return None

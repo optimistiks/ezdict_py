@@ -18,7 +18,10 @@ class Stream(models.Model):
 
     def stop(self):
         revoke(self.task_id, terminate=True)
-        os.kill(self.p_id, signal.SIGKILL)
+        try:
+            os.kill(self.p_id, signal.SIGKILL)
+        except OSError:
+            pass
         self.closed = datetime.now()
         self.save()
 

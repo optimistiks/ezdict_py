@@ -1,4 +1,4 @@
-from streams.tasks import start
+from streams.tasks import start, stop
 from rest_framework.views import APIView
 from rest_framework.exceptions import ParseError
 from rest_framework.response import Response
@@ -12,6 +12,7 @@ class Start(APIView):
         user = request.user
         task = start.delay(movieId, user)
         stream = task.get()
+        stop.apply_async((stream,), countdown=10800)  # force close stream after 3 hours
         serializer = StreamSerializer(stream, context={'request': request})
         return Response(serializer.data)
 
