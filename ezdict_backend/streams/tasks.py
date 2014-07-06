@@ -2,14 +2,16 @@ from celery.task import task
 import subprocess
 import re
 from streams.models import Stream
+from movies.models import Movie
 
 @task
 def start(movieId, user):
     url = None
     regexp = 'https?://.+:\d+/'
+    movie = Movie().get(movieId)
 
     proc = subprocess.Popen(
-        ['peerflix', 'https://yts.re/download/start/CF70D983A67D8E88D0D2C42EDBD62CFCF998225E.torrent', '-r'],
+        ['trickle', 'nice', '-n', '20', 'peerflix', movie.TorrentUrl, '-r'],
         stdout=subprocess.PIPE)
 
     stdout = proc.stdout.readline()
