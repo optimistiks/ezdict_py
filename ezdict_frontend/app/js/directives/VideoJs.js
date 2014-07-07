@@ -7,7 +7,8 @@ define(['./module', 'videojs'], function (directives, videojs) {
             function ($sce) {
                 return {
                     scope: {
-                        streamUrl: '&'
+                        streamUrl: '&',
+                        poster: '@'
                     },
                     templateUrl: '/partials/dashboard/video-js.html',
                     replace: true,

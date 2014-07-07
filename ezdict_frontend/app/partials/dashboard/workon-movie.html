@@ -1,7 +1,7 @@
 <link href="//vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
 <div ng-controller="WorkonMovieCtrl" text-select>
-    <div ng-show="stream.url">
-        <div video-js stream-url="stream.url"></div>
+    <div ng-if="stream.url && movieData.MovieID">
+        <div video-js stream-url="stream.url" poster="{{ movieData.LargeCover }}"></div>
     </div>
     <div ng-if="!stream.url">
         Видео загружается...

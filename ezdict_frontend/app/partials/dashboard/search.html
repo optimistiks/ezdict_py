@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="content">
-        <div ng-show="textSearchResult && !textSearchResult.length">Ничего не найдено</div>
+        <div ng-show="isText() && textSearchResult && !textSearchResult.length">Ничего не найдено</div>
         <ul>
             <li ng-repeat="text in textSearchResult">
                 <a ui-sref='dashboard.layout.default.workon.text({id: text.id})'>{{ text.title }}</a>
@@ -22,16 +22,60 @@
             </li>
         </ul>
 
-        <div ng-show="videoSearchResult && !videoSearchResult.length">Ничего не найдено</div>
+        <!-- популярные фильмы -->
+        <div ng-show="isVideo() && !isQuery() && moviesPopular.length">
+            <p>Популярные сейчас:</p>
+
+            <div>
+                <p ng-repeat="movie in moviesPopular | limitTo:5">
+                    <a ui-sref='dashboard.layout.default.workon.movie({id: movie.MovieID})'>{{ movie.MovieTitle }}</a>
+                    (<a target="_blank" ng-href="{{ movie.ImdbLink }}">IMDB</a>)
+                </p>
+            </div>
+        </div>
+
+        <!-- недавно добавленые -->
+        <div ng-show="isVideo() && !isQuery() && moviesNew.length">
+            <p>Недавно добавленные:</p>
+
+            <div>
+                <p ng-repeat="movie in moviesNew | limitTo:5">
+                    <a ui-sref='dashboard.layout.default.workon.movie({id: movie.MovieID})'>{{ movie.MovieTitle }}</a>
+                    (<a target="_blank" ng-href="{{ movie.ImdbLink }}">IMDB</a>)
+                </p>
+            </div>
+        </div>
+
+        <!-- по рейтингу -->
+        <div ng-show="isVideo() && !isQuery() && moviesRating.length">
+            <p>TOP 10:</p>
+
+            <div>
+                <p ng-repeat="movie in moviesRating | limitTo:10">
+                    <a ui-sref='dashboard.layout.default.workon.movie({id: movie.MovieID})'>{{ movie.MovieTitle }}</a>
+                    (<a target="_blank" ng-href="{{ movie.ImdbLink }}">IMDB</a>)
+                </p>
+            </div>
+        </div>
+
+        <!-- ютуб -->
         <!--<ul>
             <li ng-repeat="video in videoSearchResult">
                 <img ng-src="{{ video.snippet.thumbnails.default.url }}">
                 <a ui-sref='dashboard.layout.default.workon.video({id: video.id.videoId})'>{{ video.snippet.title }}</a>
             </li>
         </ul>-->
+
+        <!-- фильмы, найденные поиском по запросу -->
+        <div ng-show="isVideo() && isQuery() && videoSearchResult.length">
             <div ng-repeat="video in videoSearchResult">
-                <img ng-src="{{ video.CoverImage }}">
                 <a ui-sref='dashboard.layout.default.workon.movie({id: video.MovieID})'>{{ video.MovieTitle }}</a>
             </div>
+        </div>
+
+        <!-- если по запросу ничего не найдено -->
+        <div ng-show="isVideo() && isQuery() && !videoSearchResult.length">
+            Ничего не найдено
+        </div>
     </div>
 </div>

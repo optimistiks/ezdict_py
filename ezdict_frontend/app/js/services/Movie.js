@@ -25,6 +25,10 @@ define(['./module'], function (factory) {
                                     quality: '720p',
                                     sort: 'year'
                                 }
+                            },
+                            getFromYts: {
+                                method: 'JSONP',
+                                url: 'https://yts.re/api/movie.jsonp?id=:id&callback=JSON_CALLBACK'
                             }
                         }
                     );
