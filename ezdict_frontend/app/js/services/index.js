@@ -13,5 +13,6 @@ define([
     './YouTube',
     './YouTubePlayer',
     './Movie',
-    './Stream'
+    './Stream',
+    './Subtitles'
 ]);

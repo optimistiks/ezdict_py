@@ -2,5 +2,6 @@
        controls preload="none" width="640" height="264"
        poster="{{ poster }}">
     <source ng-src="{{ getTrustedStreamUrl() }}" type='video/mp4'/>
+    <track kind="captions" ng-src="{{ getTrustedSubtitlesUrl() }}" srclang="en" label="English" default />
     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 </video>

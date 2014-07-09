@@ -8,6 +8,7 @@ define(['./module', 'videojs'], function (directives, videojs) {
                 return {
                     scope: {
                         streamUrl: '&',
+                        subtitlesUrl: '&',
                         poster: '@'
                     },
                     templateUrl: '/partials/dashboard/video-js.html',
@@ -25,6 +26,10 @@ define(['./module', 'videojs'], function (directives, videojs) {
 
                         $scope.getTrustedStreamUrl = function () {
                             return $sce.trustAsResourceUrl($scope.streamUrl());
+                        };
+
+                        $scope.getTrustedSubtitlesUrl = function () {
+                            return $sce.trustAsResourceUrl($scope.subtitlesUrl());
                         };
 
                         $scope.$watch('videoEl.src', function (newSrc, oldSrc) {

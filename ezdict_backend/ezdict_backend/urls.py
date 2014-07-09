@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^', include('texts.urls')),
     url(r'^', include('ticket_search_logs.urls')),
     url(r'^', include('streams.urls')),
+    url(r'^', include('subtitles.urls')),
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
     # Examples:
